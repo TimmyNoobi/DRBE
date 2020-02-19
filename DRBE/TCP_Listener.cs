@@ -73,7 +73,7 @@ namespace DRBE
             // The DNS name of the computer  
             // running the listener is "host.contoso.com".  
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0];
+            IPAddress ipAddress = ipHostInfo.AddressList[1];
             //IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8181);
             IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8181);
             // Create a TCP/IP socket.  
@@ -93,7 +93,7 @@ namespace DRBE
                     allDone.Reset();
 
                     // Start an asynchronous socket to listen for connections.  
-                    await ShowDialog(localEndPoint.ToString(), ipAddress.ToString());
+                    await ShowDialog(localEndPoint.ToString() + "    ++     " + listener.LocalEndPoint.ToString(), ipAddress.ToString());
                     listener.BeginAccept(
                         new AsyncCallback(AcceptCallback),
                         listener);

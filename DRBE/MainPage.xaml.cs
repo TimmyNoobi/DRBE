@@ -93,52 +93,106 @@ namespace DRBE
 
 
         #region communication
-        static string UWportnumber = "8181";
+        private string UWPportnumber = "8200";
         private Windows.Networking.Sockets.StreamSocket UWstreamsocket = new Windows.Networking.Sockets.StreamSocket();
         private Windows.Networking.HostName UWhostname = new Windows.Networking.HostName("localhost");
+
+        private bool UWconnectedflag = false;
         private Stream UWinputstream;
         private Stream UWoutputstream;
-        private StreamReader UWstreamreader;
-        private StreamWriter UWstreamwriter;
+
         private BinaryReader UWbinaryreader;
         private BinaryWriter UWbinarywriter;
-        private bool UWconnectedflag = false;
-        private bool UWreaderflag = false;
-        private bool UWwriterflag = false;
 
-        private DRBE_TCP_Listener DTL = new DRBE_TCP_Listener();
-
-        private async void StartClient()
+        private async void ClientReading()
         {
-            try
+            byte[] data = new byte[1];
+            while (true)
             {
-                await UWstreamsocket.ConnectAsync(UWhostname, UWportnumber);
+                if (UWconnectedflag)
+                {
+                    try 
+                    {
+                        await UWinputstream.ReadAsync(data, 0, 1);
+                        DRBE_Debug_tb.Text += BitConverter.ToString(data);
+                        Packet_receiver(data[0]);
+                    }
+                    catch
+                    {
+                        DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Text = "Not Found";
+                        DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Foreground = red_bright_button_brush;
 
-                UWconnectedflag = true;
-                UWoutputstream = UWstreamsocket.OutputStream.AsStreamForWrite();
-                UWinputstream = UWstreamsocket.InputStream.AsStreamForRead();
-                UWstreamwriter = new StreamWriter(UWoutputstream);
-                UWbinarywriter = new BinaryWriter(UWoutputstream);
-                UWwriterflag = true;
-                UWstreamreader = new StreamReader(UWinputstream);
-                UWbinaryreader = new BinaryReader(UWinputstream);
-                UWreaderflag = true;
-
-                await ShowDialog("connected", "Connected");
-
-                //break;
-            }
-            catch (Exception ex)
-            {
+                        DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~") + "Server Disconnected";
+                        UWconnectedflag = false;
+                        UWstreamsocket = new Windows.Networking.Sockets.StreamSocket();
+                        StartClient();
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
         }
+        private async void StartClient()
+        {
+            int i = 0;
+            while (true)
+            {
+                if (!UWconnectedflag)
+                {
+                    try
+                    {
+                        // Create the StreamSocket and establish a connection to the echo server.
+                        //DRBE_Debug_tb.Text += "\r\n Client Try to Connect" ;
+                        await Task.Delay(300);
+                        await UWstreamsocket.ConnectAsync(UWhostname, UWPportnumber);
+                        //DRBE_Debug_tb.Text += "\r\n Client Connected: " + UWstreamsocket.Information.LocalAddress.ToString();
+
+                        DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~") +  "Server Connected";
+                        DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Text = "Connected";
+                        DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Foreground = green_bright_button_brush;
+
+
+                        UWconnectedflag = true;
+                        UWoutputstream = UWstreamsocket.OutputStream.AsStreamForWrite();
+                        UWinputstream = UWstreamsocket.InputStream.AsStreamForRead();
+
+                        UWbinarywriter = new BinaryWriter(UWoutputstream);
+                        UWbinaryreader = new BinaryReader(UWinputstream);
+
+
+                        UWbinarywriter.Write(new byte[] { 0x02, 0x00, 0x05, 0x0B, 0x01, 0x02, 0x03, 0x04, 0x05, 0x00, 0x00, 0x02 }, 0, 12);
+                        UWbinarywriter.Flush();
+
+                        
+
+                        ClientReading();
+
+                        break;
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        await Task.Delay(1000);
+                        i++;
+
+                    }
+                }
+            }
+            //}
+        }
+
+
         // State object for reading client data asynchronously  
 
 
 
         #endregion
         #region others
-            private async Task ShowDialog(string x, string y)
+        private async Task ShowDialog(string x, string y)
         {
             ContentDialog noWifiDialog = new ContentDialog
             {
@@ -364,10 +418,80 @@ namespace DRBE
             return reint;
         }
         #endregion
+        private int Packet_receiver_index = 0;
+        private List<byte> Packet_receiver_result = new List<byte>();
+        private byte device = 0;
+        private int Packet_len = 0;
+        private void Packet_receiver(byte x)
+        {
+            Console.WriteLine(x.ToString());
+            Packet_receiver_result.Add(x);
+            Packet_receiver_index++;
+            if (Packet_receiver_index == 1)
+            {
+                device = x;
+                Packet_len = 0;
+            }
+            else if (Packet_receiver_index == 2)
+            {
+                Packet_len = x;
+            }
+            else if (Packet_receiver_index == 3)
+            {
+                Packet_len = Packet_len * 255 + x;
+                DRBE_Debug_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
+            }
+            else if (Packet_receiver_index == Packet_len + 7)
+            {
+                if (device != x)
+                {
+                    DRBE_Debug_tb.Text += "\r\nError: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+                }
+                else
+                {
+                    DRBE_Debug_tb.Text += "\r\nReceived: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+                    Packet_receiver_result = new List<byte>();
+                }
+                Packet_receiver_index = 0;
+            }
+            else
+            {
 
+            }
+
+        }
+
+        private TextBlock DRBE_Debug_tb = new TextBlock();
+
+
+        
+
+        private Button DRBE_Sync = new Button();
+
+        private FrontPage DRBE_frontPage;
+        
         private async void MainPage_loaded(object sender, RoutedEventArgs e)
         {
-            DTL.StartListening();
+            DRBE_frontPage = new FrontPage(MainGrid);
+            //DRBE_Debug_tb = new TextBlock() { 
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    FontSize = 12,
+            //    Foreground = white_button_brush,
+            //    Text = "DRBE_Debug_tb\r\n"
+            //};
+            //DRBE_Debug_tb.SetValue(Grid.ColumnProperty, 5);
+            //DRBE_Debug_tb.SetValue(Grid.ColumnSpanProperty, 100);
+            //DRBE_Debug_tb.SetValue(Grid.RowProperty, 5);
+            //DRBE_Debug_tb.SetValue(Grid.RowSpanProperty, 100);
+            //MainGrid.Children.Add(DRBE_Debug_tb);
+
+
+
+            StartClient();
+
+            DRBE_frontPage.Show();
+
         }
 
         private void MainPage_sizechange(object sender, SizeChangedEventArgs e)
