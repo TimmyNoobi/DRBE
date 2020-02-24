@@ -145,10 +145,10 @@ namespace DRBE
                     try
                     {
                         // Create the StreamSocket and establish a connection to the echo server.
-                        //DRBE_Debug_tb.Text += "\r\n Client Try to Connect" ;
+                        DRBE_frontPage.Statues_tb.Text += "\r\n Client Try to Connect" ;
                         await Task.Delay(300);
                         await UWstreamsocket.ConnectAsync(UWhostname, UWPportnumber);
-                        //DRBE_Debug_tb.Text += "\r\n Client Connected: " + UWstreamsocket.Information.LocalAddress.ToString();
+                        DRBE_frontPage.Statues_tb.Text += "\r\n Client Connected: " + UWstreamsocket.Information.LocalAddress.ToString();
 
                         DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~") +  "Server Connected";
                         DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Text = "Connected";
@@ -420,17 +420,24 @@ namespace DRBE
         #endregion
         private int Packet_receiver_index = 0;
         private List<byte> Packet_receiver_result = new List<byte>();
-        private byte device = 0;
+        private byte Packet_device = 0;
+        private byte Packet_command = 0;
         private int Packet_len = 0;
+        private string Packet_message = "";
+
+
         private void Packet_receiver(byte x)
         {
-            Console.WriteLine(x.ToString());
+
+
+            DRBE_frontPage.Statues_tb.Text += x.ToString() + "-";
             Packet_receiver_result.Add(x);
             Packet_receiver_index++;
             if (Packet_receiver_index == 1)
             {
-                device = x;
+                Packet_device = x;
                 Packet_len = 0;
+                
             }
             else if (Packet_receiver_index == 2)
             {
@@ -439,18 +446,35 @@ namespace DRBE
             else if (Packet_receiver_index == 3)
             {
                 Packet_len = Packet_len * 255 + x;
-                DRBE_Debug_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
+                DRBE_frontPage.Statues_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
+            }
+            else if (Packet_receiver_index == 5)
+            {
+                Packet_command = x;
             }
             else if (Packet_receiver_index == Packet_len + 7)
             {
-                if (device != x)
+                if (Packet_device != x)
                 {
-                    DRBE_Debug_tb.Text += "\r\nError: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+                    DRBE_frontPage.Statues_tb.Text += "\r\nError: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
                 }
                 else
                 {
-                    DRBE_Debug_tb.Text += "\r\nReceived: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+                    DRBE_frontPage.Statues_tb.Text += "\r\nReceived: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
                     Packet_receiver_result = new List<byte>();
+                    Packet_message += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~");
+                    if (Packet_device == 0x02)
+                    {
+                        Packet_message += "Matlab ";
+                    }
+                    if(Packet_command == 0x01)
+                    {
+                        Packet_message += "is Synced ";
+                        DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Text = "Connected";
+                        DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Foreground = green_bright_button_brush;
+
+                    }
+                    DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += Packet_message;
                 }
                 Packet_receiver_index = 0;
             }
