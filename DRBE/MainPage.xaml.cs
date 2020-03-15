@@ -156,6 +156,7 @@ namespace DRBE
 
 
                         UWconnectedflag = true;
+
                         UWoutputstream = UWstreamsocket.OutputStream.AsStreamForWrite();
                         UWinputstream = UWstreamsocket.InputStream.AsStreamForRead();
 
