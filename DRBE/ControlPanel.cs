@@ -349,7 +349,7 @@ namespace DRBE
                 FontSize = 20,
                 Foreground = white_button_brush,
                 FontWeight = FontWeights.Bold,
-                Text = "RISK-Core: "
+                Text = "RISC-Core: "
             };
             Hardware_riskv_title_tb.SetValue(Grid.ColumnProperty, 61);
             Hardware_riskv_title_tb.SetValue(Grid.ColumnSpanProperty, 12);
@@ -771,7 +771,7 @@ namespace DRBE
                 FontWeight = FontWeights.Bold,
                 Content = "Initialization",
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(1,1,1,1)
+                BorderThickness = new Thickness(1, 1, 1, 1)
             };
             DRBE_Initialization_bt.SetValue(Grid.ColumnProperty, 111);
             DRBE_Initialization_bt.SetValue(Grid.ColumnSpanProperty, 15);
@@ -898,12 +898,107 @@ namespace DRBE
 
         public void Show()
         {
+            Server_title_tb.Visibility = Visibility.Visible;
+            Server_bd.Visibility = Visibility.Visible;
+            Server_matlab_title_tb.Visibility = Visibility.Visible;
+            Server_matlab_tb.Visibility = Visibility.Visible;
+            Server_ui_title_tb.Visibility = Visibility.Visible;
+            Server_ui_tb.Visibility = Visibility.Visible;
+            Server_python_title_tb.Visibility = Visibility.Visible;
+            Server_python_tb.Visibility = Visibility.Visible;
+            Server_fpga_title_tb.Visibility = Visibility.Visible;
+            Server_fpga_tb.Visibility = Visibility.Visible;
+            Hardware_title_tb.Visibility = Visibility.Visible;
+            Hardware_bd.Visibility = Visibility.Visible;
+            Hardware_riskv_title_tb.Visibility = Visibility.Visible;
+            Hardware_riskv_tb.Visibility = Visibility.Visible;
+            Hardware_controlmodule_title_tb.Visibility = Visibility.Visible;
+            Hardware_controlmodule_tb.Visibility = Visibility.Visible;
+            Hardware_filter1_title_tb.Visibility = Visibility.Visible;
+            Hardware_filter1_tb.Visibility = Visibility.Visible;
+            Hardware_filter2_title_tb.Visibility = Visibility.Visible;
+            Hardware_filter2_tb.Visibility = Visibility.Visible;
+            Hardware_filter3_title_tb.Visibility = Visibility.Visible;
+            Hardware_filter3_tb.Visibility = Visibility.Visible;
+            Hardware_module1_title_tb.Visibility = Visibility.Visible;
+            Hardware_module1_tb.Visibility = Visibility.Visible;
+            Hardware_module2_title_tb.Visibility = Visibility.Visible;
+            Hardware_module2_tb.Visibility = Visibility.Visible;
+            Hardware_module3_title_tb.Visibility = Visibility.Visible;
+            Hardware_module3_tb.Visibility = Visibility.Visible;
+            IO_title_tb.Visibility = Visibility.Visible;
+            IO_bd.Visibility = Visibility.Visible;
+            IO_rf_title_tb.Visibility = Visibility.Visible;
+            IO_rf_tb.Visibility = Visibility.Visible;
+            IO_scenario_title_tb.Visibility = Visibility.Visible;
+            IO_scenario_tb.Visibility = Visibility.Visible;
+            IO_compiler_title_tb.Visibility = Visibility.Visible;
+            IO_compiler_tb.Visibility = Visibility.Visible;
+            IO_firmware_title_tb.Visibility = Visibility.Visible;
+            IO_firmware_tb.Visibility = Visibility.Visible;
+            DRBE_Command_title_tb.Visibility = Visibility.Visible;
+            DRBE_Command_bd.Visibility = Visibility.Visible;
+            DRBE_Initialization_bt.Visibility = Visibility.Visible;
+            DRBE_Import_bt.Visibility = Visibility.Visible;
+            DRBE_Start_bt.Visibility = Visibility.Visible;
+            DRBE_Pause_bt.Visibility = Visibility.Visible;
+            DRBE_Stop_bt.Visibility = Visibility.Visible;
+            DRBE_Refresh_bt.Visibility = Visibility.Visible;
+            Message_tb.Visibility = Visibility.Visible;
+            Message_bd.Visibility = Visibility.Visible;
 
         }
 
         public void Hide()
         {
-
+            Server_title_tb.Visibility = Visibility.Collapsed;
+            Server_bd.Visibility = Visibility.Collapsed;
+            Server_matlab_title_tb.Visibility = Visibility.Collapsed;
+            Server_matlab_tb.Visibility = Visibility.Collapsed;
+            Server_ui_title_tb.Visibility = Visibility.Collapsed;
+            Server_ui_tb.Visibility = Visibility.Collapsed;
+            Server_python_title_tb.Visibility = Visibility.Collapsed;
+            Server_python_tb.Visibility = Visibility.Collapsed;
+            Server_fpga_title_tb.Visibility = Visibility.Collapsed;
+            Server_fpga_tb.Visibility = Visibility.Collapsed;
+            Hardware_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_bd.Visibility = Visibility.Collapsed;
+            Hardware_riskv_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_riskv_tb.Visibility = Visibility.Collapsed;
+            Hardware_controlmodule_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_controlmodule_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter1_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter1_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter2_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter2_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter3_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_filter3_tb.Visibility = Visibility.Collapsed;
+            Hardware_module1_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_module1_tb.Visibility = Visibility.Collapsed;
+            Hardware_module2_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_module2_tb.Visibility = Visibility.Collapsed;
+            Hardware_module3_title_tb.Visibility = Visibility.Collapsed;
+            Hardware_module3_tb.Visibility = Visibility.Collapsed;
+            IO_title_tb.Visibility = Visibility.Collapsed;
+            IO_bd.Visibility = Visibility.Collapsed;
+            IO_rf_title_tb.Visibility = Visibility.Collapsed;
+            IO_rf_tb.Visibility = Visibility.Collapsed;
+            IO_scenario_title_tb.Visibility = Visibility.Collapsed;
+            IO_scenario_tb.Visibility = Visibility.Collapsed;
+            IO_compiler_title_tb.Visibility = Visibility.Collapsed;
+            IO_compiler_tb.Visibility = Visibility.Collapsed;
+            IO_firmware_title_tb.Visibility = Visibility.Collapsed;
+            IO_firmware_tb.Visibility = Visibility.Collapsed;
+            DRBE_Command_title_tb.Visibility = Visibility.Collapsed;
+            DRBE_Command_bd.Visibility = Visibility.Collapsed;
+            DRBE_Initialization_bt.Visibility = Visibility.Collapsed;
+            DRBE_Import_bt.Visibility = Visibility.Collapsed;
+            DRBE_Start_bt.Visibility = Visibility.Collapsed;
+            DRBE_Pause_bt.Visibility = Visibility.Collapsed;
+            DRBE_Stop_bt.Visibility = Visibility.Collapsed;
+            DRBE_Refresh_bt.Visibility = Visibility.Collapsed;
+            Message_tb.Visibility = Visibility.Collapsed;
+            Message_bd.Visibility = Visibility.Collapsed;
         }
 
         public void Dispose()

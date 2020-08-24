@@ -90,7 +90,22 @@ namespace DRBE
         public Button Tab_graph_tb = new Button();
         public Button Tab_workspace_tb = new Button();
 
+        public Button Send_Seq_1 = new Button();
+        public Button Send_Seq_2 = new Button();
+        public Button Send_Seq_3 = new Button();
+        public Button Send_Seq_4 = new Button();
+
+
+
+
+        private Button Com_Message_bt = new Button();
+        private Image Com_Message_bti = new Image();
+        private ToolTip Com_Message_tt = new ToolTip();
+
+
         public Border Statues_bd = new Border();
+
+
 
         public Grid ParentGrid;
         public ControlPanel DRBE_controlpanel;
@@ -98,13 +113,34 @@ namespace DRBE
         {
             ParentGrid = parent;
             DRBE_controlpanel = new ControlPanel(ParentGrid);
+            DRBE_controlpanel.Hide();
             Setup();
-            
+            Hide();
+
+
         }
 
         private void Setup()
         {
-
+            Send_Seq_1 = new Button()
+            {
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalAlignment = VerticalAlignment.Stretch,
+                FontSize = 12,
+                Foreground = white_button_brush,
+                FontWeight = FontWeights.Bold,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                Content = "Seq 1",
+                BorderBrush = white_button_brush,
+                Background = Default_back_black_color_brush,
+                BorderThickness = new Thickness(2, 2, 2, 2)
+            };
+            Send_Seq_1.SetValue(Grid.ColumnProperty, 136);
+            Send_Seq_1.SetValue(Grid.ColumnSpanProperty, 20);
+            Send_Seq_1.SetValue(Grid.RowProperty, 70);
+            Send_Seq_1.SetValue(Grid.RowSpanProperty, 5);
+            ParentGrid.Children.Add(Send_Seq_1);
+            //Canvas.SetZIndex(Send_Seq_1,5);
 
             Tab_workspace_tb = new Button()
             {
@@ -201,8 +237,8 @@ namespace DRBE
             {
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
-                BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(2,2,2,2)
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.1, 0.1, 0.1, 0.1),
             };
             Canvas.SetZIndex(Statues_bd,-1);
             Statues_bd.SetValue(Grid.ColumnProperty, 0);
@@ -211,27 +247,95 @@ namespace DRBE
             Statues_bd.SetValue(Grid.RowSpanProperty, 150);
             ParentGrid.Children.Add(Statues_bd);
 
+            //Com_Message_bti.Source = new BitmapImage(new Uri("ms-appx://Assets/cnull.PNG", UriKind.RelativeOrAbsolute));
+            Com_Message_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Com_Icon.jpg", UriKind.RelativeOrAbsolute));
+            Com_Message_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Content = Com_Message_bti,
+                Background = Default_back_black_color_brush
+            };
+            Com_Message_bt.SetValue(Grid.ColumnProperty, 1);
+            Com_Message_bt.SetValue(Grid.ColumnSpanProperty, 8);
+            Com_Message_bt.SetValue(Grid.RowProperty, 1);
+            Com_Message_bt.SetValue(Grid.RowSpanProperty, 10);
+            ParentGrid.Children.Add(Com_Message_bt);
+
+            Com_Message_tt.Content = "Show COM Message";
+            ToolTipService.SetToolTip(Com_Message_bt, Com_Message_tt);
+
+            Canvas.SetZIndex(Com_Message_bt,20);
+            Com_Message_bt.Click += Com_Message_bt_Click;
             Statues_tb = new TextBlock() { 
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
+                TextWrapping = TextWrapping.WrapWholeWords,
                 FontSize = 12,
                 Foreground = white_button_brush,
                 Text = "DRBE_Debug_tb\r\n"
             };
             Statues_tb.SetValue(Grid.ColumnProperty, 1);
             Statues_tb.SetValue(Grid.ColumnSpanProperty, 59);
-            Statues_tb.SetValue(Grid.RowProperty, 1);
-            Statues_tb.SetValue(Grid.RowSpanProperty, 149);
+            Statues_tb.SetValue(Grid.RowProperty, 11);
+            Statues_tb.SetValue(Grid.RowSpanProperty, 139);
             ParentGrid.Children.Add(Statues_tb);
         }
+
+        private void Com_Message_bt_Click(object sender, RoutedEventArgs e)
+        {
+            if(Statues_tb.Visibility == Visibility.Visible)
+            {
+                Statues_tb.Visibility = Visibility.Collapsed;
+                Statues_bd.Visibility = Visibility.Collapsed;
+            }else
+            {
+                Statues_tb.Visibility = Visibility.Visible;
+                Statues_bd.Visibility = Visibility.Visible;
+            }
+        }
+
         public void Show()
         {
+            Send_Seq_1.Visibility = Visibility.Visible;
+
+            Tab_workspace_tb.Visibility = Visibility.Visible;
+
+
+            Tab_graph_tb.Visibility = Visibility.Visible;
+
+            Tab_core_tb.Visibility = Visibility.Visible;
+
+            Tab_software_tb.Visibility = Visibility.Visible;
+
+            Tab_control_tb.Visibility = Visibility.Visible;
+
+            Statues_bd.Visibility = Visibility.Visible;
+            Com_Message_bt.Visibility = Visibility.Visible;
+            Statues_tb.Visibility = Visibility.Visible;
 
         }
 
         public void Hide()
         {
+            Send_Seq_1.Visibility = Visibility.Collapsed;
 
+            Tab_workspace_tb.Visibility = Visibility.Collapsed;
+
+
+            Tab_graph_tb.Visibility = Visibility.Collapsed;
+
+            Tab_core_tb.Visibility = Visibility.Collapsed;
+
+            Tab_software_tb.Visibility = Visibility.Collapsed;
+
+            Tab_control_tb.Visibility = Visibility.Collapsed;
+
+            Statues_bd.Visibility = Visibility.Collapsed;
+            Com_Message_bt.Visibility = Visibility.Collapsed;
+            Statues_tb.Visibility = Visibility.Collapsed;
         }
 
         public void Dispose()

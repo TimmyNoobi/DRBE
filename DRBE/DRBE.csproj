@@ -17,7 +17,16 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
-    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <GenerateAppInstallerFile>True</GenerateAppInstallerFile>
+    <PackageCertificateThumbprint>2846C3E5A94D6A8EB61736C02746059853E2C49F</PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppInstallerUri>C:\Program Files\WindowsApps</AppInstallerUri>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -119,13 +128,35 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Communication_Protocol_Page.cs" />
     <Compile Include="ControlPanel.cs" />
+    <Compile Include="Definition_Page.cs" />
+    <Compile Include="DRBEScenario.cs" />
+    <Compile Include="DRBE_AP.cs" />
+    <Compile Include="DRBE_Link_Viewer.cs" />
+    <Compile Include="DRBE_Link_Viewer_s.cs" />
+    <Compile Include="DRBE_Link_Viewer_sim.cs" />
+    <Compile Include="DRBE_MainPage1.cs" />
+    <Compile Include="DRBE_Receiver.cs" />
+    <Compile Include="DRBE_Reflector.cs" />
+    <Compile Include="DRBE_Scenario_Generator.cs" />
+    <Compile Include="DRBE_SUT.cs" />
+    <Compile Include="DRBE_Transmitter.cs" />
     <Compile Include="FrontPage.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatlabPacket.cs" />
+    <Compile Include="Pic_Player.cs" />
+    <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receiver.cs" />
+    <Compile Include="Save_Screen.cs" />
+    <Compile Include="Simple_DRBE_Plotter.cs" />
+    <Compile Include="Sim_sweep.cs" />
+    <Compile Include="SoftwarePanel.cs" />
     <Compile Include="TCP_Listener.cs" />
+    <Compile Include="Transmitter.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -133,6 +164,113 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Add_Page.png" />
+    <Content Include="Assets\All_de_icon.png" />
+    <Content Include="Assets\Antenna_Pattern_icon.png" />
+    <Content Include="Assets\Battery_icon.png" />
+    <Content Include="Assets\Bullseye_icon.png" />
+    <Content Include="Assets\Calculator_icon.png" />
+    <Content Include="Assets\channel_icon.png" />
+    <Content Include="Assets\Check.png" />
+    <Content Include="Assets\Clutter_icon.PNG" />
+    <Content Include="Assets\Compiler.png" />
+    <Content Include="Assets\Com_Icon.jpg" />
+    <Content Include="Assets\Configuration_icon.png" />
+    <Content Include="Assets\connector_icon.png" />
+    <Content Include="Assets\Constraint.jpg" />
+    <Content Include="Assets\Data_interface.png" />
+    <Content Include="Assets\Device.png" />
+    <Content Include="Assets\domain_icon.png" />
+    <Content Include="Assets\Doppler_icon.png" />
+    <Content Include="Assets\DRBE_icon.png" />
+    <Content Include="Assets\DRBE_icon.scale-400.png" />
+    <Content Include="Assets\DRBE_Server_CNF.exe" />
+    <Content Include="Assets\DRBE_Server_CNF.pdb" />
+    <Content Include="Assets\DRBE_start.png" />
+    <Content Include="Assets\En_all_icon.png" />
+    <Content Include="Assets\Ethernet_icon.png" />
+    <Content Include="Assets\Fidelity_Check.png" />
+    <Content Include="Assets\Fidelity_data_icon.png" />
+    <Content Include="Assets\FMC_icon.png" />
+    <Content Include="Assets\FPGAs-Icon_4x.jpg" />
+    <Content Include="Assets\GE.png" />
+    <Content Include="Assets\Hardware_icon.png" />
+    <Content Include="Assets\Home_icon.png" />
+    <Content Include="Assets\Import.png" />
+    <Content Include="Assets\Input.png" />
+    <Content Include="Assets\Link.png" />
+    <Content Include="Assets\Link_de_icon.png" />
+    <Content Include="Assets\Link_en_icon.png" />
+    <Content Include="Assets\Link_uns_icon.png" />
+    <Content Include="Assets\Load_icon.jpg" />
+    <Content Include="Assets\Monitor_icon.png" />
+    <Content Include="Assets\Node_de_icon.png" />
+    <Content Include="Assets\Node_en_icon.png" />
+    <Content Include="Assets\Node_uns_icon.png" />
+    <Content Include="Assets\Object_icon.png" />
+    <Content Include="Assets\Path_de_icon.png" />
+    <Content Include="Assets\Path_en_icon.png" />
+    <Content Include="Assets\Path_uns_icon.png" />
+    <Content Include="Assets\PCie_icon.png" />
+    <Content Include="Assets\Phase_Array_icon.png" />
+    <Content Include="Assets\Phase_Array_icon_t.png" />
+    <Content Include="Assets\Play_icon.png" />
+    <Content Include="Assets\Polarization_icon.png" />
+    <Content Include="Assets\PPU.jpg" />
+    <Content Include="Assets\protocol_icon.png" />
+    <Content Include="Assets\radar_icon1.png" />
+    <Content Include="Assets\radar_icon2.png" />
+    <Content Include="Assets\radar_icon_m.png" />
+    <Content Include="Assets\radar_icon_t.png" />
+    <Content Include="Assets\radar_scan1.jpg" />
+    <Content Include="Assets\rate_icon.png" />
+    <Content Include="Assets\RCS_icon.png" />
+    <Content Include="Assets\Reference_icon.png" />
+    <Content Include="Assets\Refresh.png" />
+    <Content Include="Assets\Refresh_icon.png" />
+    <Content Include="Assets\Report_icon.png" />
+    <Content Include="Assets\RF_impairment_icon.jpg" />
+    <Content Include="Assets\RF_Interface.png" />
+    <Content Include="Assets\Save_icon.png" />
+    <Content Include="Assets\Scenario_icon.jpg" />
+    <Content Include="Assets\Simulation_icon.png" />
+    <Content Include="Assets\Simulator_icon.png" />
+    <Content Include="Assets\Slides1.PNG" />
+    <Content Include="Assets\Slides2.PNG" />
+    <Content Include="Assets\Slides3.PNG" />
+    <Content Include="Assets\Slides4.PNG" />
+    <Content Include="Assets\Slides5.PNG" />
+    <Content Include="Assets\Slides_6.PNG" />
+    <Content Include="Assets\SMA_icon.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\structure_icon.png" />
+    <Content Include="Assets\surfaceplot_CUTS.png" />
+    <Content Include="Assets\template_icon.png" />
+    <Content Include="Assets\Test_icon.png" />
+    <Content Include="Assets\Trashcan_icon.png" />
+    <Content Include="Assets\Uns_all_icon.png" />
+    <Content Include="Assets\USB-B_icon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -156,6 +294,15 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DRBE_Server_CNF.exe.config" />
+    <None Include="DRBE_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

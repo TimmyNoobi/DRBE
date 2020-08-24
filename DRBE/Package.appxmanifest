@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Package
-  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap= "http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
   xmlns:uap6="http://schemas.microsoft.com/appx/manifest/uap/windows10/6"
-  IgnorableNamespaces="uap mp iot uap6">
+  IgnorableNamespaces="uap mp desktop rescap iot uap6">
 
   <Identity
     Name="106b18ec-5180-4642-8a0e-198353957681"
     Publisher="CN=timli"
-    Version="1.0.0.0" />
+    Version="1.0.2.0" />
 
   <mp:PhoneIdentity PhoneProductId="106b18ec-5180-4642-8a0e-198353957681" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -41,7 +43,16 @@
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
+        <uap:LockScreen BadgeLogo="Assets\DRBE_icon.png" Notification="badge"/>
       </uap:VisualElements>
+      <Extensions>
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="Assets\DRBE_Server_CNF.exe">
+          <desktop:FullTrustProcess>
+            <desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
+            <desktop:ParameterGroup GroupId="OtherGroup" Parameters="/Other"/>
+          </desktop:FullTrustProcess>
+        </desktop:Extension>
+      </Extensions>
     </Application>
   </Applications>
 
@@ -49,8 +60,15 @@
     <Capability Name="privateNetworkClientServer" />
     <Capability Name="internetClient" />
     <Capability Name="internetClientServer"/>
+    <rescap:Capability Name="runFullTrust" />
+
     <iot:Capability Name="lowLevelDevices"/>
     <uap6:Capability Name="graphicsCapture"/>
     <DeviceCapability Name="proximity"/>
+    <DeviceCapability Name="serialCommunication">
+      <Device Id="any">
+        <Function Type="name:serialPort" />
+      </Device>
+    </DeviceCapability>
   </Capabilities>
 </Package>
