@@ -84,13 +84,14 @@ namespace DRBE
         DRBE_Link_Viewer_s SC_Dlv;
 
         private Simple_DRBE_Plotter sdp;
-        public Sim_sweep(Grid parent)
+        private MainPage ParentPage;
+        public Sim_sweep(Grid parent, MainPage parentpage)
         {
             ParentGrid = parent;
-
+            ParentPage = parentpage;
             //hide();
             DRBE_SS = new Save_Screen(parent);
-            SC_Dlv = new DRBE_Link_Viewer_s(parent);
+            SC_Dlv = new DRBE_Link_Viewer_s(parent, ParentPage);
             Setup();
             sdp = new Simple_DRBE_Plotter(ParentGrid, 80, 120, 30, 120, 0);
 

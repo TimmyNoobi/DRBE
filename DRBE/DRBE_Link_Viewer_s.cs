@@ -81,14 +81,16 @@ namespace DRBE
         private List<SolidColorBrush> All_Color = new List<SolidColorBrush>();
         #endregion
         public Grid ParentGrid;
+        public MainPage ParentPage;
         private Save_Screen DRBE_LV_SS;
         private Sim_sweep DRBE_sweep;
-        public DRBE_Link_Viewer_s(Grid parent)
+        public DRBE_Link_Viewer_s(Grid parent, MainPage parentpage)
         {
             ParentGrid = parent;
+            ParentPage = parentpage;
             DRBE_LV_SS = new Save_Screen(parent);
             //Setup();
-            //hide();
+            hide();
         }
 
         private TextBlock Sweep_tb = new TextBlock();
@@ -1170,7 +1172,7 @@ namespace DRBE
         private async void testchain()
         {
             hide();
-            DRBE_sweep = new Sim_sweep(ParentGrid);
+            DRBE_sweep = new Sim_sweep(ParentGrid, ParentPage);
             DRBE_sweep.Property_setup(Lv_dtl, Lv_dfl, Lv_drl, Link_enable_list);
         }
 
@@ -3464,7 +3466,7 @@ namespace DRBE
         private async void Sweep_bt_Click(object sender, RoutedEventArgs e)
         {
             hide();
-            DRBE_sweep = new Sim_sweep(ParentGrid);
+            DRBE_sweep = new Sim_sweep(ParentGrid, ParentPage);
             DRBE_sweep.Property_setup(Lv_dtl, Lv_dfl, Lv_drl, Link_enable_list);
         }
 

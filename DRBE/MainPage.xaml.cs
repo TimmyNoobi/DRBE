@@ -109,6 +109,7 @@ namespace DRBE
         private async void ClientReading()
         {
             byte[] data = new byte[1];
+
             while (true)
             {
                 if (UWconnectedflag)
@@ -117,7 +118,7 @@ namespace DRBE
                     {
                         await UWinputstream.ReadAsync(data, 0, 1);
                         DRBE_Debug_tb.Text += BitConverter.ToString(data);
-                        Packet_receiver(data[0]);
+                        await Packet_receiver(data[0]);
                     }
                     catch
                     {
@@ -188,7 +189,6 @@ namespace DRBE
                         
 
                         ClientReading();
-
                         break;
 
                     }
@@ -536,18 +536,80 @@ namespace DRBE
         private string Packet_message = "";
 
 
-        private void Packet_receiver(byte x)
+        //private void Packet_receiver(byte x)
+        //{
+
+
+        //    DRBE_frontPage.Statues_tb.Text += x.ToString() + "-";
+        //    Packet_receiver_result.Add(x);
+        //    Packet_receiver_index++;
+        //    if (Packet_receiver_index == 1) 
+        //    {
+        //        Packet_device = x;
+        //        Packet_len = 0;
+
+        //    } //device ID
+        //    else if (Packet_receiver_index == 2)
+        //    {
+        //        Packet_len = x;
+        //    } //length MS
+        //    else if (Packet_receiver_index == 3)
+        //    {
+        //        Packet_len = Packet_len * 255 + x;
+        //        DRBE_frontPage.Statues_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
+        //    } //length LS
+        //    else if (Packet_receiver_index == 4)
+        //    {
+        //        Packet_command = x;
+        //    } //command
+        //    else if (Packet_receiver_index == Packet_len + 7)
+        //    {
+        //        if (Packet_device != x)
+        //        {
+        //            DRBE_frontPage.Statues_tb.Text += "\r\nError: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+        //        }
+        //        else
+        //        {
+        //            DRBE_frontPage.Statues_tb.Text += "\r\nReceived: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
+        //            Packet_message += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~");
+        //            if (Packet_device == 0x02)
+        //            {
+        //                Packet_message += "Matlab ";
+        //            }
+        //            if(Packet_command == 0x01)
+        //            {
+        //                Packet_message += "is Synced ";
+        //                DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Text = "Connected";
+        //                DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Foreground = green_bright_button_brush;
+
+        //            }else if(Packet_command == 0x10)
+        //            {
+        //                DRBE_softwarePage.Message_calibration_tb.Text += "\r\n" + "Performance: " + (((double)1 / (double)(Packet_receiver_result[5]*256 + Packet_receiver_result[6]))).ToString();
+        //            } 
+        //            DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += Packet_message;
+        //            Packet_receiver_result = new List<byte>();
+        //        }
+        //        Packet_receiver_index = 0;
+        //    }
+        //    else
+        //    {
+
+        //    }
+
+        //}
+
+
+
+
+        private async Task Packet_receiver(byte x)
         {
-
-
             DRBE_frontPage.Statues_tb.Text += x.ToString() + "-";
             Packet_receiver_result.Add(x);
             Packet_receiver_index++;
-            if (Packet_receiver_index == 1) 
+            if (Packet_receiver_index == 1)
             {
                 Packet_device = x;
                 Packet_len = 0;
-
             } //device ID
             else if (Packet_receiver_index == 2)
             {
@@ -555,6 +617,7 @@ namespace DRBE
             } //length MS
             else if (Packet_receiver_index == 3)
             {
+                await ShowDialog(Packet_receiver_result[Packet_receiver_index - 1].ToString(), Packet_receiver_result.Count.ToString());
                 Packet_len = Packet_len * 255 + x;
                 DRBE_frontPage.Statues_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
             } //length LS
@@ -562,33 +625,10 @@ namespace DRBE
             {
                 Packet_command = x;
             } //command
-            else if (Packet_receiver_index == Packet_len + 7)
+            else if (Packet_receiver_index == Packet_len + 3)
+            //else if (Packet_receiver_index == 20)
             {
-                if (Packet_device != x)
-                {
-                    DRBE_frontPage.Statues_tb.Text += "\r\nError: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
-                }
-                else
-                {
-                    DRBE_frontPage.Statues_tb.Text += "\r\nReceived: " + BitConverter.ToString(Packet_receiver_result.ToArray()) + "\r\n";
-                    Packet_message += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~");
-                    if (Packet_device == 0x02)
-                    {
-                        Packet_message += "Matlab ";
-                    }
-                    if(Packet_command == 0x01)
-                    {
-                        Packet_message += "is Synced ";
-                        DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Text = "Connected";
-                        DRBE_frontPage.DRBE_controlpanel.Server_matlab_tb.Foreground = green_bright_button_brush;
-
-                    }else if(Packet_command == 0x10)
-                    {
-                        DRBE_softwarePage.Message_calibration_tb.Text += "\r\n" + "Performance: " + (((double)1 / (double)(Packet_receiver_result[5]*256 + Packet_receiver_result[6]))).ToString();
-                    } 
-                    DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += Packet_message;
-                    Packet_receiver_result = new List<byte>();
-                }
+                await ShowDialog(Packet_receiver_result[Packet_receiver_index-1].ToString(), Packet_receiver_result.Count.ToString());
                 Packet_receiver_index = 0;
             }
             else
@@ -613,7 +653,12 @@ namespace DRBE
         private DRBE_AP DRBE_ap;
         private DRBE_MainPage1 DRBE_mainpage1;
         private DRBE_Link_Viewer DRBE_lv;
-        private DRBE_Scenario_Generator DRBE_SG;
+        private Template_Make TM_Test;
+
+        public DRBE_Scenario_Generator DRBE_SG;
+
+
+
 
         private byte[] Communication_test_byte = new byte[] { 0x22 };
         private List<byte> C_T_B_N = new List<byte>();
@@ -626,7 +671,7 @@ namespace DRBE
             DRBE_softwarePage = new SoftwarePanel(MainGrid, UWbinarywriter);
             Communication_Protocol_Page = new Communication_Protocol_Page(MainGrid);
             DRBE_ap = new DRBE_AP(MainGrid, UWbinarywriter);
-            DRBE_mainpage1 = new DRBE_MainPage1(MainGrid);
+            DRBE_mainpage1 = new DRBE_MainPage1(MainGrid, this);
             
 
             //DRBE_SUT_Page = new DRBE_SUT(MainGrid);
@@ -654,10 +699,15 @@ namespace DRBE
             DRBE_lv = new DRBE_Link_Viewer(MainGrid);
             //DRBE_SG = new DRBE_Scenario_Generator(MainGrid);
 
-            DRBE_mainpage1.Show();
+            //DRBE_mainpage1.Show();
+
+            //TM_Test = new Template_Make(MainGrid, this);
+
+
             //DRBE_ap.Show();
             DRBE_lv.Setup(DRBE_Scenario.D_Trans, DRBE_Scenario.D_Rec, DRBE_Scenario.D_Ref);
-            StartClient();
+            //StartClient();
+            
             //DRBE_softwarePage.Show();
             //DRBE_frontPage.Show();
             //DRBE_ap.Show();
@@ -670,60 +720,79 @@ namespace DRBE
             S_B("A1");
 
 
-            Button ssbt = new Button() { 
-                VerticalAlignment = VerticalAlignment.Stretch,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                Content = "1",
-                Foreground = white_button_brush,
-                FontSize = 18
+            ScrollViewer svtest = new ScrollViewer() { 
             
             };
-            MainGrid.Children.Add(ssbt);
-            ssbt.SetValue(Grid.ColumnProperty, 185);
-            ssbt.SetValue(Grid.ColumnSpanProperty, 5);
-            ssbt.SetValue(Grid.RowProperty, 145);
-            ssbt.SetValue(Grid.RowSpanProperty, 5);
-            ssbt.Click += Ssbt1_Click;
-
-            Button ssbt2 = new Button()
-            {
-                VerticalAlignment = VerticalAlignment.Stretch,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                Content = "2",
-                Foreground = white_button_brush,
-                FontSize = 18
-
+            StackPanel sptest = new StackPanel() { 
+                
             };
-            MainGrid.Children.Add(ssbt2);
-            ssbt2.SetValue(Grid.ColumnProperty, 190);
-            ssbt2.SetValue(Grid.ColumnSpanProperty, 5);
-            ssbt2.SetValue(Grid.RowProperty, 145);
-            ssbt2.SetValue(Grid.RowSpanProperty, 5);
-            ssbt2.Click += Ssbt2_Click;
 
-            Button ssbt3 = new Button()
-            {
-                VerticalAlignment = VerticalAlignment.Stretch,
-                HorizontalAlignment = HorizontalAlignment.Stretch,
-                Content = "3",
-                Foreground = white_button_brush,
-                FontSize = 18
 
-            };
-            MainGrid.Children.Add(ssbt3);
-            ssbt3.SetValue(Grid.ColumnProperty, 195);
-            ssbt3.SetValue(Grid.ColumnSpanProperty, 5);
-            ssbt3.SetValue(Grid.RowProperty, 145);
-            ssbt3.SetValue(Grid.RowSpanProperty, 5);
-            ssbt3.Click += Ssbt3_Click;
+
+
+            #region Slides
+            //Button ssbt = new Button() { 
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    Content = "1",
+            //    Foreground = white_button_brush,
+            //    FontSize = 18
+
+            //};
+            //MainGrid.Children.Add(ssbt);
+            //ssbt.SetValue(Grid.ColumnProperty, 185);
+            //ssbt.SetValue(Grid.ColumnSpanProperty, 5);
+            //ssbt.SetValue(Grid.RowProperty, 145);
+            //ssbt.SetValue(Grid.RowSpanProperty, 5);
+            //ssbt.Click += Ssbt1_Click;
+
+            //Button ssbt2 = new Button()
+            //{
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    Content = "2",
+            //    Foreground = white_button_brush,
+            //    FontSize = 18
+
+            //};
+            //MainGrid.Children.Add(ssbt2);
+            //ssbt2.SetValue(Grid.ColumnProperty, 190);
+            //ssbt2.SetValue(Grid.ColumnSpanProperty, 5);
+            //ssbt2.SetValue(Grid.RowProperty, 145);
+            //ssbt2.SetValue(Grid.RowSpanProperty, 5);
+            //ssbt2.Click += Ssbt2_Click;
+
+            //Button ssbt3 = new Button()
+            //{
+            //    VerticalAlignment = VerticalAlignment.Stretch,
+            //    HorizontalAlignment = HorizontalAlignment.Stretch,
+            //    Content = "3",
+            //    Foreground = white_button_brush,
+            //    FontSize = 18
+
+            //};
+            //MainGrid.Children.Add(ssbt3);
+            //ssbt3.SetValue(Grid.ColumnProperty, 195);
+            //ssbt3.SetValue(Grid.ColumnSpanProperty, 5);
+            //ssbt3.SetValue(Grid.RowProperty, 145);
+            //ssbt3.SetValue(Grid.RowSpanProperty, 5);
+            //ssbt3.Click += Ssbt3_Click;
+            #endregion
             pp = new Pic_Player(MainGrid);
 
 
-
+            All_Received_byte_list = new List<byte>();
 
             //executeCommand();
+            DRBE_SG = new DRBE_Scenario_Generator(MainGrid, this);
+            DRBE_SG.show();
 
+        }
 
+        public void Write_byte_list(List<byte> x)
+        {
+            UWbinarywriter.Write(x.ToArray(), 0, x.Count);
+            UWbinarywriter.Flush();
         }
 
         private async void executeCommand()
@@ -886,6 +955,7 @@ namespace DRBE
                 }
             }
         }
+        private List<byte> All_Received_byte_list = new List<byte>();
         private async void AdvReadByte(CancellationToken cancellationToken)
         {
             Task<UInt32> loadAsyncTask;
@@ -911,7 +981,9 @@ namespace DRBE
                     byte[] resultb = new byte[bytesRead];
                     while (i < bytesRead)
                     {
+
                         resultb[i] = d_reader.ReadByte();
+
                         DRBE_frontPage.Statues_tb.Text += "received" + BitConverter.ToString(resultb) + " - " + ((char)resultb[i]).ToString();
                         i++;
                     }

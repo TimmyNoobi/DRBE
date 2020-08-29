@@ -142,9 +142,12 @@ namespace DRBE
         private ProgressBar DRBE_Battery_Progressbar = new ProgressBar();
         private Battery DRBE_Battery;
         private DRBE_Scenario_Generator DRBE_SG; // = new DRBE_Scenario_Generator(MainGrid);
-        public DRBE_MainPage1(Grid parent)
+
+        public MainPage ParentPage;
+        public DRBE_MainPage1(Grid parent, MainPage parentpage)
         {
             ParentGrid = parent;
+            ParentPage = parentpage;
             Setup();
             Hide();
             Clock_setup();
@@ -713,7 +716,8 @@ namespace DRBE
         private void Start_simulator_bt_Click(object sender, RoutedEventArgs e)
         {
             Hide();
-            DRBE_SG = new DRBE_Scenario_Generator(ParentGrid);
+            //DRBE_SG = new DRBE_Scenario_Generator(ParentGrid, ParentPage);
+            ParentPage.DRBE_SG.show();
         }
 
         public void Hide()

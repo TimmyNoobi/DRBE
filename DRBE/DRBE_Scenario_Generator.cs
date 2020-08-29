@@ -81,17 +81,21 @@ namespace DRBE
         private List<SolidColorBrush> All_Color = new List<SolidColorBrush>();
         #endregion
         public Grid ParentGrid;
+        public MainPage ParentPage;
         private Save_Screen DRBE_SS;
-        DRBE_Link_Viewer_s SC_Dlv;
+        public DRBE_Link_Viewer_s SC_Dlv;
 
-        public DRBE_Scenario_Generator(Grid parent)
+
+
+        public DRBE_Scenario_Generator(Grid parent, MainPage parentpage)
         {
             ParentGrid = parent;
-            
+            ParentPage = parentpage;
             //hide();
             DRBE_SS = new Save_Screen(parent);
-            SC_Dlv = new DRBE_Link_Viewer_s(parent);
+            SC_Dlv = new DRBE_Link_Viewer_s(parent, ParentPage);
             Setup();
+            hide();
         }
 
         private int ID_index = 0;
@@ -117,6 +121,7 @@ namespace DRBE
 
         private Button Global_Property_bt = new Button();
         private Button Initial_Property_bt = new Button();
+        private Button All_Property_bt = new Button();
         private Button Antenna_Pol_Property_bt = new Button();
         private Button Clut_RFim_Property_bt = new Button();
         private Button RCS_Property_bt = new Button();
@@ -178,6 +183,8 @@ namespace DRBE
 
         private TextBlock Coordinate_system_tb = new TextBlock();
         private ComboBox Coordinate_system_cb = new ComboBox();
+        private Border Coordinate_system_bd = new Border();
+        private Border Coordinate_system_bd1 = new Border();
 
         private TextBlock Generate_obj_tb = new TextBlock();
         private Button Generate_obj_bt = new Button();
@@ -188,8 +195,72 @@ namespace DRBE
         private TextBlock Lv_view_tb = new TextBlock();
         private Button Lv_view_bt = new Button();
         private Image Lv_view_i = new Image();
+
+        private ScrollViewer DRBE_SV = new ScrollViewer();
+        private StackPanel DRBE_SPL = new StackPanel();
+        private StackPanel DRBE_SPR = new StackPanel();
+        private Grid DRBE_GD = new Grid();
+        
         public void Setup()
         {
+            DRBE_GD = new Grid()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush
+                
+            };
+            DRBE_GD.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            DRBE_GD.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            //DRBE_GD.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+
+            DRBE_SV = new ScrollViewer() { 
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                VerticalScrollMode = ScrollMode.Enabled,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5,0.5,0.5,0.5)
+            };
+            ParentGrid.Children.Add(DRBE_SV);
+            DRBE_SV.SetValue(Grid.ColumnProperty, 160);
+            DRBE_SV.SetValue(Grid.ColumnSpanProperty, 40);
+            DRBE_SV.SetValue(Grid.RowProperty, 40);
+            DRBE_SV.SetValue(Grid.RowSpanProperty, 110);
+
+
+            DRBE_SPL = new StackPanel()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5)
+            };
+            DRBE_SV.Content = DRBE_GD;
+            DRBE_GD.Children.Add(DRBE_SPL);
+            //ParentGrid.Children.Add(DRBE_SPL);
+            DRBE_SPL.SetValue(Grid.ColumnProperty, 0);
+            DRBE_SPL.SetValue(Grid.ColumnSpanProperty, 1);
+            //DRBE_SPL.SetValue(Grid.RowProperty, 40);
+            //DRBE_SPL.SetValue(Grid.RowSpanProperty, 110);
+
+            DRBE_SPR = new StackPanel()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5)
+            };
+            //DRBE_SV.Content = DRBE_SPL;
+            DRBE_GD.Children.Add(DRBE_SPR);
+            //ParentGrid.Children.Add(DRBE_SPL);
+            DRBE_SPR.SetValue(Grid.ColumnProperty, 1);
+            DRBE_SPR.SetValue(Grid.ColumnSpanProperty, 1);
+            //DRBE_SPL.SetValue(Grid.RowProperty, 40);
+            //DRBE_SPL.SetValue(Grid.RowSpanProperty, 110);
+
 
             #region generate
             Generate_obj_tb = new TextBlock()
@@ -230,7 +301,7 @@ namespace DRBE
             Generate_obj_bt.Click += Generate_obj_bt_Click;
             #endregion
 
-            #region Save scenario
+            #region LV page
             Lv_view_tb = new TextBlock()
             {
                 VerticalAlignment = VerticalAlignment.Stretch,
@@ -278,7 +349,7 @@ namespace DRBE
                 FontSize = 18,
                 FontWeight = FontWeights.Bold
             };
-            ParentGrid.Children.Add(Sc_save_tb);
+            //ParentGrid.Children.Add(Sc_save_tb);
             Sc_save_tb.SetValue(Grid.ColumnProperty, 147);
             Sc_save_tb.SetValue(Grid.ColumnSpanProperty, 15);
             Sc_save_tb.SetValue(Grid.RowProperty, 0);
@@ -294,13 +365,15 @@ namespace DRBE
                 Background = Default_back_black_color_brush,
                 Content = Sc_save_i,
                 Foreground = white_button_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5),
                 FontSize = 18
             };
             ParentGrid.Children.Add(Sc_save_bt);
-            Sc_save_bt.SetValue(Grid.ColumnProperty, 147);
-            Sc_save_bt.SetValue(Grid.ColumnSpanProperty, 15);
+            Sc_save_bt.SetValue(Grid.ColumnProperty, 175);
+            Sc_save_bt.SetValue(Grid.ColumnSpanProperty, 4);
             Sc_save_bt.SetValue(Grid.RowProperty, 5);
-            Sc_save_bt.SetValue(Grid.RowSpanProperty, 10);
+            Sc_save_bt.SetValue(Grid.RowSpanProperty, 4);
             Sc_save_bt.Click += Sc_save_bt_Click;
             #endregion
 
@@ -315,24 +388,25 @@ namespace DRBE
                 FontSize = 18,
                 FontWeight = FontWeights.Bold
             };
-            ParentGrid.Children.Add(Sc_load_tb);
-            Sc_load_tb.SetValue(Grid.ColumnProperty, 170);
-            Sc_load_tb.SetValue(Grid.ColumnSpanProperty, 20);
+            //ParentGrid.Children.Add(Sc_load_tb);
+            Sc_load_tb.SetValue(Grid.ColumnProperty, 190);
+            Sc_load_tb.SetValue(Grid.ColumnSpanProperty, 6);
             Sc_load_tb.SetValue(Grid.RowProperty, 0);
-            Sc_load_tb.SetValue(Grid.RowSpanProperty, 5);
+            Sc_load_tb.SetValue(Grid.RowSpanProperty, 4);
 
             Sc_load_cb = new ComboBox()
             {
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 SelectedIndex = 0,
-                Background = white_button_brush
+                Background = white_button_brush,
+                FontSize = 10
             };
             ParentGrid.Children.Add(Sc_load_cb);
-            Sc_load_cb.SetValue(Grid.ColumnProperty, 170);
-            Sc_load_cb.SetValue(Grid.ColumnSpanProperty, 20);
+            Sc_load_cb.SetValue(Grid.ColumnProperty, 180);
+            Sc_load_cb.SetValue(Grid.ColumnSpanProperty, 16);
             Sc_load_cb.SetValue(Grid.RowProperty, 5);
-            Sc_load_cb.SetValue(Grid.RowSpanProperty, 5);
+            Sc_load_cb.SetValue(Grid.RowSpanProperty, 4);
 
             Sc_load_i.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Load_icon.jpg", UriKind.RelativeOrAbsolute));
             Sc_load_bt = new Button()
@@ -344,13 +418,15 @@ namespace DRBE
                 Background = Default_back_black_color_brush,
                 Content = Sc_load_i,
                 Foreground = white_button_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5),
                 FontSize = 18
             };
             ParentGrid.Children.Add(Sc_load_bt);
-            Sc_load_bt.SetValue(Grid.ColumnProperty, 190);
-            Sc_load_bt.SetValue(Grid.ColumnSpanProperty, 10);
+            Sc_load_bt.SetValue(Grid.ColumnProperty, 196);
+            Sc_load_bt.SetValue(Grid.ColumnSpanProperty, 4);
             Sc_load_bt.SetValue(Grid.RowProperty, 5);
-            Sc_load_bt.SetValue(Grid.RowSpanProperty, 10);
+            Sc_load_bt.SetValue(Grid.RowSpanProperty, 4);
             Sc_load_bt.Click += Sc_load_bt_Click;
             #endregion
 
@@ -365,7 +441,7 @@ namespace DRBE
                 FontSize = 18,
                 FontWeight = FontWeights.Bold
             };
-            ParentGrid.Children.Add(Obj_save_tb);
+            //ParentGrid.Children.Add(Obj_save_tb);
             Obj_save_tb.SetValue(Grid.ColumnProperty, 150);
             Obj_save_tb.SetValue(Grid.ColumnSpanProperty, 15);
             Obj_save_tb.SetValue(Grid.RowProperty, 25);
@@ -381,13 +457,15 @@ namespace DRBE
                 Background = Default_back_black_color_brush,
                 Content = Obj_save_i,
                 Foreground = white_button_brush,
+                BorderThickness = new Thickness(0.5,0.5,0.5,0.5),
+                BorderBrush = dark_grey_brush,
                 FontSize = 18
             };
             ParentGrid.Children.Add(Obj_save_bt);
-            Obj_save_bt.SetValue(Grid.ColumnProperty, 150);
-            Obj_save_bt.SetValue(Grid.ColumnSpanProperty, 15);
-            Obj_save_bt.SetValue(Grid.RowProperty, 30);
-            Obj_save_bt.SetValue(Grid.RowSpanProperty, 10);
+            Obj_save_bt.SetValue(Grid.ColumnProperty, 175);
+            Obj_save_bt.SetValue(Grid.ColumnSpanProperty, 4);
+            Obj_save_bt.SetValue(Grid.RowProperty, 31);
+            Obj_save_bt.SetValue(Grid.RowSpanProperty, 4);
             Obj_save_bt.Click += Obj_save_bt_Click;
             #endregion
 
@@ -402,7 +480,7 @@ namespace DRBE
                 FontSize = 18,
                 FontWeight = FontWeights.Bold
             };
-            ParentGrid.Children.Add(Obj_del_tb);
+            //ParentGrid.Children.Add(Obj_del_tb);
             Obj_del_tb.SetValue(Grid.ColumnProperty, 135);
             Obj_del_tb.SetValue(Grid.ColumnSpanProperty, 15);
             Obj_del_tb.SetValue(Grid.RowProperty, 25);
@@ -418,13 +496,15 @@ namespace DRBE
                 Background = Default_back_black_color_brush,
                 Content = Obj_del_i,
                 Foreground = white_button_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5),
+                BorderBrush = dark_grey_brush,
                 FontSize = 18
             };
             ParentGrid.Children.Add(Obj_del_bt);
-            Obj_del_bt.SetValue(Grid.ColumnProperty, 135);
-            Obj_del_bt.SetValue(Grid.ColumnSpanProperty, 15);
-            Obj_del_bt.SetValue(Grid.RowProperty, 30);
-            Obj_del_bt.SetValue(Grid.RowSpanProperty, 10);
+            Obj_del_bt.SetValue(Grid.ColumnProperty, 170);
+            Obj_del_bt.SetValue(Grid.ColumnSpanProperty, 4);
+            Obj_del_bt.SetValue(Grid.RowProperty, 31);
+            Obj_del_bt.SetValue(Grid.RowSpanProperty, 4);
             #endregion
 
             #region Load Object
@@ -438,7 +518,7 @@ namespace DRBE
                 FontSize = 18,
                 FontWeight = FontWeights.Bold
             };
-            ParentGrid.Children.Add(Obj_load_tb);
+            //ParentGrid.Children.Add(Obj_load_tb);
             Obj_load_tb.SetValue(Grid.ColumnProperty, 165);
             Obj_load_tb.SetValue(Grid.ColumnSpanProperty, 20);
             Obj_load_tb.SetValue(Grid.RowProperty, 25);
@@ -452,10 +532,10 @@ namespace DRBE
                 Background = white_button_brush
             };
             ParentGrid.Children.Add(Obj_load_cb);
-            Obj_load_cb.SetValue(Grid.ColumnProperty, 165);
-            Obj_load_cb.SetValue(Grid.ColumnSpanProperty, 20);
+            Obj_load_cb.SetValue(Grid.ColumnProperty, 180);
+            Obj_load_cb.SetValue(Grid.ColumnSpanProperty, 15);
             Obj_load_cb.SetValue(Grid.RowProperty, 30);
-            Obj_load_cb.SetValue(Grid.RowSpanProperty, 5);
+            Obj_load_cb.SetValue(Grid.RowSpanProperty, 4);
 
             Obj_load_i.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Load_icon.jpg", UriKind.RelativeOrAbsolute));
             Obj_load_bt = new Button()
@@ -467,13 +547,15 @@ namespace DRBE
                 Background = Default_back_black_color_brush,
                 Content = Obj_load_i,
                 Foreground = white_button_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5,0.5,0.5,0.5),
                 FontSize = 18
             };
             ParentGrid.Children.Add(Obj_load_bt);
-            Obj_load_bt.SetValue(Grid.ColumnProperty, 185);
-            Obj_load_bt.SetValue(Grid.ColumnSpanProperty, 10);
-            Obj_load_bt.SetValue(Grid.RowProperty, 26);
-            Obj_load_bt.SetValue(Grid.RowSpanProperty, 10);
+            Obj_load_bt.SetValue(Grid.ColumnProperty, 195);
+            Obj_load_bt.SetValue(Grid.ColumnSpanProperty, 4);
+            Obj_load_bt.SetValue(Grid.RowProperty, 31);
+            Obj_load_bt.SetValue(Grid.RowSpanProperty, 4);
             Obj_load_bt.Click += Obj_load_bt_Click;
             #endregion
 
@@ -483,17 +565,20 @@ namespace DRBE
             {
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
-                HorizontalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.Left,
                 Text = "Object ID: ",
                 Foreground = white_button_brush,
-                FontSize = 18,
-                FontWeight = FontWeights.Bold
+                FontSize = 12,
+                FontWeight = FontWeights.Bold,
+                Width = 200,
+                Height = 50
             };
             ParentGrid.Children.Add(Object_ID_tb);
-            Object_ID_tb.SetValue(Grid.ColumnProperty, 70);
-            Object_ID_tb.SetValue(Grid.ColumnSpanProperty, 60);
-            Object_ID_tb.SetValue(Grid.RowProperty, 28);
-            Object_ID_tb.SetValue(Grid.RowSpanProperty, 7);
+            Object_ID_tb.SetValue(Grid.ColumnProperty, 161);
+            Object_ID_tb.SetValue(Grid.ColumnSpanProperty, 15);
+            Object_ID_tb.SetValue(Grid.RowProperty, 36);
+            Object_ID_tb.SetValue(Grid.RowSpanProperty, 4);
+            //DRBE_SP.Children.Add(Object_ID_tb);
 
             Number_of_receiver_ttb = new TextBlock()
             {
@@ -598,15 +683,15 @@ namespace DRBE
                 Content = "Basic: \r\n Global Properties",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Global_Property_bt);
-            Global_Property_bt.SetValue(Grid.ColumnProperty, 50);
+            Global_Property_bt.SetValue(Grid.ColumnProperty, 160);
             Global_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
-            Global_Property_bt.SetValue(Grid.RowProperty, 5);
-            Global_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            Global_Property_bt.SetValue(Grid.RowProperty, 10);
+            Global_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             Global_Property_bt.Click += Global_Property_bt_Click;
 
             Initial_Property_bt = new Button()
@@ -619,16 +704,37 @@ namespace DRBE
                 Content = "Basic: \r\n Initial Properties",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3,3,3,0),
+                BorderThickness = new Thickness(0.5,0.5,0.5,0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Initial_Property_bt);
-            Initial_Property_bt.SetValue(Grid.ColumnProperty, 50);
+            Initial_Property_bt.SetValue(Grid.ColumnProperty, 180);
             Initial_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
-            Initial_Property_bt.SetValue(Grid.RowProperty, 15);
-            Initial_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            Initial_Property_bt.SetValue(Grid.RowProperty, 10);
+            Initial_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             Initial_Property_bt.Click += Initial_Property_bt_Click;
+
+            All_Property_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Content = "All Properties",
+                Foreground = white_button_brush,
+                BorderBrush = white_button_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
+                FontWeight = FontWeights.ExtraBold,
+                FontSize = 10
+            };
+            ParentGrid.Children.Add(All_Property_bt);
+            All_Property_bt.SetValue(Grid.ColumnProperty, 180);
+            All_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
+            All_Property_bt.SetValue(Grid.RowProperty, 25);
+            All_Property_bt.SetValue(Grid.RowSpanProperty, 5);
+            All_Property_bt.Click += All_Property_bt_Click;
 
             Antenna_Pol_Property_bt = new Button()
             {
@@ -640,15 +746,15 @@ namespace DRBE
                 Content = "Adv:   Antenna/\r\nPolarization",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Antenna_Pol_Property_bt);
-            Antenna_Pol_Property_bt.SetValue(Grid.ColumnProperty, 70);
+            Antenna_Pol_Property_bt.SetValue(Grid.ColumnProperty, 160);
             Antenna_Pol_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
             Antenna_Pol_Property_bt.SetValue(Grid.RowProperty, 15);
-            Antenna_Pol_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            Antenna_Pol_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             Antenna_Pol_Property_bt.Click += Antenna_Pol_Property_bt_Click;
 
             Clut_RFim_Property_bt = new Button()
@@ -661,15 +767,15 @@ namespace DRBE
                 Content = "Adv:   Clutter/\r\nRF impairment",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Clut_RFim_Property_bt);
-            Clut_RFim_Property_bt.SetValue(Grid.ColumnProperty, 90);
+            Clut_RFim_Property_bt.SetValue(Grid.ColumnProperty, 180);
             Clut_RFim_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
             Clut_RFim_Property_bt.SetValue(Grid.RowProperty, 15);
-            Clut_RFim_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            Clut_RFim_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             Clut_RFim_Property_bt.Click += Clut_RFim_Property_bt_Click;
 
             RCS_Property_bt = new Button()
@@ -682,15 +788,15 @@ namespace DRBE
                 Content = "Adv: \r\n RCS/Doppler",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(RCS_Property_bt);
-            RCS_Property_bt.SetValue(Grid.ColumnProperty, 110);
+            RCS_Property_bt.SetValue(Grid.ColumnProperty, 160);
             RCS_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
-            RCS_Property_bt.SetValue(Grid.RowProperty, 15);
-            RCS_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            RCS_Property_bt.SetValue(Grid.RowProperty, 20);
+            RCS_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             RCS_Property_bt.Click += RCS_Property_bt_Click;
 
             Constraint_Property_bt = new Button()
@@ -703,15 +809,15 @@ namespace DRBE
                 Content = "Adv: \r\n Constraint",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Constraint_Property_bt);
-            Constraint_Property_bt.SetValue(Grid.ColumnProperty, 130);
+            Constraint_Property_bt.SetValue(Grid.ColumnProperty, 180);
             Constraint_Property_bt.SetValue(Grid.ColumnSpanProperty, 20);
-            Constraint_Property_bt.SetValue(Grid.RowProperty, 15);
-            Constraint_Property_bt.SetValue(Grid.RowSpanProperty, 10);
+            Constraint_Property_bt.SetValue(Grid.RowProperty, 20);
+            Constraint_Property_bt.SetValue(Grid.RowSpanProperty, 5);
             Constraint_Property_bt.Click += Constraint_Property_bt_Click;
 
             Lookup_table_bt = new Button()
@@ -724,15 +830,15 @@ namespace DRBE
                 Content = "Adv: \r\n Lookup Tables \r\n Fidelity Data",
                 Foreground = white_button_brush,
                 BorderBrush = white_button_brush,
-                BorderThickness = new Thickness(3, 3, 3, 0),
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0),
                 FontWeight = FontWeights.ExtraBold,
-                FontSize = 14
+                FontSize = 10
             };
             ParentGrid.Children.Add(Lookup_table_bt);
-            Lookup_table_bt.SetValue(Grid.ColumnProperty, 150);
+            Lookup_table_bt.SetValue(Grid.ColumnProperty, 160);
             Lookup_table_bt.SetValue(Grid.ColumnSpanProperty, 20);
-            Lookup_table_bt.SetValue(Grid.RowProperty, 15);
-            Lookup_table_bt.SetValue(Grid.RowSpanProperty, 10);
+            Lookup_table_bt.SetValue(Grid.RowProperty, 25);
+            Lookup_table_bt.SetValue(Grid.RowSpanProperty, 5);
             Lookup_table_bt.Click += Lookup_table_bt_Click;
 
             Add_Transmitter_bt = new Button()
@@ -803,13 +909,13 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 Background = Default_back_black_color_brush,
-                BorderThickness = new Thickness(1,1,1,1),
-                BorderBrush = white_button_brush
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5),
+                BorderBrush = dark_grey_brush
             };
             ParentGrid.Children.Add(Info_bd);
-            Info_bd.SetValue(Grid.ColumnProperty, 50);
-            Info_bd.SetValue(Grid.ColumnSpanProperty, 150);
-            Info_bd.SetValue(Grid.RowProperty, 25);
+            Info_bd.SetValue(Grid.ColumnProperty, 160);
+            Info_bd.SetValue(Grid.ColumnSpanProperty, 40);
+            Info_bd.SetValue(Grid.RowProperty, 30);
             Info_bd.SetValue(Grid.RowSpanProperty, 120);
             Canvas.SetZIndex(Info_bd, -10);
             #endregion
@@ -817,10 +923,14 @@ namespace DRBE
             //Transmitter_setup();
             //Reflector_setup();
             //Receiver_setup();
-            Global_Property_setup();
-            Global_Property_hide();
-            Initial_Property_setup();
-            Initial_Property_hide();
+            //Global_Property_setup();
+            //Global_Property_hide();
+            Global_Property_setup_s();
+            Global_Property_hide_s();
+            //Initial_Property_setup();
+            //Initial_Property_hide();
+            Initial_Property_setup_s();
+            Initial_Property_hide_s();
             Antenna_Pol_Property_setup();
             Antenna_Pol_Property_hide();
             RCS_Property_setup();
@@ -834,7 +944,7 @@ namespace DRBE
             Property_tab_decolor();
             Initial_Property_bt.BorderBrush = green_bright_button_brush;
             Hide_all_Property();
-            Initial_Property_show();
+            Initial_Property_show_s();
 
             Detect_object_file();
             Detect_scenario_file();
@@ -863,6 +973,7 @@ namespace DRBE
 
             //SC_Dlv.Setup(Sc_transmitter_list, Sc_receiver_list, Sc_reflector_list);
             //testchain();
+            Sc_centerX_ttb.Visibility = Visibility.Visible;
         }
 
 
@@ -1004,6 +1115,8 @@ namespace DRBE
 
             Initial_Property_bt.Visibility = Visibility.Collapsed;
 
+            All_Property_bt.Visibility = Visibility.Collapsed;
+
             Antenna_Pol_Property_bt.Visibility = Visibility.Collapsed;
 
             Clut_RFim_Property_bt.Visibility = Visibility.Collapsed;    
@@ -1105,6 +1218,8 @@ namespace DRBE
             Global_Property_bt.Visibility = Visibility.Visible;
 
             Initial_Property_bt.Visibility = Visibility.Visible;
+
+            All_Property_bt.Visibility = Visibility.Visible;
 
             Antenna_Pol_Property_bt.Visibility = Visibility.Visible;
 
@@ -1347,10 +1462,10 @@ namespace DRBE
                 Background = white_button_brush
             };
             ParentGrid.Children.Add(Obj_load_cb);
-            Obj_load_cb.SetValue(Grid.ColumnProperty, 165);
-            Obj_load_cb.SetValue(Grid.ColumnSpanProperty, 20);
-            Obj_load_cb.SetValue(Grid.RowProperty, 30);
-            Obj_load_cb.SetValue(Grid.RowSpanProperty, 5);
+            Obj_load_cb.SetValue(Grid.ColumnProperty, 180);
+            Obj_load_cb.SetValue(Grid.ColumnSpanProperty, 15);
+            Obj_load_cb.SetValue(Grid.RowProperty, 31);
+            Obj_load_cb.SetValue(Grid.RowSpanProperty, 4);
             Obj_load_cb.Items.Add("Selection");
             string subs = "";
             try 
@@ -1404,14 +1519,15 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 SelectedIndex = 0,
-                Background = white_button_brush
+                Background = white_button_brush,
+                FontSize = 10
             };
             ParentGrid.Children.Add(Sc_load_cb);
-            Sc_load_cb.SetValue(Grid.ColumnProperty, 170);
-            Sc_load_cb.SetValue(Grid.ColumnSpanProperty, 20);
+            Sc_load_cb.SetValue(Grid.ColumnProperty, 180);
+            Sc_load_cb.SetValue(Grid.ColumnSpanProperty, 16);
             Sc_load_cb.SetValue(Grid.RowProperty, 5);
-            Sc_load_cb.SetValue(Grid.RowSpanProperty, 5);
-            Sc_load_cb.Items.Add("Selection");
+            Sc_load_cb.SetValue(Grid.RowSpanProperty, 4);
+            Sc_load_cb.Items.Add("Scenario");
             string subs = "";
             try
             {
@@ -1500,7 +1616,8 @@ namespace DRBE
             Property_tab_decolor();
             Global_Property_bt.BorderBrush = green_bright_button_brush;
             Hide_all_Property();
-            Global_Property_show();
+            //Global_Property_show();
+            Global_Property_show_s();
         }
 
         private void Initial_Property_bt_Click(object sender, RoutedEventArgs e)
@@ -1508,14 +1625,24 @@ namespace DRBE
             Property_tab_decolor();
             Initial_Property_bt.BorderBrush = green_bright_button_brush;
             Hide_all_Property();
-            Initial_Property_show();
+            //Initial_Property_show();
+            Initial_Property_show_s();
         }
-
+        private void All_Property_bt_Click(object sender, RoutedEventArgs e)
+        {
+            Property_tab_decolor();
+            All_Property_bt.BorderBrush = green_bright_button_brush;
+            Hide_all_Property();
+            //Initial_Property_show();
+            All_Property_show_s();
+        }
         private void Property_tab_decolor()
         {
             Global_Property_bt.BorderBrush = white_button_brush;
 
             Initial_Property_bt.BorderBrush = white_button_brush;
+
+            All_Property_bt.BorderBrush = white_button_brush;
 
             Antenna_Pol_Property_bt.BorderBrush = white_button_brush;
 
@@ -1557,15 +1684,21 @@ namespace DRBE
 
         private void Hide_all_Property()
         {
-            Global_Property_hide();
-            Initial_Property_hide();
+            //Global_Property_hide();
+            Global_Property_hide_s();
+            //Initial_Property_hide();
+            Initial_Property_hide_s();
             Antenna_Pol_Property_hide();
             RCS_Property_hide();
             RF_Clut_Property_hide();
             Constraint_Property_hide();
             Lookup_table_hide();
         }
-
+        private void Show_all_Property()
+        {
+            Global_Property_show_s();
+            Initial_Property_show_s();
+        }
         private double Sc_icenter_lat = 30;
         private double Sc_icenter_lon = -30;
 
@@ -1818,71 +1951,243 @@ namespace DRBE
 
         private TextBlock Initial_positionX_ttb = new TextBlock();
         private TextBox Initial_positionX_tb = new TextBox();
+        private Border Initial_positionX_bd = new Border();
+        private Border Initial_positionX_bd1 = new Border();
 
         private TextBlock Initial_positionY_ttb = new TextBlock();
         private TextBox Initial_positionY_tb = new TextBox();
+        private Border Initial_positionY_bd = new Border();
+        private Border Initial_positionY_bd1 = new Border();
 
         private TextBlock Initial_positionZ_ttb = new TextBlock();
         private TextBox Initial_positionZ_tb = new TextBox();
+        private Border Initial_positionZ_bd = new Border();
+        private Border Initial_positionZ_bd1 = new Border();
 
         private TextBlock Initial_velocityX_ttb = new TextBlock();
         private TextBox Initial_velocityX_tb = new TextBox();
+        private Border Initial_velocityX_bd = new Border();
+        private Border Initial_velocityX_bd1 = new Border();
 
         private TextBlock Initial_velocityY_ttb = new TextBlock();
         private TextBox Initial_velocityY_tb = new TextBox();
+        private Border Initial_velocityY_bd = new Border();
+        private Border Initial_velocityY_bd1 = new Border();
 
         private TextBlock Initial_velocityZ_ttb = new TextBlock();
         private TextBox Initial_velocityZ_tb = new TextBox();
+        private Border Initial_velocityZ_bd = new Border();
+        private Border Initial_velocityZ_bd1 = new Border();
 
         private TextBlock Initial_accelerationX_ttb = new TextBlock();
         private TextBox Initial_accelerationX_tb = new TextBox();
+        private Border Initial_accelerationX_bd = new Border();
+        private Border Initial_accelerationX_bd1 = new Border();
 
         private TextBlock Initial_accelerationY_ttb = new TextBlock();
         private TextBox Initial_accelerationY_tb = new TextBox();
+        private Border Initial_accelerationY_bd = new Border();
+        private Border Initial_accelerationY_bd1 = new Border();
 
         private TextBlock Initial_accelerationZ_ttb = new TextBlock();
         private TextBox Initial_accelerationZ_tb = new TextBox();
+        private Border Initial_accelerationZ_bd = new Border();
+        private Border Initial_accelerationZ_bd1 = new Border();
 
         private TextBlock Initial_orientationX_ttb = new TextBlock();
         private TextBox Initial_orientationX_tb = new TextBox();
+        private Border Initial_orientationX_bd = new Border();
+        private Border Initial_orientationX_bd1 = new Border();
 
         private TextBlock Initial_orientationY_ttb = new TextBlock();
         private TextBox Initial_orientationY_tb = new TextBox();
+        private Border Initial_orientationY_bd = new Border();
+        private Border Initial_orientationY_bd1 = new Border();
 
         private TextBlock Initial_orientationZ_ttb = new TextBlock();
         private TextBox Initial_orientationZ_tb = new TextBox();
+        private Border Initial_orientationZ_bd = new Border();
+        private Border Initial_orientationZ_bd1 = new Border();
 
         private TextBlock Initial_mpointan_az_ttb = new TextBlock();
         private TextBox Initial_mpointan_az_tb = new TextBox();
+        private Border Initial_mpointan_az_bd = new Border();
+        private Border Initial_mpointan_az_bd1 = new Border();
 
         private TextBlock Initial_mpointan_el_ttb = new TextBlock();
         private TextBox Initial_mpointan_el_tb = new TextBox();
+        private Border Initial_mpointan_el_bd = new Border();
+        private Border Initial_mpointan_el_bd1 = new Border();
 
         private TextBlock Initial_epointan_az_ttb = new TextBlock();
         private TextBox Initial_epointan_az_tb = new TextBox();
+        private Border Initial_epointan_az_bd = new Border();
+        private Border Initial_epointan_az_bd1 = new Border();
 
         private TextBlock Initial_epointan_el_ttb = new TextBlock();
         private TextBox Initial_epointan_el_tb = new TextBox();
-
+        private Border Initial_epointan_el_bd = new Border();
+        private Border Initial_epointan_el_bd1 = new Border();
 
         private ToolTip Sc_center_tp = new ToolTip();
 
         private TextBlock Sc_centerX_ttb = new TextBlock();
         private TextBox Sc_centerX_tb = new TextBox();
+        private Border Sc_centerX_bd = new Border();
+        private Border Sc_centerX_bd1 = new Border();
 
         private TextBlock Sc_centerY_ttb = new TextBlock();
         private TextBox Sc_centerY_tb = new TextBox();
+        private Border Sc_centerY_bd = new Border();
+        private Border Sc_centerY_bd1 = new Border();
 
         private TextBlock Sc_centerZ_ttb = new TextBlock();
         private TextBox Sc_centerZ_tb = new TextBox();
+        private Border Sc_centerZ_bd = new Border();
+        private Border Sc_centerZ_bd1 = new Border();
 
         private TextBlock Reference_frame_id_ttb = new TextBlock();
         private ComboBox Reference_frame_id_cb = new ComboBox();
+        private Border Reference_frame_id_bd = new Border();
+        private Border Reference_frame_id_bd1 = new Border();
 
         private Button Sc_rnd_gen_bt = new Button();
 
         #endregion
+        public async void Global_Property_setup_s()
+        {
+            #region initial lat
 
+            Sc_centerX_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Sc_icenter_lat.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Sc_centerX_tb);
+
+            Sc_centerX_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Scenario Center: \r\n Latitude (degree)",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Sc_centerX_ttb);
+
+            Sc_centerX_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Sc_centerX_bd);
+            Sc_centerX_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Sc_centerX_bd1);
+            #endregion
+
+            #region initial lon
+            Sc_centerY_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Sc_icenter_lon.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Sc_centerY_tb);
+
+            Sc_centerY_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Scenario Center: \r\n Longitude (degree)",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Sc_centerY_ttb);
+
+            Sc_centerY_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Sc_centerY_bd);
+            Sc_centerY_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Sc_centerY_bd1);
+            #endregion
+
+            #region Height
+            Sc_centerZ_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Sc_icenter_lon.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Sc_centerZ_tb);
+
+            Sc_centerZ_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Scenario Center: \r\n Height",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Sc_centerZ_ttb);
+
+            Sc_centerZ_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Sc_centerZ_bd);
+            Sc_centerZ_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Sc_centerZ_bd1);
+            #endregion
+
+            Sc_center_tp.Content = "Center of Scenario in Longitutde , Latitude and Height to earth surface";
+            ToolTipService.SetToolTip(Sc_centerX_ttb, Sc_center_tp);
+            ToolTipService.SetToolTip(Sc_centerY_ttb, Sc_center_tp);
+            ToolTipService.SetToolTip(Sc_centerZ_ttb, Sc_center_tp);
+        }
         public async void Global_Property_setup()
         {
 
@@ -1894,14 +2199,16 @@ namespace DRBE
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = Sc_icenter_lat.ToString(),
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 40
             };
-            ParentGrid.Children.Add(Sc_centerX_tb);
-            Sc_centerX_tb.SetValue(Grid.ColumnProperty, 53);
-            Sc_centerX_tb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerX_tb.SetValue(Grid.RowProperty, 45);
-            Sc_centerX_tb.SetValue(Grid.RowSpanProperty, 5);
+            //ParentGrid.Children.Add(Sc_centerX_tb);
+            //Sc_centerX_tb.SetValue(Grid.ColumnProperty, 0);
+            //Sc_centerX_tb.SetValue(Grid.ColumnSpanProperty, 1);
+            //Sc_centerX_tb.SetValue(Grid.RowProperty, 41);
+            //Sc_centerX_tb.SetValue(Grid.RowSpanProperty, 4);
+            DRBE_SPR.Children.Add(Sc_centerX_tb);
 
             Sc_centerX_ttb = new TextBlock()
             {
@@ -1910,14 +2217,23 @@ namespace DRBE
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = "Scenario Center: \r\n Latitude (degree)",
                 Foreground = white_button_brush,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
             };
-            ParentGrid.Children.Add(Sc_centerX_ttb);
-            Sc_centerX_ttb.SetValue(Grid.ColumnProperty, 53);
-            Sc_centerX_ttb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerX_ttb.SetValue(Grid.RowProperty, 37);
-            Sc_centerX_ttb.SetValue(Grid.RowSpanProperty, 8);
+            //ParentGrid.Children.Add(Sc_centerX_ttb);
+            //Sc_centerX_ttb.SetValue(Grid.ColumnProperty, 1);
+            //Sc_centerX_ttb.SetValue(Grid.ColumnSpanProperty, 1);
+            //Sc_centerX_ttb.SetValue(Grid.RowProperty, 41);
+            //Sc_centerX_ttb.SetValue(Grid.RowSpanProperty, 4);
+            DRBE_SPL.Children.Add(Sc_centerX_ttb);
+
+            Border bdt = new Border() { 
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0,0.5,0,0)
+            };
+            DRBE_SPL.Children.Add(bdt);
             #endregion
 
             #region initial lon
@@ -1927,14 +2243,16 @@ namespace DRBE
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = Sc_icenter_lon.ToString(),
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
             };
-            ParentGrid.Children.Add(Sc_centerY_tb);
-            Sc_centerY_tb.SetValue(Grid.ColumnProperty, 73);
-            Sc_centerY_tb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerY_tb.SetValue(Grid.RowProperty, 45);
-            Sc_centerY_tb.SetValue(Grid.RowSpanProperty, 5);
+            //ParentGrid.Children.Add(Sc_centerY_tb);
+            //Sc_centerY_tb.SetValue(Grid.ColumnProperty, 73);
+            //Sc_centerY_tb.SetValue(Grid.ColumnSpanProperty, 20);
+            //Sc_centerY_tb.SetValue(Grid.RowProperty, 45);
+            //Sc_centerY_tb.SetValue(Grid.RowSpanProperty, 5);
+            DRBE_SPR.Children.Add(Sc_centerY_tb);
 
             Sc_centerY_ttb = new TextBlock()
             {
@@ -1943,14 +2261,24 @@ namespace DRBE
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = "Scenario Center: \r\n Longitude (degree)",
                 Foreground = white_button_brush,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
             };
-            ParentGrid.Children.Add(Sc_centerY_ttb);
-            Sc_centerY_ttb.SetValue(Grid.ColumnProperty, 73);
-            Sc_centerY_ttb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerY_ttb.SetValue(Grid.RowProperty, 37);
-            Sc_centerY_ttb.SetValue(Grid.RowSpanProperty, 8);
+            //ParentGrid.Children.Add(Sc_centerY_ttb);
+            //Sc_centerY_ttb.SetValue(Grid.ColumnProperty, 73);
+            //Sc_centerY_ttb.SetValue(Grid.ColumnSpanProperty, 20);
+            //Sc_centerY_ttb.SetValue(Grid.RowProperty, 37);
+            //Sc_centerY_ttb.SetValue(Grid.RowSpanProperty, 8);
+            DRBE_SPL.Children.Add(Sc_centerY_ttb);
+
+            Border bdt1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(bdt1);
             #endregion
 
             #region Height
@@ -1960,14 +2288,16 @@ namespace DRBE
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = Sc_icenter_lon.ToString(),
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
             };
-            ParentGrid.Children.Add(Sc_centerZ_tb);
-            Sc_centerZ_tb.SetValue(Grid.ColumnProperty, 93);
-            Sc_centerZ_tb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerZ_tb.SetValue(Grid.RowProperty, 45);
-            Sc_centerZ_tb.SetValue(Grid.RowSpanProperty, 5);
+            //ParentGrid.Children.Add(Sc_centerZ_tb);
+            //Sc_centerZ_tb.SetValue(Grid.ColumnProperty, 93);
+            //Sc_centerZ_tb.SetValue(Grid.ColumnSpanProperty, 20);
+            //Sc_centerZ_tb.SetValue(Grid.RowProperty, 45);
+            //Sc_centerZ_tb.SetValue(Grid.RowSpanProperty, 5);
+            DRBE_SPR.Children.Add(Sc_centerZ_tb);
 
             Sc_centerZ_ttb = new TextBlock()
             {
@@ -1976,14 +2306,24 @@ namespace DRBE
                 HorizontalTextAlignment = TextAlignment.Left,
                 Text = "Scenario Center: \r\n Height",
                 Foreground = white_button_brush,
-                FontSize = 14,
-                FontWeight = FontWeights.Bold
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
             };
-            ParentGrid.Children.Add(Sc_centerZ_ttb);
-            Sc_centerZ_ttb.SetValue(Grid.ColumnProperty, 93);
-            Sc_centerZ_ttb.SetValue(Grid.ColumnSpanProperty, 20);
-            Sc_centerZ_ttb.SetValue(Grid.RowProperty, 37);
-            Sc_centerZ_ttb.SetValue(Grid.RowSpanProperty, 8);
+            //ParentGrid.Children.Add(Sc_centerZ_ttb);
+            //Sc_centerZ_ttb.SetValue(Grid.ColumnProperty, 93);
+            //Sc_centerZ_ttb.SetValue(Grid.ColumnSpanProperty, 20);
+            //Sc_centerZ_ttb.SetValue(Grid.RowProperty, 37);
+            //Sc_centerZ_ttb.SetValue(Grid.RowSpanProperty, 8);
+            DRBE_SPL.Children.Add(Sc_centerZ_ttb);
+
+            Border bdt2 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(bdt2);
             #endregion
 
             Sc_center_tp.Content = "Center of Scenario in Longitutde , Latitude and Height to earth surface";
@@ -1991,7 +2331,782 @@ namespace DRBE
             ToolTipService.SetToolTip(Sc_centerY_ttb, Sc_center_tp);
             ToolTipService.SetToolTip(Sc_centerZ_ttb, Sc_center_tp);
         }
+        public async void Initial_Property_setup_s()
+        {
 
+
+
+            #region coordination
+            Coordinate_system_tb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Coordinate System",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Coordinate_system_tb);
+
+            Coordinate_system_cb = new ComboBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Text = "Global Frame",
+                SelectedIndex = 0,
+                Background = white_button_brush,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Coordinate_system_cb);
+            Coordinate_system_cb.Items.Add("Global Frame \\ WGS84");
+            Coordinate_system_cb.Items.Add("Cartesian \\ Earth Cent");
+            Coordinate_system_cb.Items.Add("Scenario Center Frame");
+            Coordinate_system_cb.Items.Add("Object Reference Frame");
+
+            Coordinate_system_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Coordinate_system_bd);
+            Coordinate_system_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Coordinate_system_bd1);
+
+            #endregion
+
+            #region object reference
+            Reference_frame_id_cb = new ComboBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Text = "Global Frame",
+                SelectedIndex = 0,
+                Background = white_button_brush,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Reference_frame_id_cb);
+
+            Reference_frame_id_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Object Frame Selection: \r\n Reference Obj ID",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Reference_frame_id_ttb);
+
+            Reference_frame_id_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Reference_frame_id_bd);
+            Reference_frame_id_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Reference_frame_id_bd1);
+            #endregion
+
+
+
+            #region Position X
+            Initial_positionX_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_positionX_tb);
+
+            Initial_positionX_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Position X",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_positionX_ttb);
+
+            Initial_positionX_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Initial_positionX_bd);
+            Initial_positionX_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_positionX_bd1);
+            #endregion
+            #region Position Y
+            Initial_positionY_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_positionY_tb);
+
+            Initial_positionY_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Position Y",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_positionY_ttb);
+
+            Initial_positionY_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPL.Children.Add(Initial_positionY_bd);
+            Initial_positionY_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_positionY_bd1);
+            #endregion
+            #region Position Z
+            Initial_positionZ_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_positionZ_tb);
+
+            Initial_positionZ_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Position Z",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_positionZ_ttb);
+
+            Initial_positionZ_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_positionZ_bd);
+
+            Initial_positionZ_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_positionZ_bd1);
+            #endregion
+
+            #region Velocity X
+            Initial_velocityX_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_velocityX_tb);
+
+            Initial_velocityX_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Velocity X",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_velocityX_ttb);
+
+            Initial_velocityX_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_velocityX_bd);
+
+            Initial_velocityX_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_velocityX_bd1);
+            #endregion
+            #region Velocity Y
+            Initial_velocityY_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_velocityY_tb);
+
+            Initial_velocityY_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Velocity Y",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_velocityY_ttb);
+
+            Initial_velocityY_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_velocityY_bd);
+
+            Initial_velocityY_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_velocityY_bd1);
+            #endregion
+            #region Velocity Z
+            Initial_velocityZ_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_velocityZ_tb);
+
+            Initial_velocityZ_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Velocity Z",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_velocityZ_ttb);
+
+            Initial_velocityZ_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_velocityZ_bd);
+
+            Initial_velocityZ_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_velocityZ_bd1);
+            #endregion
+
+            #region Acceleration X
+            Initial_accelerationX_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationX_tb);
+
+            Initial_accelerationX_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Acceleration X",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationX_ttb);
+
+            Initial_accelerationX_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationX_bd);
+
+            Initial_accelerationX_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationX_bd1);
+            #endregion
+            #region Acceleration Y
+            Initial_accelerationY_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationY_tb);
+
+            Initial_accelerationY_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Acceleration Y",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationY_ttb);
+
+            Initial_accelerationY_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationY_bd);
+
+            Initial_accelerationY_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationY_bd1);
+            #endregion
+            #region Acceleration Z
+            Initial_accelerationZ_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationZ_tb);
+
+            Initial_accelerationZ_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Acceleration Z",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationZ_ttb);
+
+            Initial_accelerationZ_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_accelerationZ_bd);
+
+            Initial_accelerationZ_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_accelerationZ_bd1);
+            #endregion
+
+            #region Orientation X
+
+            Initial_orientationX_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_orientationX_tb);
+
+            Initial_orientationX_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Pitch",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_orientationX_ttb);
+
+            Initial_orientationX_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_orientationX_bd);
+
+            Initial_orientationX_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_orientationX_bd1);
+            #endregion
+            #region Orientation Y
+            Initial_orientationY_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_orientationY_tb);
+
+            Initial_orientationY_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Roll",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_orientationY_ttb);
+
+            Initial_orientationY_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_orientationY_bd);
+
+            Initial_orientationY_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_orientationY_bd1);
+            #endregion
+            #region Orientation Z
+            Initial_orientationZ_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_orientationZ_tb);
+
+            Initial_orientationZ_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Yaw",
+                Foreground = white_button_brush,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_orientationZ_ttb);
+
+            Initial_orientationZ_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_orientationZ_bd);
+
+            Initial_orientationZ_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_orientationZ_bd1);
+            #endregion
+
+
+
+            #region M Pointing Angle Az
+            Initial_mpointan_az_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_mpointan_az_tb);
+
+            Initial_mpointan_az_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Mech Ster Ang AZ",
+                Foreground = Sea_Green,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_mpointan_az_ttb);
+
+            Initial_mpointan_az_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_mpointan_az_bd);
+
+            Initial_mpointan_az_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_mpointan_az_bd1);
+            #endregion
+
+            #region M Pointing Angle EL
+            Initial_mpointan_el_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_mpointan_el_tb);
+
+            Initial_mpointan_el_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Mech Ster Ang EL",
+                Foreground = Sea_Green,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_mpointan_el_ttb);
+
+            Initial_mpointan_el_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_mpointan_el_bd);
+
+            Initial_mpointan_el_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_mpointan_el_bd1);
+            #endregion
+
+            #region M Pointing Angle Az
+            Initial_epointan_az_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_epointan_az_tb);
+
+            Initial_epointan_az_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Elec Ster Ang AZ",
+                Foreground = Sea_Green,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_epointan_az_ttb);
+
+            Initial_epointan_az_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_epointan_az_bd);
+
+            Initial_epointan_az_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_epointan_az_bd1);
+            #endregion
+
+            #region E Pointing Angle EL
+            Initial_epointan_el_tb = new TextBox()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = Number_of_Receiver.ToString(),
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPR.Children.Add(Initial_epointan_el_tb);
+
+            Initial_epointan_el_ttb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Left,
+                Text = "Elec Ster Ang EL",
+                Foreground = Sea_Green,
+                FontSize = 10,
+                FontWeight = FontWeights.Bold,
+                Height = 35
+            };
+            DRBE_SPL.Children.Add(Initial_epointan_el_ttb);
+
+            Initial_epointan_el_bd = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0),
+            };
+            DRBE_SPL.Children.Add(Initial_epointan_el_bd);
+
+            Initial_epointan_el_bd1 = new Border()
+            {
+                Height = 5,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0, 0.5, 0, 0)
+            };
+            DRBE_SPR.Children.Add(Initial_epointan_el_bd1);
+            #endregion
+
+        }
         public async void Initial_Property_setup()
         {
 
@@ -2614,7 +3729,11 @@ namespace DRBE
             Sc_centerZ_ttb.Visibility = Visibility.Collapsed;
             #endregion
         }
-
+        public void Global_Property_hide_s()
+        {
+            DRBE_SPL.Children.Clear();
+            DRBE_SPR.Children.Clear();
+        }
         public void Global_Property_show()
         {
             #region initial lat
@@ -2635,7 +3754,35 @@ namespace DRBE
             Sc_centerZ_ttb.Visibility = Visibility.Visible;
             #endregion
         }
+        public void All_Property_show_s()
+        {
+            Global_Property_show_s();
+            Initial_Property_show_s();
+        }
+        public void Global_Property_show_s()
+        {
+            #region initial lat
+            DRBE_SPR.Children.Add(Sc_centerX_tb);
+            DRBE_SPL.Children.Add(Sc_centerX_ttb);
+            DRBE_SPL.Children.Add(Sc_centerX_bd);
+            DRBE_SPR.Children.Add(Sc_centerX_bd1);
+            #endregion
 
+            #region initial lon
+
+            DRBE_SPR.Children.Add(Sc_centerY_tb);
+            DRBE_SPL.Children.Add(Sc_centerY_ttb);
+            DRBE_SPL.Children.Add(Sc_centerY_bd);
+            DRBE_SPR.Children.Add(Sc_centerY_bd1);
+            #endregion
+
+            #region Height
+            DRBE_SPR.Children.Add(Sc_centerZ_tb);
+            DRBE_SPL.Children.Add(Sc_centerZ_ttb);
+            DRBE_SPL.Children.Add(Sc_centerZ_bd);
+            DRBE_SPR.Children.Add(Sc_centerZ_bd1);
+            #endregion
+        }
         public void Initial_Property_hide()
         {
 
@@ -2747,6 +3894,11 @@ namespace DRBE
             Initial_epointan_el_ttb.Visibility = Visibility.Collapsed;
             #endregion
         }
+        public void Initial_Property_hide_s()
+        {
+            DRBE_SPL.Children.Clear();
+            DRBE_SPR.Children.Clear();
+        }
         public void Initial_Property_show()
         {
 
@@ -2857,7 +4009,134 @@ namespace DRBE
             Initial_epointan_el_ttb.Visibility = Visibility.Visible;
             #endregion
         }
+        public void Initial_Property_show_s()
+        {
 
+
+
+            #region coordination
+            DRBE_SPL.Children.Add(Coordinate_system_tb);
+            DRBE_SPR.Children.Add(Coordinate_system_cb);
+            DRBE_SPL.Children.Add(Coordinate_system_bd);
+            DRBE_SPR.Children.Add(Coordinate_system_bd1);
+
+            #endregion
+
+            #region object reference
+            DRBE_SPR.Children.Add(Reference_frame_id_cb);
+            DRBE_SPL.Children.Add(Reference_frame_id_ttb);
+            DRBE_SPL.Children.Add(Reference_frame_id_bd);
+            DRBE_SPR.Children.Add(Reference_frame_id_bd1);
+            #endregion
+
+
+
+            #region Position X
+            DRBE_SPR.Children.Add(Initial_positionX_tb);
+            DRBE_SPL.Children.Add(Initial_positionX_ttb);
+            DRBE_SPL.Children.Add(Initial_positionX_bd);
+            DRBE_SPR.Children.Add(Initial_positionX_bd1);
+            #endregion
+            #region Position Y
+            DRBE_SPR.Children.Add(Initial_positionY_tb);
+            DRBE_SPL.Children.Add(Initial_positionY_ttb);
+            DRBE_SPL.Children.Add(Initial_positionY_bd);
+            DRBE_SPR.Children.Add(Initial_positionY_bd1);
+            #endregion
+            #region Position Z
+            DRBE_SPR.Children.Add(Initial_positionZ_tb);
+            DRBE_SPL.Children.Add(Initial_positionZ_ttb);
+            DRBE_SPL.Children.Add(Initial_positionZ_bd);
+            DRBE_SPR.Children.Add(Initial_positionZ_bd1);
+            #endregion
+
+            #region Velocity X
+            DRBE_SPR.Children.Add(Initial_velocityX_tb);
+            DRBE_SPL.Children.Add(Initial_velocityX_ttb);
+            DRBE_SPL.Children.Add(Initial_velocityX_bd);
+            DRBE_SPR.Children.Add(Initial_velocityX_bd1);
+            #endregion
+            #region Velocity Y
+            DRBE_SPR.Children.Add(Initial_velocityY_tb);
+            DRBE_SPL.Children.Add(Initial_velocityY_ttb);
+            DRBE_SPL.Children.Add(Initial_velocityY_bd);
+            DRBE_SPR.Children.Add(Initial_velocityY_bd1);
+            #endregion
+            #region Velocity Z
+            DRBE_SPR.Children.Add(Initial_velocityZ_tb);
+            DRBE_SPL.Children.Add(Initial_velocityZ_ttb);
+            DRBE_SPL.Children.Add(Initial_velocityZ_bd);
+            DRBE_SPR.Children.Add(Initial_velocityZ_bd1);
+            #endregion
+
+            #region Acceleration X
+            DRBE_SPR.Children.Add(Initial_accelerationX_tb);
+            DRBE_SPL.Children.Add(Initial_accelerationX_ttb);
+            DRBE_SPL.Children.Add(Initial_accelerationX_bd);
+            DRBE_SPR.Children.Add(Initial_accelerationX_bd1);
+            #endregion
+            #region Acceleration Y
+            DRBE_SPR.Children.Add(Initial_accelerationY_tb);
+            DRBE_SPL.Children.Add(Initial_accelerationY_ttb);
+            DRBE_SPL.Children.Add(Initial_accelerationY_bd);
+            DRBE_SPR.Children.Add(Initial_accelerationY_bd1);
+            #endregion
+            #region Acceleration Z
+            DRBE_SPR.Children.Add(Initial_accelerationZ_tb);
+            DRBE_SPL.Children.Add(Initial_accelerationZ_ttb);
+            DRBE_SPL.Children.Add(Initial_accelerationZ_bd);
+            DRBE_SPR.Children.Add(Initial_accelerationZ_bd1);
+            #endregion
+
+            #region Orientation X
+            DRBE_SPR.Children.Add(Initial_orientationX_tb);
+            DRBE_SPL.Children.Add(Initial_orientationX_ttb);
+            DRBE_SPL.Children.Add(Initial_orientationX_bd);
+            DRBE_SPR.Children.Add(Initial_orientationX_bd1);
+            #endregion
+            #region Orientation Y
+            DRBE_SPR.Children.Add(Initial_orientationY_tb);
+            DRBE_SPL.Children.Add(Initial_orientationY_ttb);
+            DRBE_SPL.Children.Add(Initial_orientationY_bd);
+            DRBE_SPR.Children.Add(Initial_orientationY_bd1);
+            #endregion
+            #region Orientation Z
+            DRBE_SPR.Children.Add(Initial_orientationZ_tb);
+            DRBE_SPL.Children.Add(Initial_orientationZ_ttb);
+            DRBE_SPL.Children.Add(Initial_orientationZ_bd);
+            DRBE_SPR.Children.Add(Initial_orientationZ_bd1);
+            #endregion
+
+
+
+            #region M Pointing Angle Az
+            DRBE_SPR.Children.Add(Initial_mpointan_az_tb);
+            DRBE_SPL.Children.Add(Initial_mpointan_az_ttb);
+            DRBE_SPL.Children.Add(Initial_mpointan_az_bd);
+            DRBE_SPR.Children.Add(Initial_mpointan_az_bd1);
+            #endregion
+
+            #region M Pointing Angle EL
+            DRBE_SPR.Children.Add(Initial_mpointan_el_tb);
+            DRBE_SPL.Children.Add(Initial_mpointan_el_ttb);
+            DRBE_SPL.Children.Add(Initial_mpointan_el_bd);
+            DRBE_SPR.Children.Add(Initial_mpointan_el_bd1);
+            #endregion
+
+            #region M Pointing Angle Az
+            DRBE_SPR.Children.Add(Initial_epointan_az_tb);
+            DRBE_SPL.Children.Add(Initial_epointan_az_ttb);
+            DRBE_SPL.Children.Add(Initial_epointan_az_bd);
+            DRBE_SPR.Children.Add(Initial_epointan_az_bd1);
+            #endregion
+
+            #region E Pointing Angle EL
+            DRBE_SPR.Children.Add(Initial_epointan_el_tb);
+            DRBE_SPL.Children.Add(Initial_epointan_el_ttb);
+            DRBE_SPL.Children.Add(Initial_epointan_el_bd);
+            DRBE_SPR.Children.Add(Initial_epointan_el_bd1);
+            #endregion
+        }
 
 
         private TextBlock Beamwidth_EL_ttb = new TextBlock();
@@ -3276,7 +4555,7 @@ namespace DRBE
                 Background = white_button_brush
             };
             ParentGrid.Children.Add(Antenna_window_cb);
-            Antenna_window_cb.SetValue(Grid.ColumnProperty, 135);
+            Antenna_window_cb.SetValue(Grid.ColumnProperty, 180);
             Antenna_window_cb.SetValue(Grid.ColumnSpanProperty, 20);
             Antenna_window_cb.SetValue(Grid.RowProperty, 55);
             Antenna_window_cb.SetValue(Grid.RowSpanProperty, 5);
