@@ -133,6 +133,8 @@
     <Compile Include="Definition_Page.cs" />
     <Compile Include="DRBEScenario.cs" />
     <Compile Include="DRBE_AP.cs" />
+    <Compile Include="DRBE_Group.cs" />
+    <Compile Include="DRBE_LinkViewer.cs" />
     <Compile Include="DRBE_Link_Viewer.cs" />
     <Compile Include="DRBE_Link_Viewer_s.cs" />
     <Compile Include="DRBE_Link_Viewer_sim.cs" />
@@ -168,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Add_Page.png" />
+    <Content Include="Assets\Aircraft_group_icon.png" />
     <Content Include="Assets\All_de_icon.png" />
     <Content Include="Assets\Antenna_Pattern_icon.png" />
     <Content Include="Assets\Battery_icon.png" />
@@ -198,6 +201,7 @@
     <Content Include="Assets\FPGAs-Icon_4x.jpg" />
     <Content Include="Assets\GE.png" />
     <Content Include="Assets\Hardware_icon.png" />
+    <Content Include="Assets\Histogram_icon.png" />
     <Content Include="Assets\Home_icon.png" />
     <Content Include="Assets\Import.png" />
     <Content Include="Assets\Input.png" />
@@ -205,8 +209,10 @@
     <Content Include="Assets\Link_de_icon.png" />
     <Content Include="Assets\Link_en_icon.png" />
     <Content Include="Assets\Link_uns_icon.png" />
+    <Content Include="Assets\List_icon.png" />
     <Content Include="Assets\Load_icon.jpg" />
     <Content Include="Assets\Monitor_icon.png" />
+    <Content Include="Assets\New_demo.PNG" />
     <Content Include="Assets\Node_de_icon.png" />
     <Content Include="Assets\Node_en_icon.png" />
     <Content Include="Assets\Node_uns_icon.png" />
@@ -238,12 +244,6 @@
     <Content Include="Assets\Scenario_icon.jpg" />
     <Content Include="Assets\Simulation_icon.png" />
     <Content Include="Assets\Simulator_icon.png" />
-    <Content Include="Assets\Slides1.PNG" />
-    <Content Include="Assets\Slides2.PNG" />
-    <Content Include="Assets\Slides3.PNG" />
-    <Content Include="Assets\Slides4.PNG" />
-    <Content Include="Assets\Slides5.PNG" />
-    <Content Include="Assets\Slides_6.PNG" />
     <Content Include="Assets\SMA_icon.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />

@@ -212,6 +212,11 @@ namespace DRBE
             Lv_dtl = DT;
             Lv_dfl = DRF;
             Lv_drl = DR;
+
+
+            Lv_dtl.Add(new DRBE_Transmitter());
+            Lv_dfl.Add(new DRBE_Reflector());
+            Lv_drl.Add(new DRBE_Receiver());
             int i = 0;
             int ii = 0;
             int iii = 0;

@@ -19,8 +19,14 @@
                 <TextBlock Grid.Column="2" Text="Test Text" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></TextBlock>
             </Grid>
         </StackPanel>
+        <Style x:Key="CheckBoxStyle" TargetType="CheckBox"
+           BasedOn="{StaticResource BasicStyle}">
+            <Setter Property="BorderBrush" Value="Blue" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Foreground" Value="Green" />
+        </Style>
     </Page.Resources>
-    
+
     <Grid Name="MainGrid" Background="#202020">
         <Grid.RowDefinitions>
             <RowDefinition x:Name="RD"/>
@@ -379,7 +385,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
     </Grid>
-
 
 
 </Page>

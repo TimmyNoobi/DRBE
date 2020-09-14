@@ -100,16 +100,19 @@ namespace DRBE
         private Windows.Networking.HostName UWhostname = new Windows.Networking.HostName("localhost");
 
         private bool UWconnectedflag = false;
-        private Stream UWinputstream;
-        private Stream UWoutputstream;
+        public Stream UWinputstream;
+        public Stream UWoutputstream;
 
-        private BinaryReader UWbinaryreader;
+        public BinaryReader UWbinaryreader;
         public BinaryWriter UWbinarywriter;
 
+        public TextBlock MainPageTestTb = new TextBlock();
+
+        public bool Data_ready_flag = false;
         private async void ClientReading()
         {
             byte[] data = new byte[1];
-
+            //await ShowDialog("sError", "sError");
             while (true)
             {
                 if (UWconnectedflag)
@@ -117,18 +120,23 @@ namespace DRBE
                     try 
                     {
                         await UWinputstream.ReadAsync(data, 0, 1);
-                        DRBE_Debug_tb.Text += BitConverter.ToString(data);
+                        //DRBE_Debug_tb.Text += BitConverter.ToString(data);
                         await Packet_receiver(data[0]);
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Text = "Not Found";
                         DRBE_frontPage.DRBE_controlpanel.Server_ui_tb.Foreground = red_bright_button_brush;
 
+
                         DRBE_frontPage.DRBE_controlpanel.Message_tb.Text += "\r\n" + DateTime.Now.ToString("HH: mm: ss~~") + "Server Disconnected";
                         UWconnectedflag = false;
                         UWstreamsocket = new Windows.Networking.Sockets.StreamSocket();
-                        StartClient();
+
+                        //MainPageTestTb.Text = ex.ToString();
+                        //await ShowDialog("Error", ex.ToString());
+
+                        //StartClient();
                         break;
                     }
                 }
@@ -355,8 +363,30 @@ namespace DRBE
                 }
                 i++;
             }
-            result = (double)S_I(before) + ((double)S_I(after)) / tenpower;
+            result = S_I_vd(before) + (S_I_vd(after)) / tenpower;
             result = result * sign;
+            return result;
+        }
+        private double S_I_vd(string x)
+        {
+            double result = 0;
+            int index = 0;
+            int rindex = 0;
+            index = x.Length;
+            while (index > 0)
+            {
+                if (C_I(x[rindex]) != -1)
+                {
+                    result = result * 10 + C_I(x[rindex]);
+                }
+                else
+                {
+
+                }
+
+                rindex++;
+                index--;
+            }
             return result;
         }
         private int S_I(string x)
@@ -530,6 +560,7 @@ namespace DRBE
         #endregion
         private int Packet_receiver_index = 0;
         private List<byte> Packet_receiver_result = new List<byte>();
+        public List<double> Packet_data_buffer = new List<double>();
         private byte Packet_device = 0;
         private byte Packet_command = 0;
         private int Packet_len = 0;
@@ -603,7 +634,8 @@ namespace DRBE
 
         private async Task Packet_receiver(byte x)
         {
-            DRBE_frontPage.Statues_tb.Text += x.ToString() + "-";
+            //await ShowDialog("start",Packet_receiver_index.ToString());
+            //MainPageTestTb.Text += x.ToString() + "-";
             Packet_receiver_result.Add(x);
             Packet_receiver_index++;
             if (Packet_receiver_index == 1)
@@ -617,19 +649,32 @@ namespace DRBE
             } //length MS
             else if (Packet_receiver_index == 3)
             {
-                await ShowDialog(Packet_receiver_result[Packet_receiver_index - 1].ToString(), Packet_receiver_result.Count.ToString());
+                //await ShowDialog(Packet_receiver_result[Packet_receiver_index - 1].ToString(), Packet_receiver_result.Count.ToString());
                 Packet_len = Packet_len * 255 + x;
-                DRBE_frontPage.Statues_tb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
+                //MainPageTestTb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
             } //length LS
             else if (Packet_receiver_index == 4)
             {
                 Packet_command = x;
             } //command
-            else if (Packet_receiver_index == Packet_len + 3)
+            else if (Packet_receiver_index == Packet_len +3)
             //else if (Packet_receiver_index == 20)
             {
-                await ShowDialog(Packet_receiver_result[Packet_receiver_index-1].ToString(), Packet_receiver_result.Count.ToString());
+                //await ShowDialog(Packet_receiver_result[Packet_receiver_index-1].ToString(), Packet_receiver_result.Count.ToString());
                 Packet_receiver_index = 0;
+                int i = 0;
+                i = 3;
+                string temp = "";
+                while(i<Packet_receiver_result.Count)
+                {
+                    Packet_data_buffer.Add(BitConverter.ToDouble(Packet_receiver_result.GetRange(i, 8).ToArray(), 0));
+                    //temp += BitConverter.ToDouble(Packet_receiver_result.GetRange(i, 8).ToArray(), 0).ToString() + " ";
+                    i +=8;
+                }
+                Packet_receiver_result.Clear();
+                //MainPageTestTb.Text += temp;
+                Data_ready_flag = true;
+
             }
             else
             {
@@ -652,7 +697,7 @@ namespace DRBE
         private Communication_Protocol_Page Communication_Protocol_Page;
         private DRBE_AP DRBE_ap;
         private DRBE_MainPage1 DRBE_mainpage1;
-        private DRBE_Link_Viewer DRBE_lv;
+        //private DRBE_Link_Viewer_s DRBE_lv;
         private Template_Make TM_Test;
 
         public DRBE_Scenario_Generator DRBE_SG;
@@ -664,6 +709,20 @@ namespace DRBE
         private List<byte> C_T_B_N = new List<byte>();
         private async void MainPage_loaded(object sender, RoutedEventArgs e)
         {
+            MainPageTestTb = new TextBlock() { 
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Foreground = white_button_brush,
+                FontSize = 12
+            };
+
+            //MainGrid.Children.Add(MainPageTestTb);
+            MainPageTestTb.SetValue(Grid.ColumnProperty, 0);
+            MainPageTestTb.SetValue(Grid.ColumnSpanProperty, 200);
+            MainPageTestTb.SetValue(Grid.RowProperty, 100);
+            MainPageTestTb.SetValue(Grid.RowSpanProperty, 50);
+            Canvas.SetZIndex(MainPageTestTb,-20);
+
             await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             await Task.Delay(1000);
 
@@ -696,7 +755,7 @@ namespace DRBE
 
             DRBE_Scenario = new DRBEScenario(MainGrid);
             await DRBE_Scenario.Parse_Scenario("DS1.txt");
-            DRBE_lv = new DRBE_Link_Viewer(MainGrid);
+            //DRBE_lv = new DRBE_Link_Viewer_s(MainGrid, this);
             //DRBE_SG = new DRBE_Scenario_Generator(MainGrid);
 
             //DRBE_mainpage1.Show();
@@ -705,13 +764,13 @@ namespace DRBE
 
 
             //DRBE_ap.Show();
-            DRBE_lv.Setup(DRBE_Scenario.D_Trans, DRBE_Scenario.D_Rec, DRBE_Scenario.D_Ref);
-            //StartClient();
+            //DRBE_lv.Setup(DRBE_Scenario.D_Trans, DRBE_Scenario.D_Rec, DRBE_Scenario.D_Ref);
+            StartClient();
             
             //DRBE_softwarePage.Show();
             //DRBE_frontPage.Show();
             //DRBE_ap.Show();
-            DRBE_lv.hide();
+            //DRBE_lv.hide();
             //ConnectToSerialPort();
             //AdvReadByte(ReadCancellationTokenSource.Token);
 
@@ -731,20 +790,22 @@ namespace DRBE
 
 
             #region Slides
-            //Button ssbt = new Button() { 
-            //    VerticalAlignment = VerticalAlignment.Stretch,
-            //    HorizontalAlignment = HorizontalAlignment.Stretch,
-            //    Content = "1",
-            //    Foreground = white_button_brush,
-            //    FontSize = 18
+            Button ssbt = new Button() { 
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Content = "1",
+                Foreground = white_button_brush,
+                FontSize = 18
 
-            //};
-            //MainGrid.Children.Add(ssbt);
-            //ssbt.SetValue(Grid.ColumnProperty, 185);
-            //ssbt.SetValue(Grid.ColumnSpanProperty, 5);
-            //ssbt.SetValue(Grid.RowProperty, 145);
-            //ssbt.SetValue(Grid.RowSpanProperty, 5);
-            //ssbt.Click += Ssbt1_Click;
+            };
+            MainGrid.Children.Add(ssbt);
+            ssbt.SetValue(Grid.ColumnProperty, 185);
+            ssbt.SetValue(Grid.ColumnSpanProperty, 5);
+            ssbt.SetValue(Grid.RowProperty, 145);
+            ssbt.SetValue(Grid.RowSpanProperty, 5);
+            ssbt.Click += Ssbt1_Click;
+
+            Canvas.SetZIndex(ssbt,20);
 
             //Button ssbt2 = new Button()
             //{
@@ -784,8 +845,10 @@ namespace DRBE
             All_Received_byte_list = new List<byte>();
 
             //executeCommand();
+
             DRBE_SG = new DRBE_Scenario_Generator(MainGrid, this);
             DRBE_SG.show();
+
 
         }
 
@@ -840,7 +903,7 @@ namespace DRBE
         public Pic_Player pp;
         private void Ssbt1_Click(object sender, RoutedEventArgs e)
         {
-            pp.path = "Slides_6.PNG";
+            pp.path = "New_demo.PNG";
             pp.Show();
         }
         private void Ssbt2_Click(object sender, RoutedEventArgs e)

@@ -101,8 +101,10 @@ namespace DRBE
         private Button Cancel_bt = new Button();
         public StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
         public string SS_content = "";
+        public string Saved_file_name = "";
         public async Task Start(string title, List<string> folder, string file_type, string content)
         {
+            Complete_flag = false;
             SS_content = content;
             storageFolder = ApplicationData.Current.LocalFolder;
             Name_sub_ttb.Text = "." + file_type; 
@@ -140,6 +142,11 @@ namespace DRBE
 
             Cancel_bt.Visibility = Visibility.Visible;
             #endregion
+            while(!Complete_flag)
+            {
+                await Task.Delay(10);
+            }
+
         }
 
         public void Setup()
@@ -298,12 +305,14 @@ namespace DRBE
         private void Cancel_bt_Click(object sender, RoutedEventArgs e)
         {
             hide();
+            Complete_flag = true;
         }
-
+        private bool Complete_flag = true;
         private async void Save_bt_Click(object sender, RoutedEventArgs e)
         {
 
             string filename = Enter_name_tb.Text + Name_sub_ttb.Text;
+            Saved_file_name = Enter_name_tb.Text;
             StorageFile file;
             int selection = 0;
             try
@@ -320,6 +329,7 @@ namespace DRBE
                     await FileIO.WriteTextAsync(file, SS_content);
                     await ShowDialog("Over-write succeed",file.Path.ToLower());
                     hide();
+                    Complete_flag = true;
                 }
             }
             catch
@@ -328,6 +338,7 @@ namespace DRBE
                 await FileIO.WriteTextAsync(file, SS_content);
                 await ShowDialog("Write succeed", file.Path.ToLower());
                 hide();
+                Complete_flag = true;
             }
         }
 
