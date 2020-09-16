@@ -106,7 +106,6 @@ namespace DRBE
         public BinaryReader UWbinaryreader;
         public BinaryWriter UWbinarywriter;
 
-        public TextBlock MainPageTestTb = new TextBlock();
 
         public bool Data_ready_flag = false;
         private async void ClientReading()
@@ -703,12 +702,27 @@ namespace DRBE
         public DRBE_Scenario_Generator DRBE_SG;
 
 
-
+        public TextBlock MainPageTestTb = new TextBlock();
+        public Border MainPageTestBd = new Border();
+        public ScrollViewer MainPageTestSv = new ScrollViewer();
 
         private byte[] Communication_test_byte = new byte[] { 0x22 };
         private List<byte> C_T_B_N = new List<byte>();
         private async void MainPage_loaded(object sender, RoutedEventArgs e)
         {
+            MainPageTestSv = new ScrollViewer() { 
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush
+            
+            };
+            MainGrid.Children.Add(MainPageTestSv);
+            MainPageTestSv.SetValue(Grid.ColumnProperty, 0);
+            MainPageTestSv.SetValue(Grid.ColumnSpanProperty, 50);
+            MainPageTestSv.SetValue(Grid.RowProperty, 0);
+            MainPageTestSv.SetValue(Grid.RowSpanProperty, 100);
+            Canvas.SetZIndex(MainPageTestSv, 20);
+
             MainPageTestTb = new TextBlock() { 
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -717,11 +731,27 @@ namespace DRBE
             };
 
             //MainGrid.Children.Add(MainPageTestTb);
-            MainPageTestTb.SetValue(Grid.ColumnProperty, 0);
-            MainPageTestTb.SetValue(Grid.ColumnSpanProperty, 200);
-            MainPageTestTb.SetValue(Grid.RowProperty, 100);
-            MainPageTestTb.SetValue(Grid.RowSpanProperty, 50);
-            Canvas.SetZIndex(MainPageTestTb,-20);
+            //MainPageTestTb.SetValue(Grid.ColumnProperty, 0);
+            //MainPageTestTb.SetValue(Grid.ColumnSpanProperty, 50);
+            //MainPageTestTb.SetValue(Grid.RowProperty, 0);
+            //MainPageTestTb.SetValue(Grid.RowSpanProperty, 100);
+            //Canvas.SetZIndex(MainPageTestTb,20);
+
+            MainPageTestSv.Content = MainPageTestTb;
+
+            MainPageTestBd = new Border() {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush
+            
+            };
+            //MainGrid.Children.Add(MainPageTestBd);
+            MainPageTestBd.SetValue(Grid.ColumnProperty, 0);
+            MainPageTestBd.SetValue(Grid.ColumnSpanProperty, 50);
+            MainPageTestBd.SetValue(Grid.RowProperty, 0);
+            MainPageTestBd.SetValue(Grid.RowSpanProperty, 100);
+            Canvas.SetZIndex(MainPageTestBd, 19);
+
 
             await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             await Task.Delay(1000);

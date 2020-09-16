@@ -842,7 +842,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 12,
-                Text = " Rescan",
+                Text = "Scenario Scan",
                 Foreground = white_button_brush
             };
             DRBEP_rescan_tb.SetValue(Grid.ColumnProperty, 1);
@@ -1222,7 +1222,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 12,
-                Text = " Rescan",
+                Text = "Object scan",
                 Foreground = white_button_brush
             };
             DRBEOP_rescan_tb.SetValue(Grid.ColumnProperty, 1);
@@ -1542,7 +1542,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Center,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 FontSize = 12,
-                Text = "Property Rank",
+                Text = "Property Computation",
                 Foreground = white_button_brush
             };
             DRBEP_obj_property_c_tb.SetValue(Grid.ColumnProperty, 1);
@@ -1905,7 +1905,7 @@ namespace DRBE
             DRBEP_obj_fidelity_b_bt.BorderBrush = white_button_brush;
             DRBEP_obj_fidelity_l_bt.BorderBrush = white_button_brush;
         }
-        private void DRBEP_obj_fidelity_c_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_fidelity_c_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1916,9 +1916,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_fidelity_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_fidelity_m_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_fidelity_m_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1927,9 +1927,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_fidelity_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_fidelity_b_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_fidelity_b_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1938,9 +1938,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_fidelity_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_fidelity_l_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_fidelity_l_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1949,9 +1949,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_fidelity_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_property_c_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_property_c_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1960,9 +1960,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_property_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_property_m_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_property_m_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1971,9 +1971,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_property_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_property_b_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_property_b_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1982,9 +1982,9 @@ namespace DRBE
             Presentation_hide();
             Presentation_property_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
-        private void DRBEP_obj_property_l_bt_Click(object sender, RoutedEventArgs e)
+        private async void DRBEP_obj_property_l_bt_Click(object sender, RoutedEventArgs e)
         {
             Presentation_choice_decolor();
             Button foo = sender as Button;
@@ -1993,7 +1993,7 @@ namespace DRBE
             Presentation_hide();
             Presentation_property_show();
             Last_result_update_show();
-            Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
+            await Scan_obj_presentation_update(Dic_SObt_i[Temp_singleo_bt]);
         }
         private void DRBEP_Global_computation_bt_Click(object sender, RoutedEventArgs e)
         {
@@ -2046,8 +2046,10 @@ namespace DRBE
             Last_result_update_show();
 
         }
+        private List<List<double>> DRBE_obj_scan_latency_list = new List<List<double>>();
         private async void DRBEP_rescan_bt_Click(object sender, RoutedEventArgs e)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             Get_class_result_refresh();
             int i = 0;
             int ii = 0;
@@ -2069,7 +2071,10 @@ namespace DRBE
                     {
                         if (Link_list[i][ii][iii])
                         {
-                            Get_link_class_result_update(await Transceive(Fetch_link_info(i, ii, iii)), i, ii, iii);
+                            //Get_link_class_result_update(await Transceive(Fetch_link_info(i, ii, iii)), i, ii, iii);
+                            Get_link_class_tr_result_update(await Transceive(Fetch_link_info(iii, ii, i)), iii, ii, i);
+                            Get_link_class_tr_result_update(await Transceive(Fetch_link_info(i, ii, iii)), i, ii, iii);
+                            Get_link_class_o_result_update(await Transceive(Fetch_link_info(ii, iii, i)), iii, ii, i);
 
                             Dic_t_i_obj[i].Is_transmitting = true;
                             Dic_o_i_obj[ii].Is_reflecting = true;
@@ -2087,6 +2092,10 @@ namespace DRBE
 
                 i++;
             }
+
+
+            
+
             i = 0;
             while (i < DRBE_obj_list.Count)
             {
@@ -2118,9 +2127,13 @@ namespace DRBE
             }
             Get_class_result_show(count);
             Last_result_update_show();
+            watch.Stop();
+            ParentPage.MainPageTestTb.Text += "Overview Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
+
+
         }
 
-        private void Scan_obj_presentation_update(int ind)
+        private async Task Scan_obj_presentation_update(int ind)
         {
             double maxa = 0;
             double maxr = 0;
@@ -2129,509 +2142,529 @@ namespace DRBE
             double total_c = DRBE_obj_list[ind].ANT_Compute + DRBE_obj_list[ind].RCS_Compute + DRBE_obj_list[ind].COR_Compute + DRBE_obj_list[ind].ORI_Compute + DRBE_obj_list[ind].NRE_Compute + DRBE_obj_list[ind].PG_Compute + DRBE_obj_list[ind].TU_Compute;
             double total_b = DRBE_obj_list[ind].ANT_Bandwidth + DRBE_obj_list[ind].RCS_Bandwidth + DRBE_obj_list[ind].COR_Bandwidth + DRBE_obj_list[ind].ORI_Bandwidth + DRBE_obj_list[ind].NRE_Bandwidth + DRBE_obj_list[ind].PG_Bandwidth + DRBE_obj_list[ind].TU_Bandwidth;
             double total_l = DRBE_obj_list[ind].ANT_Latency + DRBE_obj_list[ind].RCS_Latency + DRBE_obj_list[ind].COR_Latency + DRBE_obj_list[ind].ORI_Latency + DRBE_obj_list[ind].NRE_Latency + DRBE_obj_list[ind].PG_Latency + DRBE_obj_list[ind].TU_Latency;
+
+
+
             //if(Scan_cur_obj%3!=0)
             //{
             //    return;
             //}
             Scan_pb.Value = Scan_cur_obj;
             Scan_i_tb.Text = Scan_cur_obj.ToString() + "/" + Scan_max_obj.ToString();
-
-            if (Presentation_choice_mode == 5)
+            switch (Presentation_choice_mode)
             {
-                FANT0_pb.Value = DRBE_obj_list[ind].cf_ant0;
-                FANT1_pb.Value = DRBE_obj_list[ind].cf_ant1;
-                FANT2_pb.Value = DRBE_obj_list[ind].cf_ant2;
-                FANT3_pb.Value = DRBE_obj_list[ind].cf_ant3;
-                FANT4_pb.Value = DRBE_obj_list[ind].cf_ant4;
-                FANT5_pb.Value = DRBE_obj_list[ind].cf_ant5;
+                case 5:
+                    FANT0_pb.Value = DRBE_obj_list[ind].cf_ant0;
+                    FANT1_pb.Value = DRBE_obj_list[ind].cf_ant1;
+                    FANT2_pb.Value = DRBE_obj_list[ind].cf_ant2;
+                    FANT3_pb.Value = DRBE_obj_list[ind].cf_ant3;
+                    FANT4_pb.Value = DRBE_obj_list[ind].cf_ant4;
+                    FANT5_pb.Value = DRBE_obj_list[ind].cf_ant5;
 
-                FRCS0_pb.Value = DRBE_obj_list[ind].cf_rcs0;
-                FRCS1_pb.Value = DRBE_obj_list[ind].cf_rcs1;
-                FRCS2_pb.Value = DRBE_obj_list[ind].cf_rcs2;
-                FRCS3_pb.Value = DRBE_obj_list[ind].cf_rcs3;
-                FRCS4_pb.Value = DRBE_obj_list[ind].cf_rcs4;
-                FRCS5_pb.Value = DRBE_obj_list[ind].cf_rcs5;
-                FRCS6_pb.Value = DRBE_obj_list[ind].cf_rcs6;
+                    FRCS0_pb.Value = DRBE_obj_list[ind].cf_rcs0;
+                    FRCS1_pb.Value = DRBE_obj_list[ind].cf_rcs1;
+                    FRCS2_pb.Value = DRBE_obj_list[ind].cf_rcs2;
+                    FRCS3_pb.Value = DRBE_obj_list[ind].cf_rcs3;
+                    FRCS4_pb.Value = DRBE_obj_list[ind].cf_rcs4;
+                    FRCS5_pb.Value = DRBE_obj_list[ind].cf_rcs5;
+                    FRCS6_pb.Value = DRBE_obj_list[ind].cf_rcs6;
 
-                maxa = DRBE_obj_list[ind].cf_ant0 + DRBE_obj_list[ind].cf_ant1 + DRBE_obj_list[ind].cf_ant2 + DRBE_obj_list[ind].cf_ant3 + DRBE_obj_list[ind].cf_ant4 + DRBE_obj_list[ind].cf_ant5;
-                maxr = DRBE_obj_list[ind].cf_rcs0 + DRBE_obj_list[ind].cf_rcs1 + DRBE_obj_list[ind].cf_rcs2 + DRBE_obj_list[ind].cf_rcs3 + DRBE_obj_list[ind].cf_rcs4 + DRBE_obj_list[ind].cf_rcs5 + DRBE_obj_list[ind].cf_rcs6;
+                    maxa = DRBE_obj_list[ind].cf_ant0 + DRBE_obj_list[ind].cf_ant1 + DRBE_obj_list[ind].cf_ant2 + DRBE_obj_list[ind].cf_ant3 + DRBE_obj_list[ind].cf_ant4 + DRBE_obj_list[ind].cf_ant5;
+                    maxr = DRBE_obj_list[ind].cf_rcs0 + DRBE_obj_list[ind].cf_rcs1 + DRBE_obj_list[ind].cf_rcs2 + DRBE_obj_list[ind].cf_rcs3 + DRBE_obj_list[ind].cf_rcs4 + DRBE_obj_list[ind].cf_rcs5 + DRBE_obj_list[ind].cf_rcs6;
 
-                FANT0_pb.Maximum = maxa;
-                FANT1_pb.Maximum = maxa;
-                FANT2_pb.Maximum = maxa;
-                FANT3_pb.Maximum = maxa;
-                FANT4_pb.Maximum = maxa;
-                FANT5_pb.Maximum = maxa;
+                    FANT0_pb.Maximum = maxa;
+                    FANT1_pb.Maximum = maxa;
+                    FANT2_pb.Maximum = maxa;
+                    FANT3_pb.Maximum = maxa;
+                    FANT4_pb.Maximum = maxa;
+                    FANT5_pb.Maximum = maxa;
 
-                FRCS0_pb.Maximum = maxr;
-                FRCS1_pb.Maximum = maxr;
-                FRCS2_pb.Maximum = maxr;
-                FRCS3_pb.Maximum = maxr;
-                FRCS4_pb.Maximum = maxr;
-                FRCS5_pb.Maximum = maxr;
-                FRCS6_pb.Maximum = maxr;
+                    FRCS0_pb.Maximum = maxr;
+                    FRCS1_pb.Maximum = maxr;
+                    FRCS2_pb.Maximum = maxr;
+                    FRCS3_pb.Maximum = maxr;
+                    FRCS4_pb.Maximum = maxr;
+                    FRCS5_pb.Maximum = maxr;
+                    FRCS6_pb.Maximum = maxr;
 
-                FANT0_i_tb.Text = DRBE_obj_list[ind].cf_ant0.ToString("E5");
-                FANT1_i_tb.Text = DRBE_obj_list[ind].cf_ant1.ToString("E5");
-                FANT2_i_tb.Text = DRBE_obj_list[ind].cf_ant2.ToString("E5");
-                FANT3_i_tb.Text = DRBE_obj_list[ind].cf_ant3.ToString("E5");
-                FANT4_i_tb.Text = DRBE_obj_list[ind].cf_ant4.ToString("E5");
-                FANT5_i_tb.Text = DRBE_obj_list[ind].cf_ant5.ToString("E5");
+                    FANT0_i_tb.Text = DRBE_obj_list[ind].cf_ant0.ToString("E5");
+                    FANT1_i_tb.Text = DRBE_obj_list[ind].cf_ant1.ToString("E5");
+                    FANT2_i_tb.Text = DRBE_obj_list[ind].cf_ant2.ToString("E5");
+                    FANT3_i_tb.Text = DRBE_obj_list[ind].cf_ant3.ToString("E5");
+                    FANT4_i_tb.Text = DRBE_obj_list[ind].cf_ant4.ToString("E5");
+                    FANT5_i_tb.Text = DRBE_obj_list[ind].cf_ant5.ToString("E5");
 
-                FRCS0_i_tb.Text = DRBE_obj_list[ind].cf_rcs0.ToString("E5");
-                FRCS1_i_tb.Text = DRBE_obj_list[ind].cf_rcs1.ToString("E5");
-                FRCS2_i_tb.Text = DRBE_obj_list[ind].cf_rcs2.ToString("E5");
-                FRCS3_i_tb.Text = DRBE_obj_list[ind].cf_rcs3.ToString("E5");
-                FRCS4_i_tb.Text = DRBE_obj_list[ind].cf_rcs4.ToString("E5");
-                FRCS5_i_tb.Text = DRBE_obj_list[ind].cf_rcs5.ToString("E5");
-                FRCS6_i_tb.Text = DRBE_obj_list[ind].cf_rcs6.ToString("E5");
+                    FRCS0_i_tb.Text = DRBE_obj_list[ind].cf_rcs0.ToString("E5");
+                    FRCS1_i_tb.Text = DRBE_obj_list[ind].cf_rcs1.ToString("E5");
+                    FRCS2_i_tb.Text = DRBE_obj_list[ind].cf_rcs2.ToString("E5");
+                    FRCS3_i_tb.Text = DRBE_obj_list[ind].cf_rcs3.ToString("E5");
+                    FRCS4_i_tb.Text = DRBE_obj_list[ind].cf_rcs4.ToString("E5");
+                    FRCS5_i_tb.Text = DRBE_obj_list[ind].cf_rcs5.ToString("E5");
+                    FRCS6_i_tb.Text = DRBE_obj_list[ind].cf_rcs6.ToString("E5");
+                    break;
+
+                case 6:
+
+                    FANT0_pb.Value = DRBE_obj_list[ind].mf_ant0;
+                    FANT1_pb.Value = DRBE_obj_list[ind].mf_ant1;
+                    FANT2_pb.Value = DRBE_obj_list[ind].mf_ant2;
+                    FANT3_pb.Value = DRBE_obj_list[ind].mf_ant3;
+                    FANT4_pb.Value = DRBE_obj_list[ind].mf_ant4;
+                    FANT5_pb.Value = DRBE_obj_list[ind].mf_ant5;
+
+                    FRCS0_pb.Value = DRBE_obj_list[ind].mf_rcs0;
+                    FRCS1_pb.Value = DRBE_obj_list[ind].mf_rcs1;
+                    FRCS2_pb.Value = DRBE_obj_list[ind].mf_rcs2;
+                    FRCS3_pb.Value = DRBE_obj_list[ind].mf_rcs3;
+                    FRCS4_pb.Value = DRBE_obj_list[ind].mf_rcs4;
+                    FRCS5_pb.Value = DRBE_obj_list[ind].mf_rcs5;
+                    FRCS6_pb.Value = DRBE_obj_list[ind].mf_rcs6;
+
+                    maxa = DRBE_obj_list[ind].mf_ant0 + DRBE_obj_list[ind].mf_ant1 + DRBE_obj_list[ind].mf_ant2 + DRBE_obj_list[ind].mf_ant3 + DRBE_obj_list[ind].mf_ant4 + DRBE_obj_list[ind].mf_ant5;
+                    maxr = DRBE_obj_list[ind].mf_rcs0 + DRBE_obj_list[ind].mf_rcs1 + DRBE_obj_list[ind].mf_rcs2 + DRBE_obj_list[ind].mf_rcs3 + DRBE_obj_list[ind].mf_rcs4 + DRBE_obj_list[ind].mf_rcs5 + DRBE_obj_list[ind].mf_rcs6;
+
+                    FANT0_pb.Maximum = maxa;
+                    FANT1_pb.Maximum = maxa;
+                    FANT2_pb.Maximum = maxa;
+                    FANT3_pb.Maximum = maxa;
+                    FANT4_pb.Maximum = maxa;
+                    FANT5_pb.Maximum = maxa;
+
+                    FRCS0_pb.Maximum = maxr;
+                    FRCS1_pb.Maximum = maxr;
+                    FRCS2_pb.Maximum = maxr;
+                    FRCS3_pb.Maximum = maxr;
+                    FRCS4_pb.Maximum = maxr;
+                    FRCS5_pb.Maximum = maxr;
+                    FRCS6_pb.Maximum = maxr;
+
+                    FANT0_i_tb.Text = DRBE_obj_list[ind].mf_ant0.ToString("E5");
+                    FANT1_i_tb.Text = DRBE_obj_list[ind].mf_ant1.ToString("E5");
+                    FANT2_i_tb.Text = DRBE_obj_list[ind].mf_ant2.ToString("E5");
+                    FANT3_i_tb.Text = DRBE_obj_list[ind].mf_ant3.ToString("E5");
+                    FANT4_i_tb.Text = DRBE_obj_list[ind].mf_ant4.ToString("E5");
+                    FANT5_i_tb.Text = DRBE_obj_list[ind].mf_ant5.ToString("E5");
+
+                    FRCS0_i_tb.Text = DRBE_obj_list[ind].mf_rcs0.ToString("E5");
+                    FRCS1_i_tb.Text = DRBE_obj_list[ind].mf_rcs1.ToString("E5");
+                    FRCS2_i_tb.Text = DRBE_obj_list[ind].mf_rcs2.ToString("E5");
+                    FRCS3_i_tb.Text = DRBE_obj_list[ind].mf_rcs3.ToString("E5");
+                    FRCS4_i_tb.Text = DRBE_obj_list[ind].mf_rcs4.ToString("E5");
+                    FRCS5_i_tb.Text = DRBE_obj_list[ind].mf_rcs5.ToString("E5");
+                    FRCS6_i_tb.Text = DRBE_obj_list[ind].mf_rcs6.ToString("E5");
+                    break;
+
+                case 7:
+
+                    FANT0_pb.Value = DRBE_obj_list[ind].bf_ant0;
+                    FANT1_pb.Value = DRBE_obj_list[ind].bf_ant1;
+                    FANT2_pb.Value = DRBE_obj_list[ind].bf_ant2;
+                    FANT3_pb.Value = DRBE_obj_list[ind].bf_ant3;
+                    FANT4_pb.Value = DRBE_obj_list[ind].bf_ant4;
+                    FANT5_pb.Value = DRBE_obj_list[ind].bf_ant5;
+
+                    FRCS0_pb.Value = DRBE_obj_list[ind].bf_rcs0;
+                    FRCS1_pb.Value = DRBE_obj_list[ind].bf_rcs1;
+                    FRCS2_pb.Value = DRBE_obj_list[ind].bf_rcs2;
+                    FRCS3_pb.Value = DRBE_obj_list[ind].bf_rcs3;
+                    FRCS4_pb.Value = DRBE_obj_list[ind].bf_rcs4;
+                    FRCS5_pb.Value = DRBE_obj_list[ind].bf_rcs5;
+                    FRCS6_pb.Value = DRBE_obj_list[ind].bf_rcs6;
+
+                    maxa = DRBE_obj_list[ind].bf_ant0 + DRBE_obj_list[ind].bf_ant1 + DRBE_obj_list[ind].bf_ant2 + DRBE_obj_list[ind].bf_ant3 + DRBE_obj_list[ind].bf_ant4 + DRBE_obj_list[ind].bf_ant5;
+                    maxr = DRBE_obj_list[ind].bf_rcs0 + DRBE_obj_list[ind].bf_rcs1 + DRBE_obj_list[ind].bf_rcs2 + DRBE_obj_list[ind].bf_rcs3 + DRBE_obj_list[ind].bf_rcs4 + DRBE_obj_list[ind].bf_rcs5 + DRBE_obj_list[ind].bf_rcs6;
+
+                    FANT0_pb.Maximum = maxa;
+                    FANT1_pb.Maximum = maxa;
+                    FANT2_pb.Maximum = maxa;
+                    FANT3_pb.Maximum = maxa;
+                    FANT4_pb.Maximum = maxa;
+                    FANT5_pb.Maximum = maxa;
+
+                    FRCS0_pb.Maximum = maxr;
+                    FRCS1_pb.Maximum = maxr;
+                    FRCS2_pb.Maximum = maxr;
+                    FRCS3_pb.Maximum = maxr;
+                    FRCS4_pb.Maximum = maxr;
+                    FRCS5_pb.Maximum = maxr;
+                    FRCS6_pb.Maximum = maxr;
+
+                    FANT0_i_tb.Text = DRBE_obj_list[ind].bf_ant0.ToString("E5");
+                    FANT1_i_tb.Text = DRBE_obj_list[ind].bf_ant1.ToString("E5");
+                    FANT2_i_tb.Text = DRBE_obj_list[ind].bf_ant2.ToString("E5");
+                    FANT3_i_tb.Text = DRBE_obj_list[ind].bf_ant3.ToString("E5");
+                    FANT4_i_tb.Text = DRBE_obj_list[ind].bf_ant4.ToString("E5");
+                    FANT5_i_tb.Text = DRBE_obj_list[ind].bf_ant5.ToString("E5");
+
+                    FRCS0_i_tb.Text = DRBE_obj_list[ind].bf_rcs0.ToString("E5");
+                    FRCS1_i_tb.Text = DRBE_obj_list[ind].bf_rcs1.ToString("E5");
+                    FRCS2_i_tb.Text = DRBE_obj_list[ind].bf_rcs2.ToString("E5");
+                    FRCS3_i_tb.Text = DRBE_obj_list[ind].bf_rcs3.ToString("E5");
+                    FRCS4_i_tb.Text = DRBE_obj_list[ind].bf_rcs4.ToString("E5");
+                    FRCS5_i_tb.Text = DRBE_obj_list[ind].bf_rcs5.ToString("E5");
+                    FRCS6_i_tb.Text = DRBE_obj_list[ind].bf_rcs6.ToString("E5");
+                    break;
+
+                case 8:
+
+                    FANT0_pb.Value = DRBE_obj_list[ind].lf_ant0;
+                    FANT1_pb.Value = DRBE_obj_list[ind].lf_ant1;
+                    FANT2_pb.Value = DRBE_obj_list[ind].lf_ant2;
+                    FANT3_pb.Value = DRBE_obj_list[ind].lf_ant3;
+                    FANT4_pb.Value = DRBE_obj_list[ind].lf_ant4;
+                    FANT5_pb.Value = DRBE_obj_list[ind].lf_ant5;
+
+                    FRCS0_pb.Value = DRBE_obj_list[ind].lf_rcs0;
+                    FRCS1_pb.Value = DRBE_obj_list[ind].lf_rcs1;
+                    FRCS2_pb.Value = DRBE_obj_list[ind].lf_rcs2;
+                    FRCS3_pb.Value = DRBE_obj_list[ind].lf_rcs3;
+                    FRCS4_pb.Value = DRBE_obj_list[ind].lf_rcs4;
+                    FRCS5_pb.Value = DRBE_obj_list[ind].lf_rcs5;
+                    FRCS6_pb.Value = DRBE_obj_list[ind].lf_rcs6;
+
+                    maxa = DRBE_obj_list[ind].lf_ant0 + DRBE_obj_list[ind].lf_ant1 + DRBE_obj_list[ind].lf_ant2 + DRBE_obj_list[ind].lf_ant3 + DRBE_obj_list[ind].lf_ant4 + DRBE_obj_list[ind].lf_ant5;
+                    maxr = DRBE_obj_list[ind].lf_rcs0 + DRBE_obj_list[ind].lf_rcs1 + DRBE_obj_list[ind].lf_rcs2 + DRBE_obj_list[ind].lf_rcs3 + DRBE_obj_list[ind].lf_rcs4 + DRBE_obj_list[ind].lf_rcs5 + DRBE_obj_list[ind].lf_rcs6;
+
+                    FANT0_pb.Maximum = maxa;
+                    FANT1_pb.Maximum = maxa;
+                    FANT2_pb.Maximum = maxa;
+                    FANT3_pb.Maximum = maxa;
+                    FANT4_pb.Maximum = maxa;
+                    FANT5_pb.Maximum = maxa;
+
+                    FRCS0_pb.Maximum = maxr;
+                    FRCS1_pb.Maximum = maxr;
+                    FRCS2_pb.Maximum = maxr;
+                    FRCS3_pb.Maximum = maxr;
+                    FRCS4_pb.Maximum = maxr;
+                    FRCS5_pb.Maximum = maxr;
+                    FRCS6_pb.Maximum = maxr;
+
+                    FANT0_i_tb.Text = DRBE_obj_list[ind].lf_ant0.ToString("E5");
+                    FANT1_i_tb.Text = DRBE_obj_list[ind].lf_ant1.ToString("E5");
+                    FANT2_i_tb.Text = DRBE_obj_list[ind].lf_ant2.ToString("E5");
+                    FANT3_i_tb.Text = DRBE_obj_list[ind].lf_ant3.ToString("E5");
+                    FANT4_i_tb.Text = DRBE_obj_list[ind].lf_ant4.ToString("E5");
+                    FANT5_i_tb.Text = DRBE_obj_list[ind].lf_ant5.ToString("E5");
+
+                    FRCS0_i_tb.Text = DRBE_obj_list[ind].lf_rcs0.ToString("E5");
+                    FRCS1_i_tb.Text = DRBE_obj_list[ind].lf_rcs1.ToString("E5");
+                    FRCS2_i_tb.Text = DRBE_obj_list[ind].lf_rcs2.ToString("E5");
+                    FRCS3_i_tb.Text = DRBE_obj_list[ind].lf_rcs3.ToString("E5");
+                    FRCS4_i_tb.Text = DRBE_obj_list[ind].lf_rcs4.ToString("E5");
+                    FRCS5_i_tb.Text = DRBE_obj_list[ind].lf_rcs5.ToString("E5");
+                    FRCS6_i_tb.Text = DRBE_obj_list[ind].lf_rcs6.ToString("E5");
+                    break;
+
+
+                case 9:
+
+                    PRCS_ARL_pb.Minimum = 0;
+                    PRCS_ARL_pb.Maximum = total_c;
+                    PRCS_ARR_pb.Minimum = total_c;
+                    PRCS_ARR_pb.Maximum = 2 * total_c;
+                    PRCS_ARL_pb.Value = DRBE_obj_list[ind].cp_rcs_ar_n;
+                    PRCS_ARR_pb.Value = DRBE_obj_list[ind].cp_rcs_ar_p;
+                    PRCS_AR_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_ar_n).ToString("E5") + " FP-64b";
+                    PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_ar_p - total_c).ToString("E5") + " FP-64b";
+
+                    PRCS_FBL_pb.Minimum = 0;
+                    PRCS_FBL_pb.Maximum = total_c;
+                    PRCS_FBR_pb.Minimum = total_c;
+                    PRCS_FBR_pb.Maximum = 2 * total_c;
+                    PRCS_FBL_pb.Value = DRBE_obj_list[ind].cp_rcs_fb_n;
+                    PRCS_FBR_pb.Value = DRBE_obj_list[ind].cp_rcs_fb_p;
+                    PRCS_FB_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_fb_n).ToString("E5") + " FP-64b";
+                    PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_fb_p - total_c).ToString("E5") + " FP-64b";
+
+                    PRCS_SPL_pb.Minimum = 0;
+                    PRCS_SPL_pb.Maximum = total_c;
+                    PRCS_SPR_pb.Minimum = total_c;
+                    PRCS_SPR_pb.Maximum = 2 * total_c;
+                    PRCS_SPL_pb.Value = DRBE_obj_list[ind].cp_rcs_sp_n;
+                    PRCS_SPR_pb.Value = DRBE_obj_list[ind].cp_rcs_sp_p;
+                    PRCS_SP_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_sp_n).ToString("E5") + " FP-64b";
+                    PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_sp_p - total_c).ToString("E5") + " FP-64b";
+
+                    PRCS_SSL_pb.Minimum = 0;
+                    PRCS_SSL_pb.Maximum = total_c;
+                    PRCS_SSR_pb.Minimum = total_c;
+                    PRCS_SSR_pb.Maximum = 2 * total_c;
+                    PRCS_SSL_pb.Value = DRBE_obj_list[ind].cp_rcs_ss_n;
+                    PRCS_SSR_pb.Value = DRBE_obj_list[ind].cp_rcs_ss_p;
+                    PRCS_SS_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_ss_n).ToString("E5") + " FP-64b";
+                    PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_ss_p - total_c).ToString("E5") + " FP-64b";
+
+                    PRCS_PNL_pb.Minimum = 0;
+                    PRCS_PNL_pb.Maximum = total_c;
+                    PRCS_PNR_pb.Minimum = total_c;
+                    PRCS_PNR_pb.Maximum = 2 * total_c;
+                    PRCS_PNL_pb.Value = DRBE_obj_list[ind].cp_rcs_pn_n;
+                    PRCS_PNR_pb.Value = DRBE_obj_list[ind].cp_rcs_pn_p;
+                    PRCS_PN_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_pn_n).ToString("E5") + " FP-64b";
+                    PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_pn_p - total_c).ToString("E5") + " FP-64b";
+
+                    PANT_ARL_pb.Minimum = 0;
+                    PANT_ARL_pb.Maximum = total_c;
+                    PANT_ARR_pb.Minimum = total_c;
+                    PANT_ARR_pb.Maximum = 2 * total_c;
+                    PANT_ARL_pb.Value = DRBE_obj_list[ind].cp_ant_ar_n;
+                    PANT_ARR_pb.Value = DRBE_obj_list[ind].cp_ant_ar_p;
+                    PANT_AR_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_ar_n).ToString("E5") + " FP-64b";
+                    PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_ar_p - total_c).ToString("E5") + " FP-64b";
+
+                    PANT_NAL_pb.Minimum = 0;
+                    PANT_NAL_pb.Maximum = total_c;
+                    PANT_NAR_pb.Minimum = total_c;
+                    PANT_NAR_pb.Maximum = 2 * total_c;
+                    PANT_NAL_pb.Value = DRBE_obj_list[ind].cp_ant_na_n;
+                    PANT_NAR_pb.Value = DRBE_obj_list[ind].cp_ant_na_p;
+                    PANT_NA_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_na_n).ToString("E5") + " FP-64b";
+                    PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_na_p - total_c).ToString("E5") + " FP-64b";
+
+                    PANT_DSL_pb.Minimum = 0;
+                    PANT_DSL_pb.Maximum = total_c;
+                    PANT_DSR_pb.Minimum = total_c;
+                    PANT_DSR_pb.Maximum = 2 * total_c;
+                    PANT_DSL_pb.Value = DRBE_obj_list[ind].cp_ant_ds_n;
+                    PANT_DSR_pb.Value = DRBE_obj_list[ind].cp_ant_ds_p;
+                    PANT_DS_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_ds_n).ToString("E5") + " FP-64b";
+                    PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_ds_p - total_c).ToString("E5") + " FP-64b";
+                    break;
+
+
+                case 10:
+
+                    PRCS_ARL_pb.Minimum = 0;
+                    PRCS_ARL_pb.Maximum = total_m;
+                    PRCS_ARR_pb.Minimum = total_m;
+                    PRCS_ARR_pb.Maximum = 2 * total_m;
+                    PRCS_ARL_pb.Value = DRBE_obj_list[ind].mp_rcs_ar_n;
+                    PRCS_ARR_pb.Value = DRBE_obj_list[ind].mp_rcs_ar_p;
+                    PRCS_AR_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_ar_n).ToString("E5") + " FP-64b";
+                    PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_ar_p - total_m).ToString("E5") + " FP-64b";
+
+                    PRCS_FBL_pb.Minimum = 0;
+                    PRCS_FBL_pb.Maximum = total_m;
+                    PRCS_FBR_pb.Minimum = total_m;
+                    PRCS_FBR_pb.Maximum = 2 * total_m;
+                    PRCS_FBL_pb.Value = DRBE_obj_list[ind].mp_rcs_fb_n;
+                    PRCS_FBR_pb.Value = DRBE_obj_list[ind].mp_rcs_fb_p;
+                    PRCS_FB_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_fb_n).ToString("E5") + " FP-64b";
+                    PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_fb_p - total_m).ToString("E5") + " FP-64b";
+
+                    PRCS_SPL_pb.Minimum = 0;
+                    PRCS_SPL_pb.Maximum = total_m;
+                    PRCS_SPR_pb.Minimum = total_m;
+                    PRCS_SPR_pb.Maximum = 2 * total_m;
+                    PRCS_SPL_pb.Value = DRBE_obj_list[ind].mp_rcs_sp_n;
+                    PRCS_SPR_pb.Value = DRBE_obj_list[ind].mp_rcs_sp_p;
+                    PRCS_SP_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_sp_n).ToString("E5") + " FP-64b";
+                    PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_sp_p - total_m).ToString("E5") + " FP-64b";
+
+                    PRCS_SSL_pb.Minimum = 0;
+                    PRCS_SSL_pb.Maximum = total_m;
+                    PRCS_SSR_pb.Minimum = total_m;
+                    PRCS_SSR_pb.Maximum = 2 * total_m;
+                    PRCS_SSL_pb.Value = DRBE_obj_list[ind].mp_rcs_ss_n;
+                    PRCS_SSR_pb.Value = DRBE_obj_list[ind].mp_rcs_ss_p;
+                    PRCS_SS_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_ss_n).ToString("E5") + " FP-64b";
+                    PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_ss_p - total_m).ToString("E5") + " FP-64b";
+
+                    PRCS_PNL_pb.Minimum = 0;
+                    PRCS_PNL_pb.Maximum = total_m;
+                    PRCS_PNR_pb.Minimum = total_m;
+                    PRCS_PNR_pb.Maximum = 2 * total_m;
+                    PRCS_PNL_pb.Value = DRBE_obj_list[ind].mp_rcs_pn_n;
+                    PRCS_PNR_pb.Value = DRBE_obj_list[ind].mp_rcs_pn_p;
+                    PRCS_PN_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_pn_n).ToString("E5") + " FP-64b";
+                    PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_pn_p - total_m).ToString("E5") + " FP-64b";
+
+                    PANT_ARL_pb.Minimum = 0;
+                    PANT_ARL_pb.Maximum = total_m;
+                    PANT_ARR_pb.Minimum = total_m;
+                    PANT_ARR_pb.Maximum = 2 * total_m;
+                    PANT_ARL_pb.Value = DRBE_obj_list[ind].mp_ant_ar_n;
+                    PANT_ARR_pb.Value = DRBE_obj_list[ind].mp_ant_ar_p;
+                    PANT_AR_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_ar_n).ToString("E5") + " FP-64b";
+                    PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_ar_p - total_m).ToString("E5") + " FP-64b";
+
+                    PANT_NAL_pb.Minimum = 0;
+                    PANT_NAL_pb.Maximum = total_m;
+                    PANT_NAR_pb.Minimum = total_m;
+                    PANT_NAR_pb.Maximum = 2 * total_m;
+                    PANT_NAL_pb.Value = DRBE_obj_list[ind].mp_ant_na_n;
+                    PANT_NAR_pb.Value = DRBE_obj_list[ind].mp_ant_na_p;
+                    PANT_NA_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_na_n).ToString("E5") + " FP-64b";
+                    PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_na_p - total_m).ToString("E5") + " FP-64b";
+
+                    PANT_DSL_pb.Minimum = 0;
+                    PANT_DSL_pb.Maximum = total_m;
+                    PANT_DSR_pb.Minimum = total_m;
+                    PANT_DSR_pb.Maximum = 2 * total_m;
+                    PANT_DSL_pb.Value = DRBE_obj_list[ind].mp_ant_ds_n;
+                    PANT_DSR_pb.Value = DRBE_obj_list[ind].mp_ant_ds_p;
+                    PANT_DS_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_ds_n).ToString("E5") + " FP-64b";
+                    PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_ds_p - total_m).ToString("E5") + " FP-64b";
+                    break;
+
+
+
+                case 11:
+                    PRCS_ARL_pb.Minimum = 0;
+                    PRCS_ARL_pb.Maximum = total_b;
+                    PRCS_ARR_pb.Minimum = total_b;
+                    PRCS_ARR_pb.Maximum = 2 * total_b;
+                    PRCS_ARL_pb.Value = DRBE_obj_list[ind].bp_rcs_ar_n;
+                    PRCS_ARR_pb.Value = DRBE_obj_list[ind].bp_rcs_ar_p;
+                    PRCS_AR_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_ar_n).ToString("E5") + " FP-64b";
+                    PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_ar_p - total_b).ToString("E5") + " FP-64b";
+
+                    PRCS_FBL_pb.Minimum = 0;
+                    PRCS_FBL_pb.Maximum = total_b;
+                    PRCS_FBR_pb.Minimum = total_b;
+                    PRCS_FBR_pb.Maximum = 2 * total_b;
+                    PRCS_FBL_pb.Value = DRBE_obj_list[ind].bp_rcs_fb_n;
+                    PRCS_FBR_pb.Value = DRBE_obj_list[ind].bp_rcs_fb_p;
+                    PRCS_FB_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_fb_n).ToString("E5") + " FP-64b";
+                    PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_fb_p - total_b).ToString("E5") + " FP-64b";
+
+                    PRCS_SPL_pb.Minimum = 0;
+                    PRCS_SPL_pb.Maximum = total_b;
+                    PRCS_SPR_pb.Minimum = total_b;
+                    PRCS_SPR_pb.Maximum = 2 * total_b;
+                    PRCS_SPL_pb.Value = DRBE_obj_list[ind].bp_rcs_sp_n;
+                    PRCS_SPR_pb.Value = DRBE_obj_list[ind].bp_rcs_sp_p;
+                    PRCS_SP_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_sp_n).ToString("E5") + " FP-64b";
+                    PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_sp_p - total_b).ToString("E5") + " FP-64b";
+
+                    PRCS_SSL_pb.Minimum = 0;
+                    PRCS_SSL_pb.Maximum = total_b;
+                    PRCS_SSR_pb.Minimum = total_b;
+                    PRCS_SSR_pb.Maximum = 2 * total_b;
+                    PRCS_SSL_pb.Value = DRBE_obj_list[ind].bp_rcs_ss_n;
+                    PRCS_SSR_pb.Value = DRBE_obj_list[ind].bp_rcs_ss_p;
+                    PRCS_SS_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_ss_n).ToString("E5") + " FP-64b";
+                    PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_ss_p - total_b).ToString("E5") + " FP-64b";
+
+                    PRCS_PNL_pb.Minimum = 0;
+                    PRCS_PNL_pb.Maximum = total_b;
+                    PRCS_PNR_pb.Minimum = total_b;
+                    PRCS_PNR_pb.Maximum = 2 * total_b;
+                    PRCS_PNL_pb.Value = DRBE_obj_list[ind].bp_rcs_pn_n;
+                    PRCS_PNR_pb.Value = DRBE_obj_list[ind].bp_rcs_pn_p;
+                    PRCS_PN_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_pn_n).ToString("E5") + " FP-64b";
+                    PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_pn_p - total_b).ToString("E5") + " FP-64b";
+
+                    PANT_ARL_pb.Minimum = 0;
+                    PANT_ARL_pb.Maximum = total_b;
+                    PANT_ARR_pb.Minimum = total_b;
+                    PANT_ARR_pb.Maximum = 2 * total_b;
+                    PANT_ARL_pb.Value = DRBE_obj_list[ind].bp_ant_ar_n;
+                    PANT_ARR_pb.Value = DRBE_obj_list[ind].bp_ant_ar_p;
+                    PANT_AR_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_ar_n).ToString("E5") + " FP-64b";
+                    PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_ar_p - total_b).ToString("E5") + " FP-64b";
+
+                    PANT_NAL_pb.Minimum = 0;
+                    PANT_NAL_pb.Maximum = total_b;
+                    PANT_NAR_pb.Minimum = total_b;
+                    PANT_NAR_pb.Maximum = 2 * total_b;
+                    PANT_NAL_pb.Value = DRBE_obj_list[ind].bp_ant_na_n;
+                    PANT_NAR_pb.Value = DRBE_obj_list[ind].bp_ant_na_p;
+                    PANT_NA_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_na_n).ToString("E5") + " FP-64b";
+                    PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_na_p - total_b).ToString("E5") + " FP-64b";
+
+                    PANT_DSL_pb.Minimum = 0;
+                    PANT_DSL_pb.Maximum = total_b;
+                    PANT_DSR_pb.Minimum = total_b;
+                    PANT_DSR_pb.Maximum = 2 * total_b;
+                    PANT_DSL_pb.Value = DRBE_obj_list[ind].bp_ant_ds_n;
+                    PANT_DSR_pb.Value = DRBE_obj_list[ind].bp_ant_ds_p;
+                    PANT_DS_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_ds_n).ToString("E5") + " FP-64b";
+                    PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_ds_p - total_b).ToString("E5") + " FP-64b";
+                    break;
+
+
+                case 12:
+                    PRCS_ARL_pb.Minimum = 0;
+                    PRCS_ARL_pb.Maximum = total_l;
+                    PRCS_ARR_pb.Minimum = total_l;
+                    PRCS_ARR_pb.Maximum = 2 * total_l;
+                    PRCS_ARL_pb.Value = DRBE_obj_list[ind].lp_rcs_ar_n;
+                    PRCS_ARR_pb.Value = DRBE_obj_list[ind].lp_rcs_ar_p;
+                    PRCS_AR_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_ar_n).ToString("E5") + " FP-64b";
+                    PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_ar_p - total_l).ToString("E5") + " FP-64b";
+
+                    PRCS_FBL_pb.Minimum = 0;
+                    PRCS_FBL_pb.Maximum = total_l;
+                    PRCS_FBR_pb.Minimum = total_l;
+                    PRCS_FBR_pb.Maximum = 2 * total_l;
+                    PRCS_FBL_pb.Value = DRBE_obj_list[ind].lp_rcs_fb_n;
+                    PRCS_FBR_pb.Value = DRBE_obj_list[ind].lp_rcs_fb_p;
+                    PRCS_FB_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_fb_n).ToString("E5") + " FP-64b";
+                    PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_fb_p - total_l).ToString("E5") + " FP-64b";
+
+                    PRCS_SPL_pb.Minimum = 0;
+                    PRCS_SPL_pb.Maximum = total_l;
+                    PRCS_SPR_pb.Minimum = total_l;
+                    PRCS_SPR_pb.Maximum = 2 * total_l;
+                    PRCS_SPL_pb.Value = DRBE_obj_list[ind].lp_rcs_sp_n;
+                    PRCS_SPR_pb.Value = DRBE_obj_list[ind].lp_rcs_sp_p;
+                    PRCS_SP_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_sp_n).ToString("E5") + " FP-64b";
+                    PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_sp_p - total_l).ToString("E5") + " FP-64b";
+
+                    PRCS_SSL_pb.Minimum = 0;
+                    PRCS_SSL_pb.Maximum = total_l;
+                    PRCS_SSR_pb.Minimum = total_l;
+                    PRCS_SSR_pb.Maximum = 2 * total_l;
+                    PRCS_SSL_pb.Value = DRBE_obj_list[ind].lp_rcs_ss_n;
+                    PRCS_SSR_pb.Value = DRBE_obj_list[ind].lp_rcs_ss_p;
+                    PRCS_SS_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_ss_n).ToString("E5") + " FP-64b";
+                    PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_ss_p - total_l).ToString("E5") + " FP-64b";
+
+                    PRCS_PNL_pb.Minimum = 0;
+                    PRCS_PNL_pb.Maximum = total_l;
+                    PRCS_PNR_pb.Minimum = total_l;
+                    PRCS_PNR_pb.Maximum = 2 * total_l;
+                    PRCS_PNL_pb.Value = DRBE_obj_list[ind].lp_rcs_pn_n;
+                    PRCS_PNR_pb.Value = DRBE_obj_list[ind].lp_rcs_pn_p;
+                    PRCS_PN_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_pn_n).ToString("E5") + " FP-64b";
+                    PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_pn_p - total_l).ToString("E5") + " FP-64b";
+
+                    PANT_ARL_pb.Minimum = 0;
+                    PANT_ARL_pb.Maximum = total_l;
+                    PANT_ARR_pb.Minimum = total_l;
+                    PANT_ARR_pb.Maximum = 2 * total_l;
+                    PANT_ARL_pb.Value = DRBE_obj_list[ind].lp_ant_ar_n;
+                    PANT_ARR_pb.Value = DRBE_obj_list[ind].lp_ant_ar_p;
+                    PANT_AR_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_ar_n).ToString("E5") + " FP-64b";
+                    PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_ar_p - total_l).ToString("E5") + " FP-64b";
+
+                    PANT_NAL_pb.Minimum = 0;
+                    PANT_NAL_pb.Maximum = total_l;
+                    PANT_NAR_pb.Minimum = total_l;
+                    PANT_NAR_pb.Maximum = 2 * total_l;
+                    PANT_NAL_pb.Value = DRBE_obj_list[ind].lp_ant_na_n;
+                    PANT_NAR_pb.Value = DRBE_obj_list[ind].lp_ant_na_p;
+                    PANT_NA_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_na_n).ToString("E5") + " FP-64b";
+                    PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_na_p - total_l).ToString("E5") + " FP-64b";
+
+                    PANT_DSL_pb.Minimum = 0;
+                    PANT_DSL_pb.Maximum = total_l;
+                    PANT_DSR_pb.Minimum = total_l;
+                    PANT_DSR_pb.Maximum = 2 * total_l;
+                    PANT_DSL_pb.Value = DRBE_obj_list[ind].lp_ant_ds_n;
+                    PANT_DSR_pb.Value = DRBE_obj_list[ind].lp_ant_ds_p;
+                    PANT_DS_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_ds_n).ToString("E5") + " FP-64b";
+                    PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_ds_p - total_l).ToString("E5") + " FP-64b";
+                    break;
+
+                default:
+                    await ShowDialog("Panel Update Error", "Unexpected Mode");
+                    break;
             }
-            else if (Presentation_choice_mode == 6)
-            {
-                FANT0_pb.Value = DRBE_obj_list[ind].mf_ant0;
-                FANT1_pb.Value = DRBE_obj_list[ind].mf_ant1;
-                FANT2_pb.Value = DRBE_obj_list[ind].mf_ant2;
-                FANT3_pb.Value = DRBE_obj_list[ind].mf_ant3;
-                FANT4_pb.Value = DRBE_obj_list[ind].mf_ant4;
-                FANT5_pb.Value = DRBE_obj_list[ind].mf_ant5;
 
-                FRCS0_pb.Value = DRBE_obj_list[ind].mf_rcs0;
-                FRCS1_pb.Value = DRBE_obj_list[ind].mf_rcs1;
-                FRCS2_pb.Value = DRBE_obj_list[ind].mf_rcs2;
-                FRCS3_pb.Value = DRBE_obj_list[ind].mf_rcs3;
-                FRCS4_pb.Value = DRBE_obj_list[ind].mf_rcs4;
-                FRCS5_pb.Value = DRBE_obj_list[ind].mf_rcs5;
-                FRCS6_pb.Value = DRBE_obj_list[ind].mf_rcs6;
-
-                maxa = DRBE_obj_list[ind].mf_ant0 + DRBE_obj_list[ind].mf_ant1 + DRBE_obj_list[ind].mf_ant2 + DRBE_obj_list[ind].mf_ant3 + DRBE_obj_list[ind].mf_ant4 + DRBE_obj_list[ind].mf_ant5;
-                maxr = DRBE_obj_list[ind].mf_rcs0 + DRBE_obj_list[ind].mf_rcs1 + DRBE_obj_list[ind].mf_rcs2 + DRBE_obj_list[ind].mf_rcs3 + DRBE_obj_list[ind].mf_rcs4 + DRBE_obj_list[ind].mf_rcs5 + DRBE_obj_list[ind].mf_rcs6;
-
-                FANT0_pb.Maximum = maxa;
-                FANT1_pb.Maximum = maxa;
-                FANT2_pb.Maximum = maxa;
-                FANT3_pb.Maximum = maxa;
-                FANT4_pb.Maximum = maxa;
-                FANT5_pb.Maximum = maxa;
-
-                FRCS0_pb.Maximum = maxr;
-                FRCS1_pb.Maximum = maxr;
-                FRCS2_pb.Maximum = maxr;
-                FRCS3_pb.Maximum = maxr;
-                FRCS4_pb.Maximum = maxr;
-                FRCS5_pb.Maximum = maxr;
-                FRCS6_pb.Maximum = maxr;
-
-                FANT0_i_tb.Text = DRBE_obj_list[ind].mf_ant0.ToString("E5");
-                FANT1_i_tb.Text = DRBE_obj_list[ind].mf_ant1.ToString("E5");
-                FANT2_i_tb.Text = DRBE_obj_list[ind].mf_ant2.ToString("E5");
-                FANT3_i_tb.Text = DRBE_obj_list[ind].mf_ant3.ToString("E5");
-                FANT4_i_tb.Text = DRBE_obj_list[ind].mf_ant4.ToString("E5");
-                FANT5_i_tb.Text = DRBE_obj_list[ind].mf_ant5.ToString("E5");
-
-                FRCS0_i_tb.Text = DRBE_obj_list[ind].mf_rcs0.ToString("E5");
-                FRCS1_i_tb.Text = DRBE_obj_list[ind].mf_rcs1.ToString("E5");
-                FRCS2_i_tb.Text = DRBE_obj_list[ind].mf_rcs2.ToString("E5");
-                FRCS3_i_tb.Text = DRBE_obj_list[ind].mf_rcs3.ToString("E5");
-                FRCS4_i_tb.Text = DRBE_obj_list[ind].mf_rcs4.ToString("E5");
-                FRCS5_i_tb.Text = DRBE_obj_list[ind].mf_rcs5.ToString("E5");
-                FRCS6_i_tb.Text = DRBE_obj_list[ind].mf_rcs6.ToString("E5");
-            }
-            else if (Presentation_choice_mode == 7)
-            {
-                FANT0_pb.Value = DRBE_obj_list[ind].bf_ant0;
-                FANT1_pb.Value = DRBE_obj_list[ind].bf_ant1;
-                FANT2_pb.Value = DRBE_obj_list[ind].bf_ant2;
-                FANT3_pb.Value = DRBE_obj_list[ind].bf_ant3;
-                FANT4_pb.Value = DRBE_obj_list[ind].bf_ant4;
-                FANT5_pb.Value = DRBE_obj_list[ind].bf_ant5;
-
-                FRCS0_pb.Value = DRBE_obj_list[ind].bf_rcs0;
-                FRCS1_pb.Value = DRBE_obj_list[ind].bf_rcs1;
-                FRCS2_pb.Value = DRBE_obj_list[ind].bf_rcs2;
-                FRCS3_pb.Value = DRBE_obj_list[ind].bf_rcs3;
-                FRCS4_pb.Value = DRBE_obj_list[ind].bf_rcs4;
-                FRCS5_pb.Value = DRBE_obj_list[ind].bf_rcs5;
-                FRCS6_pb.Value = DRBE_obj_list[ind].bf_rcs6;
-
-                maxa = DRBE_obj_list[ind].bf_ant0 + DRBE_obj_list[ind].bf_ant1 + DRBE_obj_list[ind].bf_ant2 + DRBE_obj_list[ind].bf_ant3 + DRBE_obj_list[ind].bf_ant4 + DRBE_obj_list[ind].bf_ant5;
-                maxr = DRBE_obj_list[ind].bf_rcs0 + DRBE_obj_list[ind].bf_rcs1 + DRBE_obj_list[ind].bf_rcs2 + DRBE_obj_list[ind].bf_rcs3 + DRBE_obj_list[ind].bf_rcs4 + DRBE_obj_list[ind].bf_rcs5 + DRBE_obj_list[ind].bf_rcs6;
-
-                FANT0_pb.Maximum = maxa;
-                FANT1_pb.Maximum = maxa;
-                FANT2_pb.Maximum = maxa;
-                FANT3_pb.Maximum = maxa;
-                FANT4_pb.Maximum = maxa;
-                FANT5_pb.Maximum = maxa;
-
-                FRCS0_pb.Maximum = maxr;
-                FRCS1_pb.Maximum = maxr;
-                FRCS2_pb.Maximum = maxr;
-                FRCS3_pb.Maximum = maxr;
-                FRCS4_pb.Maximum = maxr;
-                FRCS5_pb.Maximum = maxr;
-                FRCS6_pb.Maximum = maxr;
-
-                FANT0_i_tb.Text = DRBE_obj_list[ind].bf_ant0.ToString("E5");
-                FANT1_i_tb.Text = DRBE_obj_list[ind].bf_ant1.ToString("E5");
-                FANT2_i_tb.Text = DRBE_obj_list[ind].bf_ant2.ToString("E5");
-                FANT3_i_tb.Text = DRBE_obj_list[ind].bf_ant3.ToString("E5");
-                FANT4_i_tb.Text = DRBE_obj_list[ind].bf_ant4.ToString("E5");
-                FANT5_i_tb.Text = DRBE_obj_list[ind].bf_ant5.ToString("E5");
-
-                FRCS0_i_tb.Text = DRBE_obj_list[ind].bf_rcs0.ToString("E5");
-                FRCS1_i_tb.Text = DRBE_obj_list[ind].bf_rcs1.ToString("E5");
-                FRCS2_i_tb.Text = DRBE_obj_list[ind].bf_rcs2.ToString("E5");
-                FRCS3_i_tb.Text = DRBE_obj_list[ind].bf_rcs3.ToString("E5");
-                FRCS4_i_tb.Text = DRBE_obj_list[ind].bf_rcs4.ToString("E5");
-                FRCS5_i_tb.Text = DRBE_obj_list[ind].bf_rcs5.ToString("E5");
-                FRCS6_i_tb.Text = DRBE_obj_list[ind].bf_rcs6.ToString("E5");
-            }
-            else if (Presentation_choice_mode == 8)
-            {
-                FANT0_pb.Value = DRBE_obj_list[ind].lf_ant0;
-                FANT1_pb.Value = DRBE_obj_list[ind].lf_ant1;
-                FANT2_pb.Value = DRBE_obj_list[ind].lf_ant2;
-                FANT3_pb.Value = DRBE_obj_list[ind].lf_ant3;
-                FANT4_pb.Value = DRBE_obj_list[ind].lf_ant4;
-                FANT5_pb.Value = DRBE_obj_list[ind].lf_ant5;
-
-                FRCS0_pb.Value = DRBE_obj_list[ind].lf_rcs0;
-                FRCS1_pb.Value = DRBE_obj_list[ind].lf_rcs1;
-                FRCS2_pb.Value = DRBE_obj_list[ind].lf_rcs2;
-                FRCS3_pb.Value = DRBE_obj_list[ind].lf_rcs3;
-                FRCS4_pb.Value = DRBE_obj_list[ind].lf_rcs4;
-                FRCS5_pb.Value = DRBE_obj_list[ind].lf_rcs5;
-                FRCS6_pb.Value = DRBE_obj_list[ind].lf_rcs6;
-
-                maxa = DRBE_obj_list[ind].lf_ant0 + DRBE_obj_list[ind].lf_ant1 + DRBE_obj_list[ind].lf_ant2 + DRBE_obj_list[ind].lf_ant3 + DRBE_obj_list[ind].lf_ant4 + DRBE_obj_list[ind].lf_ant5;
-                maxr = DRBE_obj_list[ind].lf_rcs0 + DRBE_obj_list[ind].lf_rcs1 + DRBE_obj_list[ind].lf_rcs2 + DRBE_obj_list[ind].lf_rcs3 + DRBE_obj_list[ind].lf_rcs4 + DRBE_obj_list[ind].lf_rcs5 + DRBE_obj_list[ind].lf_rcs6;
-
-                FANT0_pb.Maximum = maxa;
-                FANT1_pb.Maximum = maxa;
-                FANT2_pb.Maximum = maxa;
-                FANT3_pb.Maximum = maxa;
-                FANT4_pb.Maximum = maxa;
-                FANT5_pb.Maximum = maxa;
-
-                FRCS0_pb.Maximum = maxr;
-                FRCS1_pb.Maximum = maxr;
-                FRCS2_pb.Maximum = maxr;
-                FRCS3_pb.Maximum = maxr;
-                FRCS4_pb.Maximum = maxr;
-                FRCS5_pb.Maximum = maxr;
-                FRCS6_pb.Maximum = maxr;
-
-                FANT0_i_tb.Text = DRBE_obj_list[ind].lf_ant0.ToString("E5");
-                FANT1_i_tb.Text = DRBE_obj_list[ind].lf_ant1.ToString("E5");
-                FANT2_i_tb.Text = DRBE_obj_list[ind].lf_ant2.ToString("E5");
-                FANT3_i_tb.Text = DRBE_obj_list[ind].lf_ant3.ToString("E5");
-                FANT4_i_tb.Text = DRBE_obj_list[ind].lf_ant4.ToString("E5");
-                FANT5_i_tb.Text = DRBE_obj_list[ind].lf_ant5.ToString("E5");
-
-                FRCS0_i_tb.Text = DRBE_obj_list[ind].lf_rcs0.ToString("E5");
-                FRCS1_i_tb.Text = DRBE_obj_list[ind].lf_rcs1.ToString("E5");
-                FRCS2_i_tb.Text = DRBE_obj_list[ind].lf_rcs2.ToString("E5");
-                FRCS3_i_tb.Text = DRBE_obj_list[ind].lf_rcs3.ToString("E5");
-                FRCS4_i_tb.Text = DRBE_obj_list[ind].lf_rcs4.ToString("E5");
-                FRCS5_i_tb.Text = DRBE_obj_list[ind].lf_rcs5.ToString("E5");
-                FRCS6_i_tb.Text = DRBE_obj_list[ind].lf_rcs6.ToString("E5");
-            }
-            else if (Presentation_choice_mode == 9)
-            {
-                PRCS_ARL_pb.Minimum = 0;
-                PRCS_ARL_pb.Maximum = total_c;
-                PRCS_ARR_pb.Minimum = total_c;
-                PRCS_ARR_pb.Maximum = 2 * total_c;
-                PRCS_ARL_pb.Value = DRBE_obj_list[ind].cp_rcs_ar_n;
-                PRCS_ARR_pb.Value = DRBE_obj_list[ind].cp_rcs_ar_p;
-                PRCS_AR_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_ar_n).ToString("E5") + " FP-64b";
-                PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_ar_p - total_c).ToString("E5") + " FP-64b";
-
-                PRCS_FBL_pb.Minimum = 0;
-                PRCS_FBL_pb.Maximum = total_c;
-                PRCS_FBR_pb.Minimum = total_c;
-                PRCS_FBR_pb.Maximum = 2 * total_c;
-                PRCS_FBL_pb.Value = DRBE_obj_list[ind].cp_rcs_fb_n;
-                PRCS_FBR_pb.Value = DRBE_obj_list[ind].cp_rcs_fb_p;
-                PRCS_FB_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_fb_n).ToString("E5") + " FP-64b";
-                PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_fb_p - total_c).ToString("E5") + " FP-64b";
-
-                PRCS_SPL_pb.Minimum = 0;
-                PRCS_SPL_pb.Maximum = total_c;
-                PRCS_SPR_pb.Minimum = total_c;
-                PRCS_SPR_pb.Maximum = 2 * total_c;
-                PRCS_SPL_pb.Value = DRBE_obj_list[ind].cp_rcs_sp_n;
-                PRCS_SPR_pb.Value = DRBE_obj_list[ind].cp_rcs_sp_p;
-                PRCS_SP_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_sp_n).ToString("E5") + " FP-64b";
-                PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_sp_p - total_c).ToString("E5") + " FP-64b";
-
-                PRCS_SSL_pb.Minimum = 0;
-                PRCS_SSL_pb.Maximum = total_c;
-                PRCS_SSR_pb.Minimum = total_c;
-                PRCS_SSR_pb.Maximum = 2 * total_c;
-                PRCS_SSL_pb.Value = DRBE_obj_list[ind].cp_rcs_ss_n;
-                PRCS_SSR_pb.Value = DRBE_obj_list[ind].cp_rcs_ss_p;
-                PRCS_SS_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_ss_n).ToString("E5") + " FP-64b";
-                PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_ss_p - total_c).ToString("E5") + " FP-64b";
-
-                PRCS_PNL_pb.Minimum = 0;
-                PRCS_PNL_pb.Maximum = total_c;
-                PRCS_PNR_pb.Minimum = total_c;
-                PRCS_PNR_pb.Maximum = 2 * total_c;
-                PRCS_PNL_pb.Value = DRBE_obj_list[ind].cp_rcs_pn_n;
-                PRCS_PNR_pb.Value = DRBE_obj_list[ind].cp_rcs_pn_p;
-                PRCS_PN_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_rcs_pn_n).ToString("E5") + " FP-64b";
-                PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_rcs_pn_p - total_c).ToString("E5") + " FP-64b";
-
-                PANT_ARL_pb.Minimum = 0;
-                PANT_ARL_pb.Maximum = total_c;
-                PANT_ARR_pb.Minimum = total_c;
-                PANT_ARR_pb.Maximum = 2 * total_c;
-                PANT_ARL_pb.Value = DRBE_obj_list[ind].cp_ant_ar_n;
-                PANT_ARR_pb.Value = DRBE_obj_list[ind].cp_ant_ar_p;
-                PANT_AR_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_ar_n).ToString("E5") + " FP-64b";
-                PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_ar_p - total_c).ToString("E5") + " FP-64b";
-
-                PANT_NAL_pb.Minimum = 0;
-                PANT_NAL_pb.Maximum = total_c;
-                PANT_NAR_pb.Minimum = total_c;
-                PANT_NAR_pb.Maximum = 2 * total_c;
-                PANT_NAL_pb.Value = DRBE_obj_list[ind].cp_ant_na_n;
-                PANT_NAR_pb.Value = DRBE_obj_list[ind].cp_ant_na_p;
-                PANT_NA_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_na_n).ToString("E5") + " FP-64b";
-                PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_na_p - total_c).ToString("E5") + " FP-64b";
-
-                PANT_DSL_pb.Minimum = 0;
-                PANT_DSL_pb.Maximum = total_c;
-                PANT_DSR_pb.Minimum = total_c;
-                PANT_DSR_pb.Maximum = 2 * total_c;
-                PANT_DSL_pb.Value = DRBE_obj_list[ind].cp_ant_ds_n;
-                PANT_DSR_pb.Value = DRBE_obj_list[ind].cp_ant_ds_p;
-                PANT_DS_ni_tb.Text = "- " + (total_c - DRBE_obj_list[ind].cp_ant_ds_n).ToString("E5") + " FP-64b";
-                PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].cp_ant_ds_p - total_c).ToString("E5") + " FP-64b";
-            }
-            else if (Presentation_choice_mode == 10)
-            {
-                PRCS_ARL_pb.Minimum = 0;
-                PRCS_ARL_pb.Maximum = total_m;
-                PRCS_ARR_pb.Minimum = total_m;
-                PRCS_ARR_pb.Maximum = 2 * total_m;
-                PRCS_ARL_pb.Value = DRBE_obj_list[ind].mp_rcs_ar_n;
-                PRCS_ARR_pb.Value = DRBE_obj_list[ind].mp_rcs_ar_p;
-                PRCS_AR_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_ar_n).ToString("E5") + " FP-64b";
-                PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_ar_p - total_m).ToString("E5") + " FP-64b";
-
-                PRCS_FBL_pb.Minimum = 0;
-                PRCS_FBL_pb.Maximum = total_m;
-                PRCS_FBR_pb.Minimum = total_m;
-                PRCS_FBR_pb.Maximum = 2 * total_m;
-                PRCS_FBL_pb.Value = DRBE_obj_list[ind].mp_rcs_fb_n;
-                PRCS_FBR_pb.Value = DRBE_obj_list[ind].mp_rcs_fb_p;
-                PRCS_FB_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_fb_n).ToString("E5") + " FP-64b";
-                PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_fb_p - total_m).ToString("E5") + " FP-64b";
-
-                PRCS_SPL_pb.Minimum = 0;
-                PRCS_SPL_pb.Maximum = total_m;
-                PRCS_SPR_pb.Minimum = total_m;
-                PRCS_SPR_pb.Maximum = 2 * total_m;
-                PRCS_SPL_pb.Value = DRBE_obj_list[ind].mp_rcs_sp_n;
-                PRCS_SPR_pb.Value = DRBE_obj_list[ind].mp_rcs_sp_p;
-                PRCS_SP_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_sp_n).ToString("E5") + " FP-64b";
-                PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_sp_p - total_m).ToString("E5") + " FP-64b";
-
-                PRCS_SSL_pb.Minimum = 0;
-                PRCS_SSL_pb.Maximum = total_m;
-                PRCS_SSR_pb.Minimum = total_m;
-                PRCS_SSR_pb.Maximum = 2 * total_m;
-                PRCS_SSL_pb.Value = DRBE_obj_list[ind].mp_rcs_ss_n;
-                PRCS_SSR_pb.Value = DRBE_obj_list[ind].mp_rcs_ss_p;
-                PRCS_SS_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_ss_n).ToString("E5") + " FP-64b";
-                PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_ss_p - total_m).ToString("E5") + " FP-64b";
-
-                PRCS_PNL_pb.Minimum = 0;
-                PRCS_PNL_pb.Maximum = total_m;
-                PRCS_PNR_pb.Minimum = total_m;
-                PRCS_PNR_pb.Maximum = 2 * total_m;
-                PRCS_PNL_pb.Value = DRBE_obj_list[ind].mp_rcs_pn_n;
-                PRCS_PNR_pb.Value = DRBE_obj_list[ind].mp_rcs_pn_p;
-                PRCS_PN_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_rcs_pn_n).ToString("E5") + " FP-64b";
-                PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_rcs_pn_p - total_m).ToString("E5") + " FP-64b";
-
-                PANT_ARL_pb.Minimum = 0;
-                PANT_ARL_pb.Maximum = total_m;
-                PANT_ARR_pb.Minimum = total_m;
-                PANT_ARR_pb.Maximum = 2 * total_m;
-                PANT_ARL_pb.Value = DRBE_obj_list[ind].mp_ant_ar_n;
-                PANT_ARR_pb.Value = DRBE_obj_list[ind].mp_ant_ar_p;
-                PANT_AR_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_ar_n).ToString("E5") + " FP-64b";
-                PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_ar_p - total_m).ToString("E5") + " FP-64b";
-
-                PANT_NAL_pb.Minimum = 0;
-                PANT_NAL_pb.Maximum = total_m;
-                PANT_NAR_pb.Minimum = total_m;
-                PANT_NAR_pb.Maximum = 2 * total_m;
-                PANT_NAL_pb.Value = DRBE_obj_list[ind].mp_ant_na_n;
-                PANT_NAR_pb.Value = DRBE_obj_list[ind].mp_ant_na_p;
-                PANT_NA_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_na_n).ToString("E5") + " FP-64b";
-                PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_na_p - total_m).ToString("E5") + " FP-64b";
-
-                PANT_DSL_pb.Minimum = 0;
-                PANT_DSL_pb.Maximum = total_m;
-                PANT_DSR_pb.Minimum = total_m;
-                PANT_DSR_pb.Maximum = 2 * total_m;
-                PANT_DSL_pb.Value = DRBE_obj_list[ind].mp_ant_ds_n;
-                PANT_DSR_pb.Value = DRBE_obj_list[ind].mp_ant_ds_p;
-                PANT_DS_ni_tb.Text = "- " + (total_m - DRBE_obj_list[ind].mp_ant_ds_n).ToString("E5") + " FP-64b";
-                PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].mp_ant_ds_p - total_m).ToString("E5") + " FP-64b";
-            }
-            else if (Presentation_choice_mode == 11)
-            {
-                PRCS_ARL_pb.Minimum = 0;
-                PRCS_ARL_pb.Maximum = total_b;
-                PRCS_ARR_pb.Minimum = total_b;
-                PRCS_ARR_pb.Maximum = 2 * total_b;
-                PRCS_ARL_pb.Value = DRBE_obj_list[ind].bp_rcs_ar_n;
-                PRCS_ARR_pb.Value = DRBE_obj_list[ind].bp_rcs_ar_p;
-                PRCS_AR_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_ar_n).ToString("E5") + " FP-64b";
-                PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_ar_p - total_b).ToString("E5") + " FP-64b";
-
-                PRCS_FBL_pb.Minimum = 0;
-                PRCS_FBL_pb.Maximum = total_b;
-                PRCS_FBR_pb.Minimum = total_b;
-                PRCS_FBR_pb.Maximum = 2 * total_b;
-                PRCS_FBL_pb.Value = DRBE_obj_list[ind].bp_rcs_fb_n;
-                PRCS_FBR_pb.Value = DRBE_obj_list[ind].bp_rcs_fb_p;
-                PRCS_FB_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_fb_n).ToString("E5") + " FP-64b";
-                PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_fb_p - total_b).ToString("E5") + " FP-64b";
-
-                PRCS_SPL_pb.Minimum = 0;
-                PRCS_SPL_pb.Maximum = total_b;
-                PRCS_SPR_pb.Minimum = total_b;
-                PRCS_SPR_pb.Maximum = 2 * total_b;
-                PRCS_SPL_pb.Value = DRBE_obj_list[ind].bp_rcs_sp_n;
-                PRCS_SPR_pb.Value = DRBE_obj_list[ind].bp_rcs_sp_p;
-                PRCS_SP_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_sp_n).ToString("E5") + " FP-64b";
-                PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_sp_p - total_b).ToString("E5") + " FP-64b";
-
-                PRCS_SSL_pb.Minimum = 0;
-                PRCS_SSL_pb.Maximum = total_b;
-                PRCS_SSR_pb.Minimum = total_b;
-                PRCS_SSR_pb.Maximum = 2 * total_b;
-                PRCS_SSL_pb.Value = DRBE_obj_list[ind].bp_rcs_ss_n;
-                PRCS_SSR_pb.Value = DRBE_obj_list[ind].bp_rcs_ss_p;
-                PRCS_SS_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_ss_n).ToString("E5") + " FP-64b";
-                PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_ss_p - total_b).ToString("E5") + " FP-64b";
-
-                PRCS_PNL_pb.Minimum = 0;
-                PRCS_PNL_pb.Maximum = total_b;
-                PRCS_PNR_pb.Minimum = total_b;
-                PRCS_PNR_pb.Maximum = 2 * total_b;
-                PRCS_PNL_pb.Value = DRBE_obj_list[ind].bp_rcs_pn_n;
-                PRCS_PNR_pb.Value = DRBE_obj_list[ind].bp_rcs_pn_p;
-                PRCS_PN_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_rcs_pn_n).ToString("E5") + " FP-64b";
-                PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_rcs_pn_p - total_b).ToString("E5") + " FP-64b";
-
-                PANT_ARL_pb.Minimum = 0;
-                PANT_ARL_pb.Maximum = total_b;
-                PANT_ARR_pb.Minimum = total_b;
-                PANT_ARR_pb.Maximum = 2 * total_b;
-                PANT_ARL_pb.Value = DRBE_obj_list[ind].bp_ant_ar_n;
-                PANT_ARR_pb.Value = DRBE_obj_list[ind].bp_ant_ar_p;
-                PANT_AR_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_ar_n).ToString("E5") + " FP-64b";
-                PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_ar_p - total_b).ToString("E5") + " FP-64b";
-
-                PANT_NAL_pb.Minimum = 0;
-                PANT_NAL_pb.Maximum = total_b;
-                PANT_NAR_pb.Minimum = total_b;
-                PANT_NAR_pb.Maximum = 2 * total_b;
-                PANT_NAL_pb.Value = DRBE_obj_list[ind].bp_ant_na_n;
-                PANT_NAR_pb.Value = DRBE_obj_list[ind].bp_ant_na_p;
-                PANT_NA_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_na_n).ToString("E5") + " FP-64b";
-                PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_na_p - total_b).ToString("E5") + " FP-64b";
-
-                PANT_DSL_pb.Minimum = 0;
-                PANT_DSL_pb.Maximum = total_b;
-                PANT_DSR_pb.Minimum = total_b;
-                PANT_DSR_pb.Maximum = 2 * total_b;
-                PANT_DSL_pb.Value = DRBE_obj_list[ind].bp_ant_ds_n;
-                PANT_DSR_pb.Value = DRBE_obj_list[ind].bp_ant_ds_p;
-                PANT_DS_ni_tb.Text = "- " + (total_b - DRBE_obj_list[ind].bp_ant_ds_n).ToString("E5") + " FP-64b";
-                PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].bp_ant_ds_p - total_b).ToString("E5") + " FP-64b";
-            }
-            else if (Presentation_choice_mode == 12)
-            {
-                PRCS_ARL_pb.Minimum = 0;
-                PRCS_ARL_pb.Maximum = total_l;
-                PRCS_ARR_pb.Minimum = total_l;
-                PRCS_ARR_pb.Maximum = 2 * total_l;
-                PRCS_ARL_pb.Value = DRBE_obj_list[ind].lp_rcs_ar_n;
-                PRCS_ARR_pb.Value = DRBE_obj_list[ind].lp_rcs_ar_p;
-                PRCS_AR_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_ar_n).ToString("E5") + " FP-64b";
-                PRCS_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_ar_p - total_l).ToString("E5") + " FP-64b";
-
-                PRCS_FBL_pb.Minimum = 0;
-                PRCS_FBL_pb.Maximum = total_l;
-                PRCS_FBR_pb.Minimum = total_l;
-                PRCS_FBR_pb.Maximum = 2 * total_l;
-                PRCS_FBL_pb.Value = DRBE_obj_list[ind].lp_rcs_fb_n;
-                PRCS_FBR_pb.Value = DRBE_obj_list[ind].lp_rcs_fb_p;
-                PRCS_FB_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_fb_n).ToString("E5") + " FP-64b";
-                PRCS_FB_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_fb_p - total_l).ToString("E5") + " FP-64b";
-
-                PRCS_SPL_pb.Minimum = 0;
-                PRCS_SPL_pb.Maximum = total_l;
-                PRCS_SPR_pb.Minimum = total_l;
-                PRCS_SPR_pb.Maximum = 2 * total_l;
-                PRCS_SPL_pb.Value = DRBE_obj_list[ind].lp_rcs_sp_n;
-                PRCS_SPR_pb.Value = DRBE_obj_list[ind].lp_rcs_sp_p;
-                PRCS_SP_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_sp_n).ToString("E5") + " FP-64b";
-                PRCS_SP_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_sp_p - total_l).ToString("E5") + " FP-64b";
-
-                PRCS_SSL_pb.Minimum = 0;
-                PRCS_SSL_pb.Maximum = total_l;
-                PRCS_SSR_pb.Minimum = total_l;
-                PRCS_SSR_pb.Maximum = 2 * total_l;
-                PRCS_SSL_pb.Value = DRBE_obj_list[ind].lp_rcs_ss_n;
-                PRCS_SSR_pb.Value = DRBE_obj_list[ind].lp_rcs_ss_p;
-                PRCS_SS_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_ss_n).ToString("E5") + " FP-64b";
-                PRCS_SS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_ss_p - total_l).ToString("E5") + " FP-64b";
-
-                PRCS_PNL_pb.Minimum = 0;
-                PRCS_PNL_pb.Maximum = total_l;
-                PRCS_PNR_pb.Minimum = total_l;
-                PRCS_PNR_pb.Maximum = 2 * total_l;
-                PRCS_PNL_pb.Value = DRBE_obj_list[ind].lp_rcs_pn_n;
-                PRCS_PNR_pb.Value = DRBE_obj_list[ind].lp_rcs_pn_p;
-                PRCS_PN_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_rcs_pn_n).ToString("E5") + " FP-64b";
-                PRCS_PN_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_rcs_pn_p - total_l).ToString("E5") + " FP-64b";
-
-                PANT_ARL_pb.Minimum = 0;
-                PANT_ARL_pb.Maximum = total_l;
-                PANT_ARR_pb.Minimum = total_l;
-                PANT_ARR_pb.Maximum = 2 * total_l;
-                PANT_ARL_pb.Value = DRBE_obj_list[ind].lp_ant_ar_n;
-                PANT_ARR_pb.Value = DRBE_obj_list[ind].lp_ant_ar_p;
-                PANT_AR_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_ar_n).ToString("E5") + " FP-64b";
-                PANT_AR_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_ar_p - total_l).ToString("E5") + " FP-64b";
-
-                PANT_NAL_pb.Minimum = 0;
-                PANT_NAL_pb.Maximum = total_l;
-                PANT_NAR_pb.Minimum = total_l;
-                PANT_NAR_pb.Maximum = 2 * total_l;
-                PANT_NAL_pb.Value = DRBE_obj_list[ind].lp_ant_na_n;
-                PANT_NAR_pb.Value = DRBE_obj_list[ind].lp_ant_na_p;
-                PANT_NA_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_na_n).ToString("E5") + " FP-64b";
-                PANT_NA_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_na_p - total_l).ToString("E5") + " FP-64b";
-
-                PANT_DSL_pb.Minimum = 0;
-                PANT_DSL_pb.Maximum = total_l;
-                PANT_DSR_pb.Minimum = total_l;
-                PANT_DSR_pb.Maximum = 2 * total_l;
-                PANT_DSL_pb.Value = DRBE_obj_list[ind].lp_ant_ds_n;
-                PANT_DSR_pb.Value = DRBE_obj_list[ind].lp_ant_ds_p;
-                PANT_DS_ni_tb.Text = "- " + (total_l - DRBE_obj_list[ind].lp_ant_ds_n).ToString("E5") + " FP-64b";
-                PANT_DS_pi_tb.Text = "+ " + (DRBE_obj_list[ind].lp_ant_ds_p - total_l).ToString("E5") + " FP-64b";
-            }
+               
         }
         private void Scan_obj_refresh(int ind)
         {
@@ -2820,8 +2853,24 @@ namespace DRBE
             DRBE_obj_list[ind].lf_rcs4 = 0;
             DRBE_obj_list[ind].lf_rcs5 = 0;
             DRBE_obj_list[ind].lf_rcs6 = 0;
+
+            DRBE_obj_scan_latency_list = new List<List<double>>();
+            int i = 0;
+            int ii = 0;
+            i = 0;
+            while(i<7)
+            {
+                DRBE_obj_scan_latency_list.Add(new List<double>());
+                ii = 0;
+                while(ii<29)
+                {
+                    DRBE_obj_scan_latency_list[i].Add(0);
+                    ii++;
+                }
+                i++;
+            }
         }
-        private void Scan_obj_update(List<double> x, int ind, int pind, int mode)
+        private async Task Scan_obj_update(List<double> x, int ind, int pind, int mode)
         {
             //ind object number
             //pind property number
@@ -2829,2975 +2878,2005 @@ namespace DRBE
             //x information
             //bound lower, original, uppder
 
-            if(mode == 0)//transmitter
+            if (mode == 0 || mode == 2)//transmitter
             {
-                if(pind == 0)//ant 0
+                switch (pind)
                 {
-                    //DRBE_obj_list[ind].cf_ant0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant0 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant0 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant0 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant0 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant0 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant0 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant0 += x[30]; //tu
-
-                } //ant 0
-                else if(pind == 1)
-                {
-                    //DRBE_obj_list[ind].cf_ant1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant1 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant1 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant1 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant1 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant1 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant1 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant1 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant1 += x[30]; //tu
-                } //ant 1
-                else if (pind == 2)
-                {
-                    //DRBE_obj_list[ind].cf_ant2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant2 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant2 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant2 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant2 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant2 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant2 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant2 += x[30]; //tu
-                } //ant 2
-                else if (pind == 3)
-                {
-                    //DRBE_obj_list[ind].cf_ant3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant3 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant3 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant3 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant3 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant3 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant3 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant3 += x[30]; //tu
-                } //ant 3
-                else if (pind == 4)
-                {
-                    //DRBE_obj_list[ind].cf_ant4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant4 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant4 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant4 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant4 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant4 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant4 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant4 += x[30]; //tu
-                } //ant 4
-                else if (pind == 5)
-                {
-                    //DRBE_obj_list[ind].cf_ant5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant5 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant5 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant5 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant5 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant5 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant5 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant5 += x[30]; //tu
-                } //ant 5
-                else if (pind == 6)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_na_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_na_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_na_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_n += x[30]; //tu
-                } //na l
-                else if (pind == 7)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_na_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_na_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_na_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_p += x[30]; //tu
-                } //na u
-                else if (pind == 8)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 9)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 10)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[30]; //tu
-                } //ds l
-                else if (pind == 11)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[30]; //tu
-                } //ds u
-                else if (pind == 12)
-                {
-                    //DRBE_obj_list[ind].cf_rcs0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs0 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs0 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs0 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs0 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs0 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs0 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs0 += x[30]; //tu
-                } //rcs 0
-                else if (pind == 13)
-                {
-                    //DRBE_obj_list[ind].cf_rcs1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs1 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs1 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs1 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs1 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs1 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs1 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs1 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs1 += x[30]; //tu
-                } //rcs 1
-                else if (pind == 14)
-                {
-                    //DRBE_obj_list[ind].cf_rcs2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs2 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs2 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs2 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs2 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs2 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs2 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs2 += x[30]; //tu
-                } //rcs 2
-                else if (pind == 15)
-                {
-                    //DRBE_obj_list[ind].cf_rcs3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs3 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs3 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs3 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs3 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs3 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs3 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs3 += x[30]; //tu
-                } //rcs 3
-                else if (pind == 16)
-                {
-                    //DRBE_obj_list[ind].cf_rcs4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs4 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs4 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs4 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs4 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs4 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs4 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs4 += x[30]; //tu
-                } //rcs 4
-                else if (pind == 17)
-                {
-                    //DRBE_obj_list[ind].cf_rcs5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs5 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs5 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs5 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs5 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs5 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs5 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs5 += x[30]; //tu
-                } //rcs 5
-                else if (pind == 18)
-                {
-                    //DRBE_obj_list[ind].cf_rcs6 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs6 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs6 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs6 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs6 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs6 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs6 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs6 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs6 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs6 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs6 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs6 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs6 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs6 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs6 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs6 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs6 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs6 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs6 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs6 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs6 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs6 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs6 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs6 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs6 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs6 += x[30]; //tu
-                } //rcs 6
-                else if (pind == 19)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[30]; //tu
-                } //pn l
-                else if (pind == 20)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[30]; //tu
-                } //pn u
-                else if (pind == 21)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[30]; //tu
-                } //ss l
-                else if (pind == 22)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[30]; //tu
-                } //ss u
-                else if (pind == 23)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[30]; //tu
-                } //sp l
-                else if (pind == 24)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[30]; //tu
-                } //sp u
-                else if (pind == 25)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 26)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 27)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[30]; //tu
-                } //fb l
-                else if (pind == 28)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[30]; //tu
-                } //fb u
+
+
+                    case 0://ant 0
+
+                        //DRBE_obj_list[ind].cf_ant0 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant0 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant0 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant0 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant0 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant0 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant0 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant0 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant0 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant0 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant0 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant0 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant0 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant0 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant0 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant0 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant0 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant0 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant0 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break;
+
+                    case 1:
+
+                        //DRBE_obj_list[ind].cf_ant1 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant1 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant1 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant1 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant1 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant1 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant1 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant1 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant1 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant1 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant1 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant1 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant1 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant1 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant1 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant1 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant1 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant1 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant1 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                                                                                                                    //ant 1
+                        break;
+                    case 2:
+
+                        //DRBE_obj_list[ind].cf_ant2 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant2 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant2 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant2 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant2 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant2 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant2 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant2 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant2 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant2 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant2 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant2 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant2 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant2 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant2 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant2 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant2 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant2 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant2 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant2 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                                                                                                                    //ant 2
+                        break;
+                    case 3:
+
+                        //DRBE_obj_list[ind].cf_ant3 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant3 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant3 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant3 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant3 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant3 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant3 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant3 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant3 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant3 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant3 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant3 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant3 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant3 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant3 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant3 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant3 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant3 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant3 += x[29]; //tu
+                                                             //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 3
+                    case 4:
+
+                        //DRBE_obj_list[ind].cf_ant4 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant4 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant4 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant4 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant4 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant4 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant4 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant4 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant4 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant4 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant4 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant4 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant4 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant4 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant4 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant4 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant4 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant4 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant4 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant4 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 4
+                    case 5:
+
+                        //DRBE_obj_list[ind].cf_ant5 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant5 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant5 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_ant5 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant5 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant5 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant5 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant5 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant5 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant5 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant5 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant5 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant5 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant5 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant5 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant5 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_ant5 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant5 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_ant5 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant5 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 5
+                    case 6:
+
+                        //DRBE_obj_list[ind].cp_ant_na_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_na_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_na_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_na_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_na_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_na_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_na_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_na_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_na_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_na_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_na_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_na_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_na_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_na_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_na_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_na_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_na_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_na_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_na_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_na_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //na l
+                    case 7:
+
+                        //DRBE_obj_list[ind].cp_ant_na_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_na_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_na_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_na_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_na_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_na_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_na_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_na_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_na_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_na_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_na_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_na_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_na_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_na_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_na_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_na_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_na_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_na_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_na_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_na_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //na u
+                    case 8:
+
+                        //DRBE_obj_list[ind].cp_ant_ar_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_ar_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ar_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_ar_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar l
+                    case 9:
+
+                        //DRBE_obj_list[ind].cp_ant_ar_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_ar_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ar_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_ar_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar u
+                    case 10:
+
+                        //DRBE_obj_list[ind].cp_ant_ds_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_ds_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ds_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_ds_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ds l
+                    case 11:
+
+                        //DRBE_obj_list[ind].cp_ant_ds_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_ant_ds_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ds_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_ant_ds_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ds u
+                    case 12:
+
+                        //DRBE_obj_list[ind].cf_rcs0 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs0 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs0 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs0 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs0 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs0 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs0 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs0 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs0 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs0 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs0 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs0 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs0 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs0 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs0 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs0 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs0 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs0 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs0 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs0 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 0
+                    case 13:
+
+                        //DRBE_obj_list[ind].cf_rcs1 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs1 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs1 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs1 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs1 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs1 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs1 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs1 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs1 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs1 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs1 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs1 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs1 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs1 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs1 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs1 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs1 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs1 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs1 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs1 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 1
+                    case 14:
+
+                        //DRBE_obj_list[ind].cf_rcs2 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs2 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs2 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs2 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs2 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs2 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs2 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs2 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs2 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs2 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs2 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs2 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs2 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs2 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs2 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs2 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs2 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs2 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs2 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs2 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 2
+                    case 15:
+
+                        //DRBE_obj_list[ind].cf_rcs3 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs3 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs3 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs3 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs3 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs3 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs3 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs3 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs3 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs3 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs3 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs3 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs3 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs3 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs3 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs3 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs3 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs3 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs3 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs3 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 3
+                    case 16:
+
+                        //DRBE_obj_list[ind].cf_rcs4 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs4 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs4 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs4 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs4 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs4 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs4 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs4 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs4 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs4 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs4 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs4 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs4 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs4 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs4 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs4 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs4 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs4 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs4 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs4 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 4
+                    case 17:
+
+                        //DRBE_obj_list[ind].cf_rcs5 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs5 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs5 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs5 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs5 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs5 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs5 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs5 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs5 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs5 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs5 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs5 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs5 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs5 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs5 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs5 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs5 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs5 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs5 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs5 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 5
+                    case 18:
+
+                        //DRBE_obj_list[ind].cf_rcs6 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs6 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs6 += x[11]; //ori
+                        DRBE_obj_list[ind].cf_rcs6 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs6 += x[19]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs6 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs6 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs6 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs6 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs6 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs6 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs6 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs6 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs6 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs6 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs6 += x[13]; //ori
+                        DRBE_obj_list[ind].bf_rcs6 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs6 += x[21]; //pg
+                                                             //DRBE_obj_list[ind].bf_rcs6 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs6 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 6
+                    case 19:
+
+                        //DRBE_obj_list[ind].cp_rcs_pn_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_pn_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_pn_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_pn_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //pn l
+                    case 20:
+
+                        //DRBE_obj_list[ind].cp_rcs_pn_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_pn_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_pn_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_pn_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //pn u
+                    case 21:
+
+                        //DRBE_obj_list[ind].cp_rcs_ss_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_ss_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ss_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_ss_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ss l
+                    case 22:
+
+                        //DRBE_obj_list[ind].cp_rcs_ss_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_ss_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ss_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_ss_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ss u
+                    case 23:
+
+                        //DRBE_obj_list[ind].cp_rcs_sp_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_sp_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_sp_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_sp_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //sp l
+                    case 24:
+
+                        //DRBE_obj_list[ind].cp_rcs_sp_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_sp_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_sp_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_sp_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //sp u
+                    case 25:
+
+                        //DRBE_obj_list[ind].cp_rcs_ar_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_ar_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ar_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_ar_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar l
+                    case 26:
+
+                        //DRBE_obj_list[ind].cp_rcs_ar_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_ar_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ar_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_ar_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar u
+                    case 27:
+
+                        //DRBE_obj_list[ind].cp_rcs_fb_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_fb_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_fb_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_fb_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break;
+                    //fb l
+                    case 28:
+
+                        //DRBE_obj_list[ind].cp_rcs_fb_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[11]; //ori
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[19]; //pg
+                                                                 //DRBE_obj_list[ind].cp_rcs_fb_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_fb_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[13]; //ori
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[21]; //pg
+                                                                 //DRBE_obj_list[ind].bp_rcs_fb_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                        DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                                                                                                                    // DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break;
+                    default:
+                        await ShowDialog("Invalid Scan Update", "Invalide Variable number");
+                        break;
+
+                        //fb u
+                }
             }
-            else if(mode == 1)
+            else if (mode == 1)
             {
-                if (pind == 0)//ant 0
+                switch (pind)
                 {
-                    //DRBE_obj_list[ind].cf_ant0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant0 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant0 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant0 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant0 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant0 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant0 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant0 += x[30]; //tu
-
-                } //ant 0
-                else if (pind == 1)
-                {
-                    //DRBE_obj_list[ind].cf_ant1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant1 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant1 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant1 += x[20]; //pg
-                    //DRBE_obj_list[ind].mf_ant1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant1 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant1 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant1 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant1 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant1 += x[30]; //tu
-                } //ant 1
-                else if (pind == 2)
-                {
-                    //DRBE_obj_list[ind].cf_ant2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant2 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant2 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant2 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant2 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant2 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant2 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant2 += x[30]; //tu
-                } //ant 2
-                else if (pind == 3)
-                {
-                    //DRBE_obj_list[ind].cf_ant3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant3 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant3 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant3 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant3 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant3 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant3 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant3 += x[30]; //tu
-                } //ant 3
-                else if (pind == 4)
-                {
-                    //DRBE_obj_list[ind].cf_ant4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant4 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant4 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant4 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant4 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant4 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant4 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant4 += x[30]; //tu
-                } //ant 4
-                else if (pind == 5)
-                {
-                    //DRBE_obj_list[ind].cf_ant5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant5 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_ant5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant5 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_ant5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant5 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_ant5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant5 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_ant5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant5 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_ant5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant5 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_ant5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant5 += x[30]; //tu
-                } //ant 5
-                else if (pind == 6)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_na_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_na_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_na_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_n += x[30]; //tu
-                } //na l
-                else if (pind == 7)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_na_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_na_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_na_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_p += x[30]; //tu
-                } //na u
-                else if (pind == 8)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 9)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 10)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[30]; //tu
-                } //ds l
-                else if (pind == 11)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[30]; //tu
-                } //ds u
-                else if (pind == 12)
-                {
-                    //DRBE_obj_list[ind].cf_rcs0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs0 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs0 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs0 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs0 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs0 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs0 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs0 += x[30]; //tu
-                } //rcs 0
-                else if (pind == 13)
-                {
-                    //DRBE_obj_list[ind].cf_rcs1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs1 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs1 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs1 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs1 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs1 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs1 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs1 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs1 += x[30]; //tu
-                } //rcs 1
-                else if (pind == 14)
-                {
-                    //DRBE_obj_list[ind].cf_rcs2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs2 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs2 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs2 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs2 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs2 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs2 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs2 += x[30]; //tu
-                } //rcs 2
-                else if (pind == 15)
-                {
-                    //DRBE_obj_list[ind].cf_rcs3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs3 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs3 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs3 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs3 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs3 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs3 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs3 += x[30]; //tu
-                } //rcs 3
-                else if (pind == 16)
-                {
-                    //DRBE_obj_list[ind].cf_rcs4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs4 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs4 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs4 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs4 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs4 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs4 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs4 += x[30]; //tu
-                } //rcs 4
-                else if (pind == 17)
-                {
-                    //DRBE_obj_list[ind].cf_rcs5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs5 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs5 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs5 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs5 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs5 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs5 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs5 += x[30]; //tu
-                } //rcs 5
-                else if (pind == 18)
-                {
-                    //DRBE_obj_list[ind].cf_rcs6 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs6 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs6 += x[11]; //ori
-                    //DRBE_obj_list[ind].cf_rcs6 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs6 += x[19]; //pg
-                    DRBE_obj_list[ind].cf_rcs6 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs6 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs6 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs6 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs6 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs6 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs6 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs6 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs6 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs6 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs6 += x[13]; //ori
-                    //DRBE_obj_list[ind].bf_rcs6 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs6 += x[21]; //pg
-                    DRBE_obj_list[ind].bf_rcs6 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs6 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs6 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs6 += x[14]; //ori
-                    //DRBE_obj_list[ind].lf_rcs6 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs6 += x[22]; //pg
-                    DRBE_obj_list[ind].lf_rcs6 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs6 += x[30]; //tu
-                } //rcs 6
-                else if (pind == 19)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[30]; //tu
-                } //pn l
-                else if (pind == 20)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[30]; //tu
-                } //pn u
-                else if (pind == 21)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[30]; //tu
-                } //ss l
-                else if (pind == 22)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[30]; //tu
-                } //ss u
-                else if (pind == 23)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[30]; //tu
-                } //sp l
-                else if (pind == 24)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[30]; //tu
-                } //sp u
-                else if (pind == 25)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 26)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 27)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[30]; //tu
-                } //fb l
-                else if (pind == 28)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[11]; //ori
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[19]; //pg
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[13]; //ori
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[21]; //pg
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[14]; //ori
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[22]; //pg
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[30]; //tu
-                } //fb u
-            }
-            else if (mode == 2)
-            {
-                if (pind == 0)//ant 0
-                {
-                    //DRBE_obj_list[ind].cf_ant0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant0 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant0 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant0 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant0 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant0 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant0 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant0 += x[30]; //tu
-
-                } //ant 0
-                else if (pind == 1)
-                {
-                    //DRBE_obj_list[ind].cf_ant1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant1 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant1 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant1 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant1 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant1 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant1 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant1 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant1 += x[30]; //tu
-                } //ant 1
-                else if (pind == 2)
-                {
-                    //DRBE_obj_list[ind].cf_ant2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant2 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant2 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant2 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant2 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant2 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant2 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant2 += x[30]; //tu
-                } //ant 2
-                else if (pind == 3)
-                {
-                    //DRBE_obj_list[ind].cf_ant3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant3 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant3 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant3 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant3 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant3 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant3 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant3 += x[30]; //tu
-                } //ant 3
-                else if (pind == 4)
-                {
-                    //DRBE_obj_list[ind].cf_ant4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant4 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant4 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant4 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant4 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant4 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant4 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant4 += x[30]; //tu
-                } //ant 4
-                else if (pind == 5)
-                {
-                    //DRBE_obj_list[ind].cf_ant5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_ant5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_ant5 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_ant5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_ant5 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_ant5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_ant5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_ant5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_ant5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_ant5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_ant5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_ant5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_ant5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_ant5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_ant5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_ant5 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_ant5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_ant5 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_ant5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_ant5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_ant5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_ant5 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_ant5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_ant5 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_ant5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_ant5 += x[30]; //tu
-                } //ant 5
-                else if (pind == 6)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_na_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_na_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_na_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_na_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_na_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_na_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_n += x[30]; //tu
-                } //na l
-                else if (pind == 7)
-                {
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_na_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_na_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_na_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_na_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_na_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_na_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_na_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_na_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_na_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_na_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_na_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_na_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_na_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_na_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_na_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_na_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_na_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_na_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_na_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_na_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_na_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_na_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_na_p += x[30]; //tu
-                } //na u
-                else if (pind == 8)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 9)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 10)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ds_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ds_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ds_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[30]; //tu
-                } //ds l
-                else if (pind == 11)
-                {
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_ant_ds_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_ant_ds_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_ant_ds_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_ant_ds_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_ant_ds_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_ant_ds_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_ant_ds_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[30]; //tu
-                } //ds u
-                else if (pind == 12)
-                {
-                    //DRBE_obj_list[ind].cf_rcs0 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs0 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs0 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs0 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs0 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs0 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs0 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs0 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs0 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs0 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs0 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs0 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs0 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs0 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs0 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs0 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs0 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs0 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs0 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs0 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs0 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs0 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs0 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs0 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs0 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs0 += x[30]; //tu
-                } //rcs 0
-                else if (pind == 13)
-                {
-                    //DRBE_obj_list[ind].cf_rcs1 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs1 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs1 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs1 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs1 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs1 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs1 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs1 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs1 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs1 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs1 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs1 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs1 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs1 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs1 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs1 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs1 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs1 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs1 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs1 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs1 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs1 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs1 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs1 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs1 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs1 += x[30]; //tu
-                } //rcs 1
-                else if (pind == 14)
-                {
-                    //DRBE_obj_list[ind].cf_rcs2 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs2 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs2 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs2 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs2 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs2 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs2 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs2 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs2 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs2 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs2 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs2 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs2 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs2 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs2 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs2 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs2 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs2 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs2 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs2 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs2 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs2 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs2 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs2 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs2 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs2 += x[30]; //tu
-                } //rcs 2
-                else if (pind == 15)
-                {
-                    //DRBE_obj_list[ind].cf_rcs3 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs3 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs3 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs3 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs3 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs3 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs3 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs3 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs3 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs3 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs3 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs3 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs3 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs3 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs3 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs3 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs3 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs3 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs3 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs3 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs3 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs3 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs3 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs3 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs3 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs3 += x[30]; //tu
-                } //rcs 3
-                else if (pind == 16)
-                {
-                    //DRBE_obj_list[ind].cf_rcs4 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs4 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs4 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs4 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs4 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs4 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs4 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs4 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs4 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs4 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs4 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs4 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs4 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs4 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs4 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs4 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs4 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs4 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs4 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs4 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs4 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs4 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs4 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs4 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs4 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs4 += x[30]; //tu
-                } //rcs 4
-                else if (pind == 17)
-                {
-                    //DRBE_obj_list[ind].cf_rcs5 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs5 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs5 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs5 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs5 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs5 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs5 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs5 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs5 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs5 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs5 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs5 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs5 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs5 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs5 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs5 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs5 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs5 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs5 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs5 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs5 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs5 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs5 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs5 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs5 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs5 += x[30]; //tu
-                } //rcs 5
-                else if (pind == 18)
-                {
-                    //DRBE_obj_list[ind].cf_rcs6 += x[3];  //cor
-                    DRBE_obj_list[ind].cf_rcs6 += x[7];  //nr
-                    DRBE_obj_list[ind].cf_rcs6 += x[11]; //ori
-                    DRBE_obj_list[ind].cf_rcs6 += x[15]; //ant
-                    DRBE_obj_list[ind].cf_rcs6 += x[19]; //pg
-                    //DRBE_obj_list[ind].cf_rcs6 += x[23]; //rcs
-                    DRBE_obj_list[ind].cf_rcs6 += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mf_rcs6 += x[4];  //cor
-                    DRBE_obj_list[ind].mf_rcs6 += x[8];  //nr
-                    DRBE_obj_list[ind].mf_rcs6 += x[12]; //ori
-                    //DRBE_obj_list[ind].mf_rcs6 += x[16]; //ant
-                    DRBE_obj_list[ind].mf_rcs6 += x[20]; //pg
-                    //DRBE_obj_list[ind].cf_rcs6 += x[24]; //rcs
-                    DRBE_obj_list[ind].mf_rcs6 += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
-                    DRBE_obj_list[ind].bf_rcs6 += x[9];  //nr
-                    DRBE_obj_list[ind].bf_rcs6 += x[13]; //ori
-                    DRBE_obj_list[ind].bf_rcs6 += x[17]; //ant
-                    DRBE_obj_list[ind].bf_rcs6 += x[21]; //pg
-                    //DRBE_obj_list[ind].bf_rcs6 += x[25]; //rcs
-                    DRBE_obj_list[ind].bf_rcs6 += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
-                    DRBE_obj_list[ind].lf_rcs6 += x[10];  //nr
-                    DRBE_obj_list[ind].lf_rcs6 += x[14]; //ori
-                    DRBE_obj_list[ind].lf_rcs6 += x[18]; //ant
-                    DRBE_obj_list[ind].lf_rcs6 += x[22]; //pg
-                    //DRBE_obj_list[ind].lf_rcs6 += x[26]; //rcs
-                    DRBE_obj_list[ind].lf_rcs6 += x[30]; //tu
-                } //rcs 6
-                else if (pind == 19)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_pn_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_pn_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_pn_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[30]; //tu
-                } //pn l
-                else if (pind == 20)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_pn_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_pn_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_pn_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_pn_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_pn_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_pn_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_pn_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[30]; //tu
-                } //pn u
-                else if (pind == 21)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ss_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ss_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ss_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[30]; //tu
-                } //ss l
-                else if (pind == 22)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ss_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ss_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ss_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ss_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ss_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ss_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ss_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[30]; //tu
-                } //ss u
-                else if (pind == 23)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_sp_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_sp_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_sp_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[30]; //tu
-                } //sp l
-                else if (pind == 24)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_sp_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_sp_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_sp_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_sp_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_sp_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_sp_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_sp_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[30]; //tu
-                } //sp u
-                else if (pind == 25)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ar_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ar_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ar_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[30]; //tu
-                } //ar l
-                else if (pind == 26)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_ar_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_ar_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_ar_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_ar_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_ar_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_ar_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_ar_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[30]; //tu
-                } //ar u
-                else if (pind == 27)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_fb_n += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_n += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_n += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_n += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_fb_n += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_n += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_fb_n += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[30]; //tu
-                } //fb l
-                else if (pind == 28)
-                {
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[3];  //cor
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[7];  //nr
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[11]; //ori
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[15]; //ant
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[19]; //pg
-                    //DRBE_obj_list[ind].cp_rcs_fb_p += x[23]; //rcs
-                    DRBE_obj_list[ind].cp_rcs_fb_p += x[27]; //tu
-
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[4];  //cor
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[8];  //nr
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[12]; //ori
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[16]; //ant
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[20]; //pg
-                    //DRBE_obj_list[ind].mp_rcs_fb_p += x[24]; //rcs
-                    DRBE_obj_list[ind].mp_rcs_fb_p += x[28]; //tu
-
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[9];  //nr
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[13]; //ori
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[17]; //ant
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[21]; //pg
-                    //DRBE_obj_list[ind].bp_rcs_fb_p += x[25]; //rcs
-                    DRBE_obj_list[ind].bp_rcs_fb_p += x[29]; //tu
-
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[10];  //nr
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[14]; //ori
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[18]; //ant
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[22]; //pg
-                    //DRBE_obj_list[ind].lp_rcs_fb_p += x[26]; //rcs
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[30]; //tu
-                } //fb u
+                    case 0://ant 0
+
+                        //DRBE_obj_list[ind].cf_ant0 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant0 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant0 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant0 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant0 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant0 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant0 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant0 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant0 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant0 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant0 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant0 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant0 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant0 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant0 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant0 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant0 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant0 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant0 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+
+                        break; //ant 0
+
+                    case 1:
+
+                        //DRBE_obj_list[ind].cf_ant1 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant1 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant1 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant1 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant1 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant1 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant1 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant1 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant1 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant1 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant1 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].mf_ant1 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant1 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant1 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant1 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant1 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant1 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant1 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant1 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 1
+
+                    case 2:
+
+                        //DRBE_obj_list[ind].cf_ant2 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant2 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant2 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant2 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant2 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant2 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant2 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant2 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant2 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant2 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant2 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant2 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant2 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant2 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant2 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant2 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant2 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant2 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant2 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant2 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 2
+                    case 3:
+
+                        //DRBE_obj_list[ind].cf_ant3 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant3 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant3 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant3 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant3 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant3 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant3 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant3 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant3 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant3 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant3 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant3 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant3 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant3 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant3 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant3 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant3 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant3 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant3 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 3
+                    case 4:
+
+                        //DRBE_obj_list[ind].cf_ant4 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant4 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant4 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant4 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant4 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant4 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant4 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant4 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant4 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant4 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant4 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant4 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant4 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant4 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant4 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant4 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant4 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant4 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant4 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant4 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 4
+                    case 5:
+
+                        //DRBE_obj_list[ind].cf_ant5 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_ant5 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_ant5 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_ant5 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_ant5 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_ant5 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_ant5 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_ant5 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_ant5 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_ant5 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_ant5 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_ant5 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_ant5 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_ant5 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_ant5 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_ant5 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_ant5 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_ant5 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_ant5 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_ant5 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ant 5
+                    case 6:
+
+                        //DRBE_obj_list[ind].cp_ant_na_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_na_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_na_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_na_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_na_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_na_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_na_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_na_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_na_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_na_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_na_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_na_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_na_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_na_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_na_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_na_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_na_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_na_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_na_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_na_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //na l
+                    case 7:
+
+                        //DRBE_obj_list[ind].cp_ant_na_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_na_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_na_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_na_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_na_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_na_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_na_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_na_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_na_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_na_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_na_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_na_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_na_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_na_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_na_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_na_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_na_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_na_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_na_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_na_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //na u
+                    case 8:
+
+                        //DRBE_obj_list[ind].cp_ant_ar_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_ar_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ar_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ar_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ar_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_ar_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ar_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar l
+                    case 9:
+
+                        //DRBE_obj_list[ind].cp_ant_ar_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_ar_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ar_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ar_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ar_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ar_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_ar_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ar_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar u
+                    case 10:
+
+                        //DRBE_obj_list[ind].cp_ant_ds_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_ds_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ds_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ds_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ds_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_ds_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ds_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ds l
+                    case 11:
+
+                        //DRBE_obj_list[ind].cp_ant_ds_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_ant_ds_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_ant_ds_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_ant_ds_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_ant_ds_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_ant_ds_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_ant_ds_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_ant_ds_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ds u
+                    case 12:
+
+                        //DRBE_obj_list[ind].cf_rcs0 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs0 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs0 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs0 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs0 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs0 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs0 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs0 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs0 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs0 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs0 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs0 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs0 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs0 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs0 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs0 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs0 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs0 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs0 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs0 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 0
+                    case 13:
+
+                        //DRBE_obj_list[ind].cf_rcs1 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs1 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs1 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs1 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs1 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs1 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs1 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs1 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs1 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs1 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs1 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs1 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs1 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs1 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs1 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs1 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs1 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs1 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs1 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs1 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 1
+                    case 14:
+
+                        //DRBE_obj_list[ind].cf_rcs2 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs2 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs2 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs2 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs2 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs2 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs2 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs2 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs2 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs2 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs2 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs2 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs2 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs2 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs2 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs2 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs2 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs2 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs2 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs2 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 2
+                    case 15:
+
+                        //DRBE_obj_list[ind].cf_rcs3 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs3 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs3 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs3 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs3 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs3 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs3 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs3 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs3 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs3 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs3 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs3 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs3 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs3 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs3 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs3 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs3 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs3 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs3 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs3 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 3
+                    case 16:
+
+                        //DRBE_obj_list[ind].cf_rcs4 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs4 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs4 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs4 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs4 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs4 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs4 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs4 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs4 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs4 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs4 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs4 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs4 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs4 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs4 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs4 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs4 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs4 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs4 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs4 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 4
+                    case 17:
+
+                        //DRBE_obj_list[ind].cf_rcs5 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs5 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs5 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs5 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs5 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs5 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs5 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs5 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs5 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs5 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs5 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs5 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs5 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs5 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs5 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs5 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs5 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs5 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs5 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs5 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 5
+                    case 18:
+
+                        //DRBE_obj_list[ind].cf_rcs6 += x[3];  //cor
+                        DRBE_obj_list[ind].cf_rcs6 += x[7];  //nr
+                        DRBE_obj_list[ind].cf_rcs6 += x[11]; //ori
+                                                             //DRBE_obj_list[ind].cf_rcs6 += x[15]; //ant
+                        DRBE_obj_list[ind].cf_rcs6 += x[19]; //pg
+                        DRBE_obj_list[ind].cf_rcs6 += x[23]; //rcs
+                        DRBE_obj_list[ind].cf_rcs6 += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mf_rcs6 += x[4];  //cor
+                        DRBE_obj_list[ind].mf_rcs6 += x[8];  //nr
+                        DRBE_obj_list[ind].mf_rcs6 += x[12]; //ori
+                                                             //DRBE_obj_list[ind].mf_rcs6 += x[16]; //ant
+                        DRBE_obj_list[ind].mf_rcs6 += x[20]; //pg
+                                                             //DRBE_obj_list[ind].cf_rcs6 += x[24]; //rcs
+                        DRBE_obj_list[ind].mf_rcs6 += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
+                        DRBE_obj_list[ind].bf_rcs6 += x[9];  //nr
+                        DRBE_obj_list[ind].bf_rcs6 += x[13]; //ori
+                                                             //DRBE_obj_list[ind].bf_rcs6 += x[17]; //ant
+                        DRBE_obj_list[ind].bf_rcs6 += x[21]; //pg
+                        DRBE_obj_list[ind].bf_rcs6 += x[25]; //rcs
+                        DRBE_obj_list[ind].bf_rcs6 += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //rcs 6
+                    case 19:
+
+                        //DRBE_obj_list[ind].cp_rcs_pn_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_pn_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_pn_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_pn_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_pn_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_pn_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_pn_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //pn l
+                    case 20:
+
+                        //DRBE_obj_list[ind].cp_rcs_pn_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_pn_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_pn_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_pn_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_pn_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_pn_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_pn_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_pn_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //pn u
+                    case 21:
+
+                        //DRBE_obj_list[ind].cp_rcs_ss_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_ss_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ss_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ss_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ss_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_ss_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ss_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ss l
+                    case 22:
+
+                        //DRBE_obj_list[ind].cp_rcs_ss_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_ss_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ss_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ss_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ss_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ss_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_ss_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ss_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ss u
+                    case 23:
+
+                        //DRBE_obj_list[ind].cp_rcs_sp_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_sp_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_sp_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_sp_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_sp_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_sp_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_sp_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //sp l
+                    case 24:
+
+                        //DRBE_obj_list[ind].cp_rcs_sp_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_sp_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_sp_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_sp_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_sp_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_sp_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_sp_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_sp_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //sp u
+                    case 25:
+
+                        //DRBE_obj_list[ind].cp_rcs_ar_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_ar_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ar_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ar_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ar_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_ar_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ar_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar l
+                    case 26:
+
+                        //DRBE_obj_list[ind].cp_rcs_ar_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_ar_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_ar_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_ar_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_ar_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_ar_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_ar_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_ar_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //ar u
+                    case 27:
+
+                        //DRBE_obj_list[ind].cp_rcs_fb_n += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_fb_n += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_fb_n += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_fb_n += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_n += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_n += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_fb_n += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_fb_n += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_fb_n += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //fb l
+                    case 28:
+
+                        //DRBE_obj_list[ind].cp_rcs_fb_p += x[3];  //cor
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[7];  //nr
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[11]; //ori
+                                                                 //DRBE_obj_list[ind].cp_rcs_fb_p += x[15]; //ant
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[19]; //pg
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[23]; //rcs
+                        DRBE_obj_list[ind].cp_rcs_fb_p += x[27]; //tu
+
+                        //DRBE_obj_list[ind].mp_rcs_fb_p += x[4];  //cor
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[8];  //nr
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[12]; //ori
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_p += x[16]; //ant
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[20]; //pg
+                                                                 //DRBE_obj_list[ind].mp_rcs_fb_p += x[24]; //rcs
+                        DRBE_obj_list[ind].mp_rcs_fb_p += x[28]; //tu
+
+                        //DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[9];  //nr
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[13]; //ori
+                                                                 //DRBE_obj_list[ind].bp_rcs_fb_p += x[17]; //ant
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[21]; //pg
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[25]; //rcs
+                        DRBE_obj_list[ind].bp_rcs_fb_p += x[29]; //tu
+
+                        //DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[6]);  //cor
+                        DRBE_obj_scan_latency_list[1][pind] = Math.Max(DRBE_obj_scan_latency_list[1][pind], x[10]);  //nr
+                        DRBE_obj_scan_latency_list[2][pind] = Math.Max(DRBE_obj_scan_latency_list[2][pind], x[14]); //ori
+                                                                                                                    //DRBE_obj_scan_latency_list[3][pind] = Math.Max(DRBE_obj_scan_latency_list[3][pind], x[18]); //ant
+                        DRBE_obj_scan_latency_list[4][pind] = Math.Max(DRBE_obj_scan_latency_list[4][pind], x[22]); //pg
+                        DRBE_obj_scan_latency_list[5][pind] = Math.Max(DRBE_obj_scan_latency_list[5][pind], x[26]); //rcs
+                        DRBE_obj_scan_latency_list[6][pind] = Math.Max(DRBE_obj_scan_latency_list[6][pind], x[30]); //tu
+                        break; //fb u
+                    default:
+                        await ShowDialog("Invalid Scan Update", "Invalide Variable number");
+                        break;
+                }
             }
         }
         private void Scan_obj_special_update(List<double> x, int ind, int pind, int mode)
@@ -5819,8 +4898,10 @@ namespace DRBE
                     DRBE_obj_list[ind].mf_ant0 += x[16]; //ant
 
                     DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
-                    DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
+
+
 
                 } //ant 0
                 else if (pind == 1)
@@ -5832,8 +4913,7 @@ namespace DRBE
                     DRBE_obj_list[ind].mf_ant1 += x[16]; //ant
 
                     DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
-
-                    DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 1
                 else if (pind == 2)
                 {
@@ -5845,7 +4925,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 2
                 else if (pind == 3)
                 {
@@ -5856,8 +4936,7 @@ namespace DRBE
                     DRBE_obj_list[ind].mf_ant3 += x[16]; //ant
 
                     DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
-
-                    DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 3
                 else if (pind == 4)
                 {
@@ -5869,7 +4948,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 4
                 else if (pind == 5)
                 {
@@ -5881,7 +4960,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 5
                 else if (pind == 6)
                 {
@@ -5895,7 +4974,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //na l
                 else if (pind == 7)
@@ -5910,7 +4989,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //na u
                 else if (pind == 8)
                 {
@@ -5925,7 +5004,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar l
                 else if (pind == 9)
@@ -5941,7 +5020,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 10)
@@ -5957,7 +5036,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds l
                 else if (pind == 11)
@@ -5973,7 +5052,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds u
                 else if (pind == 12)
@@ -5989,7 +5068,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 0
                 else if (pind == 13)
@@ -6005,7 +5084,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 1
                 else if (pind == 14)
@@ -6019,7 +5098,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 2
                 else if (pind == 15)
@@ -6032,7 +5111,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 3
                 else if (pind == 16)
@@ -6048,7 +5127,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 4
                 else if (pind == 17)
@@ -6064,7 +5143,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 5
                 else if (pind == 18)
@@ -6080,7 +5159,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 6
                 else if (pind == 19)
@@ -6096,7 +5175,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn l
                 else if (pind == 20)
@@ -6112,7 +5191,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn u
                 else if (pind == 21)
@@ -6128,7 +5207,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss l
                 else if (pind == 22)
@@ -6144,7 +5223,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss u
                 else if (pind == 23)
@@ -6160,7 +5239,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //sp l
                 else if (pind == 24)
@@ -6175,8 +5254,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //sp u
                 else if (pind == 25)
@@ -6191,8 +5269,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar l
                 else if (pind == 26)
@@ -6207,8 +5284,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 27)
@@ -6222,7 +5298,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb l
                 else if (pind == 28)
@@ -6237,8 +5313,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb u
             }
@@ -6254,7 +5329,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
 
                 } //ant 0
@@ -6268,7 +5343,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 1
                 else if (pind == 2)
                 {
@@ -6280,7 +5355,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 2
                 else if (pind == 3)
                 {
@@ -6292,7 +5367,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 3
                 else if (pind == 4)
                 {
@@ -6304,7 +5379,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 4
                 else if (pind == 5)
                 {
@@ -6316,7 +5391,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 5
                 else if (pind == 6)
                 {
@@ -6331,7 +5406,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //na l
                 else if (pind == 7)
@@ -6347,7 +5422,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //na u
                 else if (pind == 8)
@@ -6362,7 +5437,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar l
                 else if (pind == 9)
@@ -6378,7 +5453,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 10)
@@ -6394,7 +5469,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds l
                 else if (pind == 11)
@@ -6410,7 +5485,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds u
                 else if (pind == 12)
@@ -6426,7 +5501,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 0
                 else if (pind == 13)
@@ -6442,7 +5517,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 1
                 else if (pind == 14)
@@ -6458,7 +5533,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 2
                 else if (pind == 15)
@@ -6474,7 +5549,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //rcs 3
                 else if (pind == 16)
                 {
@@ -6489,7 +5564,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //rcs 4
                 else if (pind == 17)
                 {
@@ -6504,7 +5579,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //rcs 5
                 else if (pind == 18)
                 {
@@ -6519,7 +5594,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //rcs 6
                 else if (pind == 19)
                 {
@@ -6534,7 +5609,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn l
                 else if (pind == 20)
@@ -6550,7 +5625,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn u
                 else if (pind == 21)
@@ -6566,7 +5641,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss l
                 else if (pind == 22)
@@ -6580,7 +5655,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss u
                 else if (pind == 23)
@@ -6593,7 +5668,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //sp l
                 else if (pind == 24)
@@ -6606,7 +5681,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //sp u
                 else if (pind == 25)
                 {
@@ -6619,7 +5694,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ar l
                 else if (pind == 26)
                 {
@@ -6631,7 +5706,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 27)
@@ -6646,7 +5721,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb l
                 else if (pind == 28)
@@ -6661,7 +5736,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb u
             }
@@ -6677,7 +5752,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant0 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant0 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ant 0
                 else if (pind == 1)
@@ -6690,7 +5765,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant1 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 1
                 else if (pind == 2)
                 {
@@ -6702,7 +5777,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant2 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 2
                 else if (pind == 3)
                 {
@@ -6714,7 +5789,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant3 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 3
                 else if (pind == 4)
                 {
@@ -6726,7 +5801,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant4 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 4
                 else if (pind == 5)
                 {
@@ -6738,7 +5813,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_ant5 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_ant5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //ant 5
                 else if (pind == 6)
                 {
@@ -6751,8 +5826,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_na_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_ant_na_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //na l
                 else if (pind == 7)
@@ -6767,7 +5841,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_na_p += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_ant_na_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
                 } //na u
                 else if (pind == 8)
                 {
@@ -6781,8 +5855,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_ar_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_ant_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar l
                 else if (pind == 9)
@@ -6798,7 +5871,7 @@ namespace DRBE
                     DRBE_obj_list[ind].bp_ant_ar_p += x[5];  //cor
 
 
-                    DRBE_obj_list[ind].lp_ant_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 10)
@@ -6813,8 +5886,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_ds_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_ant_ds_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds l
                 else if (pind == 11)
@@ -6829,8 +5901,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_ant_ds_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_ant_ds_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ds u
                 else if (pind == 12)
@@ -6845,8 +5916,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs0 += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lf_rcs0 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 0
                 else if (pind == 13)
@@ -6861,8 +5931,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs1 += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lf_rcs1 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 1
                 else if (pind == 14)
@@ -6876,7 +5945,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs2 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_rcs2 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 2
                 else if (pind == 15)
@@ -6889,7 +5958,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs3 += x[5];  //cor
 
-                    DRBE_obj_list[ind].lf_rcs3 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 3
                 else if (pind == 16)
@@ -6904,8 +5973,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs4 += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lf_rcs4 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 4
                 else if (pind == 17)
@@ -6920,8 +5988,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs5 += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lf_rcs5 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 5
                 else if (pind == 18)
@@ -6936,8 +6003,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bf_rcs6 += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lf_rcs6 += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //rcs 6
                 else if (pind == 19)
@@ -6952,8 +6018,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_pn_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_pn_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn l
                 else if (pind == 20)
@@ -6968,8 +6033,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_pn_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_pn_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //pn u
                 else if (pind == 21)
@@ -6984,8 +6048,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ss_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ss_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss l
                 else if (pind == 22)
@@ -7000,8 +6063,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ss_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ss_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ss u
                 else if (pind == 23)
@@ -7016,8 +6078,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_sp_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_sp_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //sp l
                 else if (pind == 24)
@@ -7032,8 +6093,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_sp_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_sp_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //sp u
                 else if (pind == 25)
@@ -7048,8 +6108,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_n += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ar_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar l
                 else if (pind == 26)
@@ -7064,8 +6123,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_ar_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_ar_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //ar u
                 else if (pind == 27)
@@ -7079,7 +6137,7 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_fb_n += x[5];  //cor
 
-                    DRBE_obj_list[ind].lp_rcs_fb_n += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb l
                 else if (pind == 28)
@@ -7094,14 +6152,46 @@ namespace DRBE
 
                     DRBE_obj_list[ind].bp_rcs_fb_p += x[5];  //cor
 
-
-                    DRBE_obj_list[ind].lp_rcs_fb_p += x[6];  //cor
+                    DRBE_obj_scan_latency_list[0][pind] = Math.Max(DRBE_obj_scan_latency_list[0][pind], x[6]);  //cor
 
                 } //fb u
             }
         }
+        private void Obj_scan_latency_special_update(int ind)
+        {
+            DRBE_obj_list[ind].lf_ant0 = DRBE_obj_scan_latency_list[0][0] + DRBE_obj_scan_latency_list[1][0] + DRBE_obj_scan_latency_list[2][0] + DRBE_obj_scan_latency_list[3][0] + DRBE_obj_scan_latency_list[4][0] + DRBE_obj_scan_latency_list[5][0] + DRBE_obj_scan_latency_list[6][0];
+            DRBE_obj_list[ind].lf_ant1 = DRBE_obj_scan_latency_list[0][1] + DRBE_obj_scan_latency_list[1][1] + DRBE_obj_scan_latency_list[2][1] + DRBE_obj_scan_latency_list[3][1] + DRBE_obj_scan_latency_list[4][1] + DRBE_obj_scan_latency_list[5][1] + DRBE_obj_scan_latency_list[6][1];
+            DRBE_obj_list[ind].lf_ant2 = DRBE_obj_scan_latency_list[0][2] + DRBE_obj_scan_latency_list[1][2] + DRBE_obj_scan_latency_list[2][2] + DRBE_obj_scan_latency_list[3][2] + DRBE_obj_scan_latency_list[4][2] + DRBE_obj_scan_latency_list[5][2] + DRBE_obj_scan_latency_list[6][2];
+            DRBE_obj_list[ind].lf_ant3 = DRBE_obj_scan_latency_list[0][3] + DRBE_obj_scan_latency_list[1][3] + DRBE_obj_scan_latency_list[2][3] + DRBE_obj_scan_latency_list[3][3] + DRBE_obj_scan_latency_list[4][3] + DRBE_obj_scan_latency_list[5][3] + DRBE_obj_scan_latency_list[6][3];
+            DRBE_obj_list[ind].lf_ant4 = DRBE_obj_scan_latency_list[0][4] + DRBE_obj_scan_latency_list[1][4] + DRBE_obj_scan_latency_list[2][4] + DRBE_obj_scan_latency_list[3][4] + DRBE_obj_scan_latency_list[4][4] + DRBE_obj_scan_latency_list[5][4] + DRBE_obj_scan_latency_list[6][4];
+            DRBE_obj_list[ind].lf_ant5 = DRBE_obj_scan_latency_list[0][5] + DRBE_obj_scan_latency_list[1][5] + DRBE_obj_scan_latency_list[2][5] + DRBE_obj_scan_latency_list[3][5] + DRBE_obj_scan_latency_list[4][5] + DRBE_obj_scan_latency_list[5][5] + DRBE_obj_scan_latency_list[6][5];
+            DRBE_obj_list[ind].lp_ant_na_n = DRBE_obj_scan_latency_list[0][6] + DRBE_obj_scan_latency_list[1][6] + DRBE_obj_scan_latency_list[2][6] + DRBE_obj_scan_latency_list[3][6] + DRBE_obj_scan_latency_list[4][6] + DRBE_obj_scan_latency_list[5][6] + DRBE_obj_scan_latency_list[6][6];
+            DRBE_obj_list[ind].lp_ant_na_p = DRBE_obj_scan_latency_list[0][7] + DRBE_obj_scan_latency_list[1][7] + DRBE_obj_scan_latency_list[2][7] + DRBE_obj_scan_latency_list[3][7] + DRBE_obj_scan_latency_list[4][7] + DRBE_obj_scan_latency_list[5][7] + DRBE_obj_scan_latency_list[6][7];
+            DRBE_obj_list[ind].lp_ant_ar_n = DRBE_obj_scan_latency_list[0][8] + DRBE_obj_scan_latency_list[1][8] + DRBE_obj_scan_latency_list[2][8] + DRBE_obj_scan_latency_list[3][8] + DRBE_obj_scan_latency_list[4][8] + DRBE_obj_scan_latency_list[5][8] + DRBE_obj_scan_latency_list[6][8];
+            DRBE_obj_list[ind].lp_ant_ar_p = DRBE_obj_scan_latency_list[0][9] + DRBE_obj_scan_latency_list[1][9] + DRBE_obj_scan_latency_list[2][9] + DRBE_obj_scan_latency_list[3][9] + DRBE_obj_scan_latency_list[4][9] + DRBE_obj_scan_latency_list[5][9] + DRBE_obj_scan_latency_list[6][9];
+            DRBE_obj_list[ind].lp_ant_ds_n = DRBE_obj_scan_latency_list[0][10] + DRBE_obj_scan_latency_list[1][10] + DRBE_obj_scan_latency_list[2][10] + DRBE_obj_scan_latency_list[3][10] + DRBE_obj_scan_latency_list[4][10] + DRBE_obj_scan_latency_list[5][10] + DRBE_obj_scan_latency_list[6][10];
+            DRBE_obj_list[ind].lp_ant_ds_p = DRBE_obj_scan_latency_list[0][11] + DRBE_obj_scan_latency_list[1][11] + DRBE_obj_scan_latency_list[2][11] + DRBE_obj_scan_latency_list[3][11] + DRBE_obj_scan_latency_list[4][11] + DRBE_obj_scan_latency_list[5][11] + DRBE_obj_scan_latency_list[6][11];
+            DRBE_obj_list[ind].lf_rcs0 = DRBE_obj_scan_latency_list[0][12] + DRBE_obj_scan_latency_list[1][12] + DRBE_obj_scan_latency_list[2][12] + DRBE_obj_scan_latency_list[3][12] + DRBE_obj_scan_latency_list[4][12] + DRBE_obj_scan_latency_list[5][12] + DRBE_obj_scan_latency_list[6][12];
+            DRBE_obj_list[ind].lf_rcs1 = DRBE_obj_scan_latency_list[0][13] + DRBE_obj_scan_latency_list[1][13] + DRBE_obj_scan_latency_list[2][13] + DRBE_obj_scan_latency_list[3][13] + DRBE_obj_scan_latency_list[4][13] + DRBE_obj_scan_latency_list[5][13] + DRBE_obj_scan_latency_list[6][13];
+            DRBE_obj_list[ind].lf_rcs2 = DRBE_obj_scan_latency_list[0][14] + DRBE_obj_scan_latency_list[1][14] + DRBE_obj_scan_latency_list[2][14] + DRBE_obj_scan_latency_list[3][14] + DRBE_obj_scan_latency_list[4][14] + DRBE_obj_scan_latency_list[5][14] + DRBE_obj_scan_latency_list[6][14];
+            DRBE_obj_list[ind].lf_rcs3 = DRBE_obj_scan_latency_list[0][15] + DRBE_obj_scan_latency_list[1][15] + DRBE_obj_scan_latency_list[2][15] + DRBE_obj_scan_latency_list[3][15] + DRBE_obj_scan_latency_list[4][15] + DRBE_obj_scan_latency_list[5][15] + DRBE_obj_scan_latency_list[6][15];
+            DRBE_obj_list[ind].lf_rcs4 = DRBE_obj_scan_latency_list[0][16] + DRBE_obj_scan_latency_list[1][16] + DRBE_obj_scan_latency_list[2][16] + DRBE_obj_scan_latency_list[3][16] + DRBE_obj_scan_latency_list[4][16] + DRBE_obj_scan_latency_list[5][16] + DRBE_obj_scan_latency_list[6][16];
+            DRBE_obj_list[ind].lf_rcs5 = DRBE_obj_scan_latency_list[0][17] + DRBE_obj_scan_latency_list[1][17] + DRBE_obj_scan_latency_list[2][17] + DRBE_obj_scan_latency_list[3][17] + DRBE_obj_scan_latency_list[4][17] + DRBE_obj_scan_latency_list[5][17] + DRBE_obj_scan_latency_list[6][17];
+            DRBE_obj_list[ind].lf_rcs6 = DRBE_obj_scan_latency_list[0][18] + DRBE_obj_scan_latency_list[1][18] + DRBE_obj_scan_latency_list[2][18] + DRBE_obj_scan_latency_list[3][18] + DRBE_obj_scan_latency_list[4][18] + DRBE_obj_scan_latency_list[5][18] + DRBE_obj_scan_latency_list[6][18];
+            DRBE_obj_list[ind].lp_rcs_pn_n = DRBE_obj_scan_latency_list[0][19] + DRBE_obj_scan_latency_list[1][19] + DRBE_obj_scan_latency_list[2][19] + DRBE_obj_scan_latency_list[3][19] + DRBE_obj_scan_latency_list[4][19] + DRBE_obj_scan_latency_list[5][19] + DRBE_obj_scan_latency_list[6][19];
+            DRBE_obj_list[ind].lp_rcs_pn_p = DRBE_obj_scan_latency_list[0][20] + DRBE_obj_scan_latency_list[1][20] + DRBE_obj_scan_latency_list[2][20] + DRBE_obj_scan_latency_list[3][20] + DRBE_obj_scan_latency_list[4][20] + DRBE_obj_scan_latency_list[5][20] + DRBE_obj_scan_latency_list[6][20];
+            DRBE_obj_list[ind].lp_rcs_ss_n = DRBE_obj_scan_latency_list[0][21] + DRBE_obj_scan_latency_list[1][21] + DRBE_obj_scan_latency_list[2][21] + DRBE_obj_scan_latency_list[3][21] + DRBE_obj_scan_latency_list[4][21] + DRBE_obj_scan_latency_list[5][21] + DRBE_obj_scan_latency_list[6][21];
+            DRBE_obj_list[ind].lp_rcs_ss_p = DRBE_obj_scan_latency_list[0][22] + DRBE_obj_scan_latency_list[1][22] + DRBE_obj_scan_latency_list[2][22] + DRBE_obj_scan_latency_list[3][22] + DRBE_obj_scan_latency_list[4][22] + DRBE_obj_scan_latency_list[5][22] + DRBE_obj_scan_latency_list[6][22];
+            DRBE_obj_list[ind].lp_rcs_sp_n = DRBE_obj_scan_latency_list[0][23] + DRBE_obj_scan_latency_list[1][23] + DRBE_obj_scan_latency_list[2][23] + DRBE_obj_scan_latency_list[3][23] + DRBE_obj_scan_latency_list[4][23] + DRBE_obj_scan_latency_list[5][23] + DRBE_obj_scan_latency_list[6][23];
+            DRBE_obj_list[ind].lp_rcs_sp_p = DRBE_obj_scan_latency_list[0][24] + DRBE_obj_scan_latency_list[1][24] + DRBE_obj_scan_latency_list[2][24] + DRBE_obj_scan_latency_list[3][24] + DRBE_obj_scan_latency_list[4][24] + DRBE_obj_scan_latency_list[5][24] + DRBE_obj_scan_latency_list[6][24];
+            DRBE_obj_list[ind].lp_rcs_ar_n = DRBE_obj_scan_latency_list[0][25] + DRBE_obj_scan_latency_list[1][25] + DRBE_obj_scan_latency_list[2][25] + DRBE_obj_scan_latency_list[3][25] + DRBE_obj_scan_latency_list[4][25] + DRBE_obj_scan_latency_list[5][25] + DRBE_obj_scan_latency_list[6][25];
+            DRBE_obj_list[ind].lp_rcs_ar_p = DRBE_obj_scan_latency_list[0][26] + DRBE_obj_scan_latency_list[1][26] + DRBE_obj_scan_latency_list[2][26] + DRBE_obj_scan_latency_list[3][26] + DRBE_obj_scan_latency_list[4][26] + DRBE_obj_scan_latency_list[5][26] + DRBE_obj_scan_latency_list[6][26];
+            DRBE_obj_list[ind].lp_rcs_fb_n = DRBE_obj_scan_latency_list[0][27] + DRBE_obj_scan_latency_list[1][27] + DRBE_obj_scan_latency_list[2][27] + DRBE_obj_scan_latency_list[3][27] + DRBE_obj_scan_latency_list[4][27] + DRBE_obj_scan_latency_list[5][27] + DRBE_obj_scan_latency_list[6][27];
+            DRBE_obj_list[ind].lp_rcs_fb_p = DRBE_obj_scan_latency_list[0][28] + DRBE_obj_scan_latency_list[1][28] + DRBE_obj_scan_latency_list[2][28] + DRBE_obj_scan_latency_list[3][28] + DRBE_obj_scan_latency_list[4][28] + DRBE_obj_scan_latency_list[5][28] + DRBE_obj_scan_latency_list[6][28];
+        }
         private async Task Scan_obj_info_property(int ind)
         {
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             bool ist = false;
             bool iso = false;
             bool isr = false;
@@ -7297,76 +6387,76 @@ namespace DRBE
                                 mode = 0;
                                 Tosend = new List<double>(original);
                                 Tosend[6] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
                                 Tosend[6] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
                                 Tosend[6] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
                                 Tosend[6] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
                                 Tosend[6] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
                                 Tosend[6] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
                                 Tosend = new List<double>(original);
                                 Tosend[7] = lowerbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
                                 Tosend[7] = upperbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
                                 Tosend = new List<double>(original);
                                 Tosend[8] = lowerbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
                                 Tosend[8] = upperbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[9] = lowerbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 Tosend[9] = upperbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
                                 Tosend = new List<double>(original);
                                 Tosend[10] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
                                 Tosend[10] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
                                 Tosend[10] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
                                 Tosend[10] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
                                 Tosend[10] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
                                 Tosend[10] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
                                 Tosend[10] = 6;
-                                Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+                                await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
 
 
                                 Tosend = new List<double>(original);
                                 Tosend[14] = lowerbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
                                 Tosend[14] = upperbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
                                 Tosend = new List<double>(original);
                                 Tosend[15] = lowerbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
                                 Tosend[15] = upperbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
                                 Tosend = new List<double>(original);
                                 Tosend[11] = lowerbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
                                 Tosend[11] = upperbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
                                 Tosend = new List<double>(original);
                                 Tosend[12] = lowerbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
                                 Tosend[12] = upperbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[13] = lowerbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
                                 Tosend[13] = upperbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
                                 Scan_cur_obj++;
-                                Scan_obj_presentation_update(ind);
+                                await Scan_obj_presentation_update(ind);
                             }
 
                             if (ii == objio)
@@ -7375,76 +6465,76 @@ namespace DRBE
                                 mode = 1;
                                 Tosend = new List<double>(original);
                                 Tosend[6] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
                                 Tosend[6] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
                                 Tosend[6] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
                                 Tosend[6] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
                                 Tosend[6] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
                                 Tosend[6] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
                                 Tosend = new List<double>(original);
                                 Tosend[7] = lowerbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
                                 Tosend[7] = upperbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
                                 Tosend = new List<double>(original);
                                 Tosend[8] = lowerbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
                                 Tosend[8] = upperbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[9] = lowerbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 Tosend[9] = upperbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
                                 Tosend = new List<double>(original);
                                 Tosend[10] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
                                 Tosend[10] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
                                 Tosend[10] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
                                 Tosend[10] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
                                 Tosend[10] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
                                 Tosend[10] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
                                 Tosend[10] = 6;
-                                Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 5
 
 
                                 Tosend = new List<double>(original);
                                 Tosend[14] = lowerbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
                                 Tosend[14] = upperbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
                                 Tosend = new List<double>(original);
                                 Tosend[15] = lowerbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
                                 Tosend[15] = upperbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
                                 Tosend = new List<double>(original);
                                 Tosend[11] = lowerbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
                                 Tosend[11] = upperbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
                                 Tosend = new List<double>(original);
                                 Tosend[12] = lowerbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
                                 Tosend[12] = upperbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[13] = lowerbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
                                 Tosend[13] = upperbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
                                 Scan_cur_obj++;
-                                Scan_obj_presentation_update(ind);
+                                await Scan_obj_presentation_update(ind);
                             }
 
                             if (iii == objir)
@@ -7453,77 +6543,79 @@ namespace DRBE
                                 mode = 2;
                                 Tosend = new List<double>(original);
                                 Tosend[6] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
                                 Tosend[6] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
                                 Tosend[6] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
                                 Tosend[6] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
                                 Tosend[6] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
                                 Tosend[6] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
                                 Tosend = new List<double>(original);
                                 Tosend[7] = lowerbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
                                 Tosend[7] = upperbound[0];
-                                Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
                                 Tosend = new List<double>(original);
                                 Tosend[8] = lowerbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
                                 Tosend[8] = upperbound[1];
-                                Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[9] = lowerbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 Tosend[9] = upperbound[2];
-                                Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
                                 Tosend = new List<double>(original);
                                 Tosend[10] = 0;
-                                Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
                                 Tosend[10] = 1;
-                                Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
                                 Tosend[10] = 2;
-                                Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
                                 Tosend[10] = 3;
-                                Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
                                 Tosend[10] = 4;
-                                Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
                                 Tosend[10] = 5;
-                                Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
                                 Tosend[10] = 6;
-                                Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 5
+                                await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 5
 
 
                                 Tosend = new List<double>(original);
                                 Tosend[14] = lowerbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
                                 Tosend[14] = upperbound[6];
-                                Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
                                 Tosend = new List<double>(original);
                                 Tosend[15] = lowerbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
                                 Tosend[15] = upperbound[7];
-                                Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
                                 Tosend = new List<double>(original);
                                 Tosend[11] = lowerbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
                                 Tosend[11] = upperbound[3];
-                                Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
                                 Tosend = new List<double>(original);
                                 Tosend[12] = lowerbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
                                 Tosend[12] = upperbound[4];
-                                Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
                                 Tosend = new List<double>(original);
                                 Tosend[13] = lowerbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
                                 Tosend[13] = upperbound[5];
-                                Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+                                await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
                                 Scan_cur_obj++;
-                                Scan_obj_presentation_update(ind);
+
+                                await Scan_obj_presentation_update(ind);
                             }
+
                         }
                         iii++;
                     }
@@ -7532,6 +6624,7 @@ namespace DRBE
 
                 i++;
             }
+
 
             if (ist)
             {
@@ -7609,7 +6702,7 @@ namespace DRBE
                 Scan_pb.Maximum += 1;
                 Scan_max_obj++;
                 Scan_cur_obj++;
-                Scan_obj_presentation_update(ind);
+                await Scan_obj_presentation_update(ind);
             }
 
             if (iso)
@@ -7689,7 +6782,7 @@ namespace DRBE
                 Scan_pb.Maximum += 1;
                 Scan_max_obj++;
                 Scan_cur_obj++;
-                Scan_obj_presentation_update(ind);
+                await Scan_obj_presentation_update(ind);
             }
 
             if (isr)
@@ -7767,10 +6860,13 @@ namespace DRBE
                 Scan_pb.Maximum += 1;
                 Scan_max_obj++;
                 Scan_cur_obj++;
-                Scan_obj_presentation_update(ind);
-            }
 
-            Scan_obj_presentation_update(ind);
+                await Scan_obj_presentation_update(ind);
+            }
+            Obj_scan_latency_special_update(ind);
+            await Scan_obj_presentation_update(ind);
+            watch.Stop();
+            ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
             //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
         }
 
@@ -7778,6 +6874,7 @@ namespace DRBE
 
         private async void DRBEOP_rescan_bt_Click(object sender, RoutedEventArgs e)
         {
+
             await Scan_obj_info_property(Dic_SObt_i[Temp_singleo_bt]);
         }
         private void Presentation_fidelity_setup()
@@ -13640,6 +12737,8 @@ namespace DRBE
         {
             if(mode == 0) //Antenna
             {
+                
+                //DRBE_obj_list[i].ANT_Bandwidth += x[17];
                 DRBE_obj_list[i].ANT_Memory += x[16];
                 DRBE_obj_list[i].COR_Memory += x[4];
                 DRBE_obj_list[i].COR_Compute += x[3];
@@ -13660,6 +12759,7 @@ namespace DRBE
                 DRBE_obj_list[i].COR_Memory += x[4];
                 DRBE_obj_list[i].COR_Compute += x[3];
                 DRBE_obj_list[i].COR_Bandwidth += x[5];
+                //DRBE_obj_list[i].RCS_Bandwidth += x[25];
                 RCS_Memory += x[24];
 
                 DRBE_obj_list[i].RCS_Latency = Math.Max(DRBE_obj_list[i].RCS_Latency, x[26]);
@@ -13672,6 +12772,7 @@ namespace DRBE
             }
             else if(mode == 2)
             {
+                //DRBE_obj_list[i].ANT_Bandwidth += x[17];
                 DRBE_obj_list[i].ANT_Memory += x[16];
                 DRBE_obj_list[i].COR_Memory += x[4];
                 DRBE_obj_list[i].COR_Compute += x[3];
@@ -13694,6 +12795,122 @@ namespace DRBE
             Memory_max = RCS_Memory + ANT_Memory + COR_Memory + TU_Memory + ORI_Memory + PG_Memory + NRE_Memory;
             Latency_max = RCS_Latency + ANT_Latency + COR_Latency + TU_Latency + ORI_Latency + PG_Latency + NRE_Latency;
 
+        }
+        private void Get_link_class_tr_result_update(List<double> x, int i, int ii, int iii)
+        {
+
+
+            //Dic_t_i_obj[i].RCS_Compute += x[23];
+            Dic_t_i_obj[i].ANT_Compute += x[15];
+            Dic_t_i_obj[i].TU_Compute += x[27];
+            Dic_t_i_obj[i].NRE_Compute += x[7];
+            Dic_t_i_obj[i].ORI_Compute += x[11];
+            Dic_t_i_obj[i].PG_Compute += x[19];
+
+            //Dic_t_i_obj[i].RCS_Bandwidth += x[25];
+            Dic_t_i_obj[i].ANT_Bandwidth += x[17];
+            Dic_t_i_obj[i].TU_Bandwidth += x[29];
+            Dic_t_i_obj[i].NRE_Bandwidth += x[9];
+            Dic_t_i_obj[i].ORI_Bandwidth += x[13];
+            Dic_t_i_obj[i].PG_Bandwidth += x[21];
+
+            Dic_t_i_obj[i].TU_Memory += x[8];
+            Dic_t_i_obj[i].NRE_Memory += x[28];
+            Dic_t_i_obj[i].ORI_Memory += x[12];
+            Dic_t_i_obj[i].PG_Memory += x[20];
+
+            Dic_t_i_obj[i].TU_Latency = Math.Max(Dic_t_i_obj[i].TU_Latency, x[30]);
+            Dic_t_i_obj[i].NRE_Latency = Math.Max(Dic_t_i_obj[i].NRE_Latency, x[10]);
+            Dic_t_i_obj[i].ORI_Latency = Math.Max(Dic_t_i_obj[i].ORI_Latency, x[14]);
+            Dic_t_i_obj[i].PG_Latency = Math.Max(Dic_t_i_obj[i].PG_Latency, x[22]);
+
+            //RCS_Compute += x[23];
+            ANT_Compute += x[15];
+            TU_Compute += x[27];
+            NRE_Compute += x[7];
+            ORI_Compute += x[11];
+            PG_Compute += x[19];
+
+            //RCS_Bandwidth += x[25];
+            ANT_Bandwidth += x[17];
+            TU_Bandwidth += x[29];
+            NRE_Bandwidth += x[9];
+            ORI_Bandwidth += x[13];
+            PG_Bandwidth += x[21];
+
+
+            TU_Latency = Math.Max(TU_Latency, x[30]);
+            NRE_Latency = Math.Max(NRE_Latency, x[10]);
+            ORI_Latency = Math.Max(ORI_Latency, x[14]);
+            PG_Latency = Math.Max(PG_Latency, x[22]);
+
+            TU_Memory += x[8];
+            NRE_Memory += x[28];
+            ORI_Memory += x[12];
+            PG_Memory += x[20];
+
+            Computation_max = RCS_Compute + ANT_Compute + COR_Compute + TU_Compute + ORI_Compute + PG_Compute + NRE_Compute;
+            Memory_max = RCS_Memory + ANT_Memory + COR_Memory + TU_Memory + ORI_Memory + PG_Memory + NRE_Memory;
+            Latency_max = RCS_Latency + ANT_Latency + COR_Latency + TU_Latency + ORI_Latency + PG_Latency + NRE_Latency;
+            Bandwidth_max = RCS_Bandwidth + ANT_Bandwidth + COR_Bandwidth + TU_Bandwidth + ORI_Bandwidth + PG_Bandwidth + NRE_Bandwidth;
+        }
+        private void Get_link_class_o_result_update(List<double> x, int i, int ii, int iii)
+        {
+
+
+            Dic_o_i_obj[ii].RCS_Compute += x[23];
+            //Dic_o_i_obj[ii].ANT_Compute += x[15];
+            Dic_o_i_obj[ii].TU_Compute += x[27];
+            Dic_o_i_obj[ii].NRE_Compute += x[7];
+            Dic_o_i_obj[ii].ORI_Compute += x[11];
+            Dic_o_i_obj[ii].PG_Compute += x[19];
+
+            Dic_o_i_obj[ii].RCS_Bandwidth += x[25];
+            //Dic_o_i_obj[ii].ANT_Bandwidth += x[17];
+            Dic_o_i_obj[ii].TU_Bandwidth += x[29];
+            Dic_o_i_obj[ii].NRE_Bandwidth += x[9];
+            Dic_o_i_obj[ii].ORI_Bandwidth += x[13];
+            Dic_o_i_obj[ii].PG_Bandwidth += x[21];
+
+            Dic_o_i_obj[ii].TU_Memory += x[8];
+            Dic_o_i_obj[ii].NRE_Memory += x[28];
+            Dic_o_i_obj[ii].ORI_Memory += x[12];
+            Dic_o_i_obj[ii].PG_Memory += x[20];
+
+            Dic_o_i_obj[ii].TU_Latency = Math.Max(Dic_o_i_obj[ii].TU_Latency, x[30]);
+            Dic_o_i_obj[ii].NRE_Latency = Math.Max(Dic_o_i_obj[ii].NRE_Latency, x[10]);
+            Dic_o_i_obj[ii].ORI_Latency = Math.Max(Dic_o_i_obj[ii].ORI_Latency, x[14]);
+            Dic_o_i_obj[ii].PG_Latency = Math.Max(Dic_o_i_obj[ii].PG_Latency, x[22]);
+
+            RCS_Compute += x[23];
+            //ANT_Compute += x[15];
+            TU_Compute += x[27];
+            NRE_Compute += x[7];
+            ORI_Compute += x[11];
+            PG_Compute += x[19];
+
+            RCS_Bandwidth += x[25];
+            //ANT_Bandwidth += x[17];
+            TU_Bandwidth += x[29];
+            NRE_Bandwidth += x[9];
+            ORI_Bandwidth += x[13];
+            PG_Bandwidth += x[21];
+
+
+            TU_Latency = Math.Max(TU_Latency, x[30]);
+            NRE_Latency = Math.Max(NRE_Latency, x[10]);
+            ORI_Latency = Math.Max(ORI_Latency, x[14]);
+            PG_Latency = Math.Max(PG_Latency, x[22]);
+
+            TU_Memory += x[8];
+            NRE_Memory += x[28];
+            ORI_Memory += x[12];
+            PG_Memory += x[20];
+
+            Computation_max = RCS_Compute + ANT_Compute + COR_Compute + TU_Compute + ORI_Compute + PG_Compute + NRE_Compute;
+            Memory_max = RCS_Memory + ANT_Memory + COR_Memory + TU_Memory + ORI_Memory + PG_Memory + NRE_Memory;
+            Latency_max = RCS_Latency + ANT_Latency + COR_Latency + TU_Latency + ORI_Latency + PG_Latency + NRE_Latency;
+            Bandwidth_max = RCS_Bandwidth + ANT_Bandwidth + COR_Bandwidth + TU_Bandwidth + ORI_Bandwidth + PG_Bandwidth + NRE_Bandwidth;
         }
         private void Get_link_class_result_update(List<double> x, int i, int ii, int iii)
         {
@@ -13747,39 +12964,46 @@ namespace DRBE
             Dic_o_i_obj[ii].ORI_Latency = Math.Max(Dic_o_i_obj[ii].ORI_Latency, x[14]);
             Dic_o_i_obj[ii].PG_Latency = Math.Max(Dic_o_i_obj[ii].PG_Latency, x[22]);
 
-            //Dic_r_i_obj[iii].RCS_Compute += x[23];
-            Dic_r_i_obj[iii].ANT_Compute += x[15];
-            Dic_r_i_obj[iii].TU_Compute += x[27];
-            Dic_r_i_obj[iii].NRE_Compute += x[7];
-            Dic_r_i_obj[iii].ORI_Compute += x[11];
-            Dic_r_i_obj[iii].PG_Compute += x[19];
 
-            //Dic_r_i_obj[iii].RCS_Bandwidth += x[25];
-            Dic_r_i_obj[iii].ANT_Bandwidth += x[17];
-            Dic_r_i_obj[iii].TU_Bandwidth += x[29];
-            Dic_r_i_obj[iii].NRE_Bandwidth += x[9];
-            Dic_r_i_obj[iii].ORI_Bandwidth += x[13];
-            Dic_r_i_obj[iii].PG_Bandwidth += x[21];
 
-            Dic_r_i_obj[iii].TU_Memory += x[8];
-            Dic_r_i_obj[iii].NRE_Memory += x[28];
-            Dic_r_i_obj[iii].ORI_Memory += x[12];
-            Dic_r_i_obj[iii].PG_Memory += x[20];
 
-            Dic_r_i_obj[iii].TU_Latency = Math.Max(Dic_r_i_obj[iii].TU_Latency, x[30]);
-            Dic_r_i_obj[iii].NRE_Latency = Math.Max(Dic_r_i_obj[iii].NRE_Latency, x[10]);
-            Dic_r_i_obj[iii].ORI_Latency = Math.Max(Dic_r_i_obj[iii].ORI_Latency, x[14]);
-            Dic_r_i_obj[iii].PG_Latency = Math.Max(Dic_r_i_obj[iii].PG_Latency, x[22]);
+            ////Dic_r_i_obj[iii].RCS_Compute += x[23];
+            //Dic_r_i_obj[iii].ANT_Compute += x[15];
+            //Dic_r_i_obj[iii].TU_Compute += x[27];
+            //Dic_r_i_obj[iii].NRE_Compute += x[7];
+            //Dic_r_i_obj[iii].ORI_Compute += x[11];
+            //Dic_r_i_obj[iii].PG_Compute += x[19];
+
+            ////Dic_r_i_obj[iii].RCS_Bandwidth += x[25];
+            //Dic_r_i_obj[iii].ANT_Bandwidth += x[17];
+            //Dic_r_i_obj[iii].TU_Bandwidth += x[29];
+            //Dic_r_i_obj[iii].NRE_Bandwidth += x[9];
+            //Dic_r_i_obj[iii].ORI_Bandwidth += x[13];
+            //Dic_r_i_obj[iii].PG_Bandwidth += x[21];
+
+            //Dic_r_i_obj[iii].TU_Memory += x[8];
+            //Dic_r_i_obj[iii].NRE_Memory += x[28];
+            //Dic_r_i_obj[iii].ORI_Memory += x[12];
+            //Dic_r_i_obj[iii].PG_Memory += x[20];
+
+            //Dic_r_i_obj[iii].TU_Latency = Math.Max(Dic_r_i_obj[iii].TU_Latency, x[30]);
+            //Dic_r_i_obj[iii].NRE_Latency = Math.Max(Dic_r_i_obj[iii].NRE_Latency, x[10]);
+            //Dic_r_i_obj[iii].ORI_Latency = Math.Max(Dic_r_i_obj[iii].ORI_Latency, x[14]);
+            //Dic_r_i_obj[iii].PG_Latency = Math.Max(Dic_r_i_obj[iii].PG_Latency, x[22]);
+
+
+
+
 
             RCS_Compute += x[23];
-            ANT_Compute += x[15] * 2;
+            ANT_Compute += x[15];
             TU_Compute += x[27];
             NRE_Compute += x[7];
             ORI_Compute += x[11];
             PG_Compute += x[19];
 
             RCS_Bandwidth += x[25];
-            ANT_Bandwidth += x[17] * 2;
+            ANT_Bandwidth += x[17];
             TU_Bandwidth += x[29];
             NRE_Bandwidth += x[9];
             ORI_Bandwidth += x[13];
@@ -14309,12 +13533,12 @@ namespace DRBE
             result.Add(Dic_t_i_obj[i].Resolution_AZ);
             result.Add(Dic_t_i_obj[i].Dictionary_dimension);
 
-            result.Add(Dic_o_i_obj[ii].RCS_order);
-            result.Add(Dic_o_i_obj[ii].RCS_point);
-            result.Add(Dic_o_i_obj[ii].RCS_angle_resolution);
-            result.Add(Dic_o_i_obj[ii].RCS_frequency_point);
-            result.Add(Dic_o_i_obj[ii].RCS_number_of_polarization);
-            result.Add(Dic_o_i_obj[ii].RCS_output_time_sampe);
+            result.Add(Dic_o_i_obj[i].RCS_order);
+            result.Add(Dic_o_i_obj[i].RCS_point);
+            result.Add(Dic_o_i_obj[i].RCS_angle_resolution);
+            result.Add(Dic_o_i_obj[i].RCS_frequency_point);
+            result.Add(Dic_o_i_obj[i].RCS_number_of_polarization);
+            result.Add(Dic_o_i_obj[i].RCS_output_time_sampe);
 
 
             return result;

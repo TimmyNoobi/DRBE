@@ -1463,7 +1463,7 @@ namespace DRBE
         {
             throw new NotImplementedException();
         }
-
+        
         private void List_view_bt_Click(object sender, RoutedEventArgs e)
         {
             Button foo = sender as Button;
@@ -3823,6 +3823,8 @@ namespace DRBE
             Home_bt.Visibility = Visibility.Collapsed;
             Mode_grp_bt.Visibility = Visibility.Collapsed;
             Mode_obj_bt.Visibility = Visibility.Collapsed;
+            Unity_view_bt.Visibility = Visibility.Collapsed;
+            Unity_view_tb.Visibility = Visibility.Collapsed;
 
             #region generate
             Generate_obj_tb.Visibility = Visibility.Collapsed;
@@ -3939,6 +3941,8 @@ namespace DRBE
             Mode_obj_bt.Visibility = Visibility.Visible;
             DRBE_Obj_SV.Visibility = Visibility.Visible;
             DRBE_grp_SV.Visibility = Visibility.Visible;
+            Unity_view_bt.Visibility = Visibility.Visible;
+            Unity_view_tb.Visibility = Visibility.Visible;
             #region generate
             Generate_obj_tb.Visibility = Visibility.Visible;
             Generate_obj_bt.Visibility = Visibility.Visible;
