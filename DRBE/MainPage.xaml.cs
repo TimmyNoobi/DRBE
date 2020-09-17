@@ -44,6 +44,7 @@ using System.Net.Http;
 using Windows.Data.Pdf;
 
 using System.Diagnostics;
+using Windows.Networking.Sockets;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -629,7 +630,8 @@ namespace DRBE
         //}
 
 
-
+        public List<List<double>> Data_buffer_2D = new List<List<double>>();
+        public int Data_buffer_2D_index = 0;
 
         private async Task Packet_receiver(byte x)
         {
@@ -639,6 +641,7 @@ namespace DRBE
             Packet_receiver_index++;
             if (Packet_receiver_index == 1)
             {
+                Packet_data_buffer.Clear();
                 Packet_device = x;
                 Packet_len = 0;
             } //device ID
@@ -663,7 +666,6 @@ namespace DRBE
                 Packet_receiver_index = 0;
                 int i = 0;
                 i = 3;
-                string temp = "";
                 while(i<Packet_receiver_result.Count)
                 {
                     Packet_data_buffer.Add(BitConverter.ToDouble(Packet_receiver_result.GetRange(i, 8).ToArray(), 0));
@@ -671,6 +673,8 @@ namespace DRBE
                     i +=8;
                 }
                 Packet_receiver_result.Clear();
+                Data_buffer_2D.Add(new List<double>(Packet_data_buffer));
+                Data_buffer_2D_index++;
                 //MainPageTestTb.Text += temp;
                 Data_ready_flag = true;
 

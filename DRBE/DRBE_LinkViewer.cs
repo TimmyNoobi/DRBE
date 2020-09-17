@@ -6191,6 +6191,1234 @@ namespace DRBE
         }
         private async Task Scan_obj_info_property(int ind)
         {
+            if(Presentation_choice_mode<5)
+            {
+                Presentation_choice_decolor();
+
+                DRBEP_obj_fidelity_c_bt.BorderBrush = green_bright_button_brush;
+
+
+                Presentation_choice_mode = 5;
+                Presentation_hide();
+                Presentation_fidelity_show();
+            }
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            bool ist = false;
+            bool iso = false;
+            bool isr = false;
+            Scan_obj_refresh(ind);
+            Get_total_scan_number(0);
+            Scan_max_obj = DRBE_obj_list[ind].number_of_path;
+            Scan_pb.Maximum = Scan_max_obj;
+            Scan_cur_obj = 0;
+            int objit = -1;
+            int objio = -1;
+            int objir = -1;
+            int ti = 0;
+            #region create scan list
+            List<double> original = new List<double>();
+            List<double> upperbound = new List<double>();
+            List<double> lowerbound = new List<double>();
+
+
+            List<double> result = new List<double>();
+
+            original.Add((double)5 / 1000000);
+            original.Add(1);
+            original.Add(1);
+            original.Add((double)1 / 1000);
+
+            original.Add(DRBE_obj_list[ind].Interpolation_order);
+            original.Add(DRBE_obj_list[ind].Convergence);
+
+            original.Add(DRBE_obj_list[ind].Antenna_order);
+            original.Add(DRBE_obj_list[ind].Number_Antenna_AZ * DRBE_obj_list[ind].Number_Antenna_EL);
+            original.Add(DRBE_obj_list[ind].Resolution_AZ);
+            original.Add(DRBE_obj_list[ind].Dictionary_dimension);
+
+            original.Add(DRBE_obj_list[ind].RCS_order);
+            original.Add(DRBE_obj_list[ind].RCS_point);
+            original.Add(DRBE_obj_list[ind].RCS_angle_resolution);
+            original.Add(DRBE_obj_list[ind].RCS_frequency_point);
+            original.Add(DRBE_obj_list[ind].RCS_number_of_polarization);
+            original.Add(DRBE_obj_list[ind].RCS_output_time_sampe);
+
+
+
+            if (DRBE_obj_list[ind].Antenna_order == 0)
+            {
+                FANT0_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].Antenna_order == 1)
+            {
+                FANT1_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].Antenna_order == 2)
+            {
+                FANT2_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].Antenna_order == 3)
+            {
+                FANT3_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].Antenna_order == 4)
+            {
+                FANT4_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].Antenna_order == 5)
+            {
+                FANT5_l_tb.Foreground = green_bright_button_brush;
+            }
+
+            if (DRBE_obj_list[ind].RCS_order == 0)
+            {
+                FRCS0_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 1)
+            {
+                FRCS1_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 2)
+            {
+                FRCS2_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 3)
+            {
+                FRCS3_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 4)
+            {
+                FRCS4_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 5)
+            {
+                FRCS5_l_tb.Foreground = green_bright_button_brush;
+            }
+            else if (DRBE_obj_list[ind].RCS_order == 6)
+            {
+                FRCS6_l_tb.Foreground = green_bright_button_brush;
+            }
+
+
+            lowerbound.Add((double)((int)(original[7] * 0.8)));
+            upperbound.Add((double)((int)(original[7] * 1.2)));
+            lowerbound.Add(original[8] * 1.2);
+            upperbound.Add(original[8] * 0.8);
+            lowerbound.Add((double)((int)(original[9] * 0.8)));
+            upperbound.Add((double)((int)(original[9] * 1.2)));
+
+
+            lowerbound.Add((double)((int)(original[11] * 0.8)));
+            upperbound.Add((double)((int)(original[11] * 1.2)));
+            lowerbound.Add(original[12] * 1.2);
+            upperbound.Add(original[12] * 0.8);
+
+            lowerbound.Add(original[13] * 0.8);
+            upperbound.Add(original[13] * 1.2);
+
+            if (original[14] > 1)
+            {
+                lowerbound.Add(original[14] - 1);
+            }
+            else
+            {
+                lowerbound.Add(original[14]);
+            }
+
+            if (original[14] < 4)
+            {
+                upperbound.Add(original[14] + 1);
+            }
+            else
+            {
+                upperbound.Add(original[14]);
+            }
+
+            lowerbound.Add(original[15] * 0.8);
+            upperbound.Add(original[15] * 1.2);
+
+            PANT_NA_TL_tb.Text = lowerbound[0].ToString("F2") + " -- " + original[7].ToString("F2");
+            PANT_NA_TR_tb.Text = original[7].ToString("F2") + " -- " + upperbound[0].ToString("F2");
+
+            PANT_AR_TL_tb.Text = lowerbound[1].ToString("F2") + " -- " + original[8].ToString("F2");
+            PANT_AR_TR_tb.Text = original[8].ToString("F2") + " -- " + upperbound[1].ToString("F2");
+
+            PANT_DS_TL_tb.Text = lowerbound[2].ToString("F2") + " -- " + original[9].ToString("F2");
+            PANT_DS_TR_tb.Text = original[9].ToString("F2") + " -- " + upperbound[2].ToString("F2");
+
+            PRCS_SP_TL_tb.Text = lowerbound[3].ToString("F2") + " -- " + original[11].ToString("F2");
+            PRCS_SP_TR_tb.Text = original[11].ToString("F2") + " -- " + upperbound[3].ToString("F2");
+
+            PRCS_AR_TL_tb.Text = lowerbound[4].ToString("F2") + " -- " + original[12].ToString("F2");
+            PRCS_AR_TR_tb.Text = original[12].ToString("F2") + " -- " + upperbound[4].ToString("F2");
+
+            PRCS_FB_TL_tb.Text = lowerbound[5].ToString("F2") + " -- " + original[13].ToString("F2");
+            PRCS_FB_TR_tb.Text = original[13].ToString("F2") + " -- " + upperbound[5].ToString("F2");
+
+            PRCS_PN_TL_tb.Text = lowerbound[6].ToString("F2") + " -- " + original[14].ToString("F2");
+            PRCS_PN_TR_tb.Text = original[14].ToString("F2") + " -- " + upperbound[6].ToString("F2");
+
+            PRCS_SS_TL_tb.Text = lowerbound[7].ToString("F2") + " -- " + original[15].ToString("F2");
+            PRCS_SS_TR_tb.Text = original[15].ToString("F2") + " -- " + upperbound[7].ToString("F2");
+
+            #endregion
+
+            if (Dic_i_t_obj.ContainsKey(DRBE_obj_list[ind]))
+            {
+                objit = Dic_i_t_obj[DRBE_obj_list[ind]];
+            }
+
+            if (Dic_i_o_obj.ContainsKey(DRBE_obj_list[ind]))
+            {
+                objio = Dic_i_o_obj[DRBE_obj_list[ind]];
+            }
+
+            if (Dic_i_r_obj.ContainsKey(DRBE_obj_list[ind]))
+            {
+                objir = Dic_i_r_obj[DRBE_obj_list[ind]];
+            }
+
+            int i = 0;
+            int ii = 0;
+            int iii = 0;
+            int mode = 0;
+
+            
+            List<byte> Tosend = new List<byte>();
+            List<double> temp = new List<double>();
+            
+
+            i = 0;
+            while (i < Link_list.Count)
+            {
+                ii = 0;
+                while (ii < Link_list[i].Count)
+                {
+                    iii = 0;
+                    while (iii < Link_list[i][ii].Count)
+                    {
+                        if (Link_list[i][ii][iii])
+                        {
+                            if (i == objit)
+                            {
+                                Tosend = new List<byte>();
+                                ist = true;
+                                mode = 0;
+                                temp = new List<double>(original);
+                                temp[6] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                temp = new List<double>(original);
+                                temp[6] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                temp = new List<double>(original);
+                                temp[6] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                temp = new List<double>(original);
+                                temp[6] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                temp = new List<double>(original);
+                                temp[6] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                temp = new List<double>(original);
+                                temp[6] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                temp = new List<double>(original);
+                                temp[7] = lowerbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[7] = lowerbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                temp[7] = upperbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[7] = upperbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                temp = new List<double>(original);
+                                temp[8] = lowerbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[8] = lowerbound[1];
+                                temp[8] = upperbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                //Tosend[8] = upperbound[1];
+                                temp = new List<double>(original);
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                //Tosend = new List<double>(original);
+                                //Tosend[9] = lowerbound[2];
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                //Tosend[9] = upperbound[2];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                temp = new List<double>(original);
+                                temp[10] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[10] = 0;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                temp[10] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                temp[10] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                temp[10] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                temp[10] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                temp[10] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                temp[10] = 6;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 6;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                                temp = new List<double>(original);
+                                temp[14] = lowerbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[14] = lowerbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                temp[14] = upperbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[14] = upperbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                temp = new List<double>(original);
+                                temp[15] = lowerbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[15] = lowerbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                temp[15] = upperbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[15] = upperbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                //Tosend = new List<double>(original);
+                                //Tosend[11] = lowerbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                temp = new List<double>(original);
+                                temp[11] = lowerbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[11] = upperbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                temp[11] = upperbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend = new List<double>(original);
+                                //Tosend[12] = lowerbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                temp = new List<double>(original);
+                                temp[12] = lowerbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                temp[12] = upperbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[12] = upperbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                temp = new List<double>(original);
+                                temp[13] = lowerbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[13] = lowerbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                temp[13] = upperbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                                //Tosend[13] = upperbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                                int scai = 0;
+                                scai = 0;
+                                while(scai<29)
+                                {
+                                    await Scan_obj_update(tempdl[scai], ind, scai, mode);
+                                    scai++;
+                                }
+
+                                Scan_cur_obj++;
+                                if (Scan_cur_obj % 3 == 0)
+                                {
+                                    await Scan_obj_presentation_update(ind);
+                                }
+                            }
+
+                            if (ii == objio)
+                            {
+                                Tosend = new List<byte>();
+                                iso = true;
+                                mode = 1;
+                                temp = new List<double>(original);
+                                temp[6] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                temp = new List<double>(original);
+                                temp[6] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                temp = new List<double>(original);
+                                temp[6] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                temp = new List<double>(original);
+                                temp[6] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                temp = new List<double>(original);
+                                temp[6] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                temp = new List<double>(original);
+                                temp[6] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                temp = new List<double>(original);
+                                temp[7] = lowerbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[7] = lowerbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                temp[7] = upperbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[7] = upperbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                temp = new List<double>(original);
+                                temp[8] = lowerbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[8] = lowerbound[1];
+                                temp[8] = upperbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                //Tosend[8] = upperbound[1];
+                                temp = new List<double>(original);
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                //Tosend = new List<double>(original);
+                                //Tosend[9] = lowerbound[2];
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                //Tosend[9] = upperbound[2];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                temp = new List<double>(original);
+                                temp[10] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[10] = 0;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                temp[10] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                temp[10] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                temp[10] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                temp[10] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                temp[10] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                temp[10] = 6;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 6;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                                temp = new List<double>(original);
+                                temp[14] = lowerbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[14] = lowerbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                temp[14] = upperbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[14] = upperbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                temp = new List<double>(original);
+                                temp[15] = lowerbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[15] = lowerbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                temp[15] = upperbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[15] = upperbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                //Tosend = new List<double>(original);
+                                //Tosend[11] = lowerbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                temp = new List<double>(original);
+                                temp[11] = lowerbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[11] = upperbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                temp[11] = upperbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend = new List<double>(original);
+                                //Tosend[12] = lowerbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                temp = new List<double>(original);
+                                temp[12] = lowerbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                temp[12] = upperbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[12] = upperbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                temp = new List<double>(original);
+                                temp[13] = lowerbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[13] = lowerbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                temp[13] = upperbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                                //Tosend[13] = upperbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                                int scai = 0;
+                                scai = 0;
+                                while (scai < 29)
+                                {
+                                    await Scan_obj_update(tempdl[scai], ind, scai, mode);
+                                    scai++;
+                                }
+                                Scan_cur_obj++;
+                                if (Scan_cur_obj % 3 == 0)
+                                {
+                                    await Scan_obj_presentation_update(ind);
+                                }
+                            }
+
+                            if (iii == objir)
+                            {
+                                Tosend = new List<byte>();
+                                isr = true;
+                                mode = 2;
+                                temp = new List<double>(original);
+                                temp[6] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                                temp = new List<double>(original);
+                                temp[6] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                                temp = new List<double>(original);
+                                temp[6] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                                temp = new List<double>(original);
+                                temp[6] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                                temp = new List<double>(original);
+                                temp[6] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                                temp = new List<double>(original);
+                                temp[6] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[6] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                                temp = new List<double>(original);
+                                temp[7] = lowerbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[7] = lowerbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                                temp[7] = upperbound[0];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[7] = upperbound[0];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                                temp = new List<double>(original);
+                                temp[8] = lowerbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[8] = lowerbound[1];
+                                temp[8] = upperbound[1];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                                //Tosend[8] = upperbound[1];
+                                temp = new List<double>(original);
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                                //Tosend = new List<double>(original);
+                                //Tosend[9] = lowerbound[2];
+                                temp[9] = lowerbound[2];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                                //Tosend[9] = upperbound[2];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                                temp = new List<double>(original);
+                                temp[10] = 0;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[10] = 0;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                                temp[10] = 1;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 1;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                                temp[10] = 2;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 2;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                                temp[10] = 3;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 3;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                                temp[10] = 4;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 4;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                                temp[10] = 5;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 5;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                                temp[10] = 6;
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[10] = 6;
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                                temp = new List<double>(original);
+                                temp[14] = lowerbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[14] = lowerbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                                temp[14] = upperbound[6];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[14] = upperbound[6];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                                temp = new List<double>(original);
+                                temp[15] = lowerbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[15] = lowerbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                                temp[15] = upperbound[7];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend[15] = upperbound[7];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                                //Tosend = new List<double>(original);
+                                //Tosend[11] = lowerbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                                temp = new List<double>(original);
+                                temp[11] = lowerbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[11] = upperbound[3];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                                temp[11] = upperbound[3];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend = new List<double>(original);
+                                //Tosend[12] = lowerbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                                temp = new List<double>(original);
+                                temp[12] = lowerbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                temp[12] = upperbound[4];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                                //Tosend[12] = upperbound[4];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                                temp = new List<double>(original);
+                                temp[13] = lowerbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                                //Tosend = new List<double>(original);
+                                //Tosend[13] = lowerbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                                temp[13] = upperbound[5];
+                                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                                //Tosend[13] = upperbound[5];
+                                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                                int scai = 0;
+                                scai = 0;
+                                while (scai < 29)
+                                {
+                                    await Scan_obj_update(tempdl[scai], ind, scai, mode);
+                                    scai++;
+                                }
+                                Scan_cur_obj++;
+                                
+                                if(Scan_cur_obj%3==0)
+                                {
+                                    await Scan_obj_presentation_update(ind);
+                                }
+                            }
+
+                        }
+                        iii++;
+                    }
+                    ii++;
+                }
+
+                i++;
+            }
+
+
+            if (ist)
+            {
+                Tosend = new List<byte>();
+                mode = 0;
+                temp = new List<double>(original);
+                temp[6] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                temp = new List<double>(original);
+                temp[6] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                temp = new List<double>(original);
+                temp[6] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                temp = new List<double>(original);
+                temp[6] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                temp = new List<double>(original);
+                temp[6] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                temp = new List<double>(original);
+                temp[6] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                temp = new List<double>(original);
+                temp[7] = lowerbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[7] = lowerbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                temp[7] = upperbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[7] = upperbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                temp = new List<double>(original);
+                temp[8] = lowerbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[8] = lowerbound[1];
+                temp[8] = upperbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                //Tosend[8] = upperbound[1];
+                temp = new List<double>(original);
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                //Tosend = new List<double>(original);
+                //Tosend[9] = lowerbound[2];
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                //Tosend[9] = upperbound[2];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                temp = new List<double>(original);
+                temp[10] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[10] = 0;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                temp[10] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                temp[10] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                temp[10] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                temp[10] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                temp[10] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                temp[10] = 6;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 6;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                temp = new List<double>(original);
+                temp[14] = lowerbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[14] = lowerbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                temp[14] = upperbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[14] = upperbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                temp = new List<double>(original);
+                temp[15] = lowerbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[15] = lowerbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                temp[15] = upperbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[15] = upperbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                //Tosend = new List<double>(original);
+                //Tosend[11] = lowerbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                temp = new List<double>(original);
+                temp[11] = lowerbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[11] = upperbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                temp[11] = upperbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend = new List<double>(original);
+                //Tosend[12] = lowerbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                temp = new List<double>(original);
+                temp[12] = lowerbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                temp[12] = upperbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[12] = upperbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                temp = new List<double>(original);
+                temp[13] = lowerbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[13] = lowerbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                temp[13] = upperbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                //Tosend[13] = upperbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                int scai = 0;
+                scai = 0;
+                while (scai < 29)
+                {
+                    Scan_obj_special_update(tempdl[scai], ind, scai, mode);
+                    scai++;
+                }
+
+                Scan_pb.Maximum += 1;
+                Scan_max_obj++;
+                Scan_cur_obj++;
+                if (Scan_cur_obj % 3 == 0)
+                {
+                    await Scan_obj_presentation_update(ind);
+                }
+            }
+
+            if (iso)
+            {
+                Tosend = new List<byte>();
+                mode = 1;
+                temp = new List<double>(original);
+                temp[6] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                temp = new List<double>(original);
+                temp[6] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                temp = new List<double>(original);
+                temp[6] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                temp = new List<double>(original);
+                temp[6] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                temp = new List<double>(original);
+                temp[6] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                temp = new List<double>(original);
+                temp[6] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                temp = new List<double>(original);
+                temp[7] = lowerbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[7] = lowerbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                temp[7] = upperbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[7] = upperbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                temp = new List<double>(original);
+                temp[8] = lowerbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[8] = lowerbound[1];
+                temp[8] = upperbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                //Tosend[8] = upperbound[1];
+                temp = new List<double>(original);
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                //Tosend = new List<double>(original);
+                //Tosend[9] = lowerbound[2];
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                //Tosend[9] = upperbound[2];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                temp = new List<double>(original);
+                temp[10] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[10] = 0;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                temp[10] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                temp[10] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                temp[10] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                temp[10] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                temp[10] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                temp[10] = 6;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 6;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                temp = new List<double>(original);
+                temp[14] = lowerbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[14] = lowerbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                temp[14] = upperbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[14] = upperbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                temp = new List<double>(original);
+                temp[15] = lowerbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[15] = lowerbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                temp[15] = upperbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[15] = upperbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                //Tosend = new List<double>(original);
+                //Tosend[11] = lowerbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                temp = new List<double>(original);
+                temp[11] = lowerbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[11] = upperbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                temp[11] = upperbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend = new List<double>(original);
+                //Tosend[12] = lowerbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                temp = new List<double>(original);
+                temp[12] = lowerbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                temp[12] = upperbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[12] = upperbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                temp = new List<double>(original);
+                temp[13] = lowerbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[13] = lowerbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                temp[13] = upperbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                //Tosend[13] = upperbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                int scai = 0;
+                scai = 0;
+                while (scai < 29)
+                {
+                    Scan_obj_special_update(tempdl[scai], ind, scai, mode);
+                    scai++;
+                }
+                Scan_pb.Maximum += 1;
+                Scan_max_obj++;
+                Scan_cur_obj++;
+                if (Scan_cur_obj % 3 == 0)
+                {
+                    await Scan_obj_presentation_update(ind);
+                }
+            }
+
+            if (isr)
+            {
+                Tosend = new List<byte>();
+                mode = 2;
+                temp = new List<double>(original);
+                temp[6] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 0, mode);  //ant 0
+                temp = new List<double>(original);
+                temp[6] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 1, mode);  //ant 1
+                temp = new List<double>(original);
+                temp[6] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 2, mode);  //ant 2
+                temp = new List<double>(original);
+                temp[6] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 3, mode);  //ant 3
+                temp = new List<double>(original);
+                temp[6] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 4, mode);  //ant 4
+                temp = new List<double>(original);
+                temp[6] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[6] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 5, mode);  //ant 5
+                temp = new List<double>(original);
+                temp[7] = lowerbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[7] = lowerbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 6, mode);  //na l
+                temp[7] = upperbound[0];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[7] = upperbound[0];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 7, mode);  //na u
+                temp = new List<double>(original);
+                temp[8] = lowerbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[8] = lowerbound[1];
+                temp[8] = upperbound[1];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 8, mode);  //ar l
+                //Tosend[8] = upperbound[1];
+                temp = new List<double>(original);
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
+                //Tosend = new List<double>(original);
+                //Tosend[9] = lowerbound[2];
+                temp[9] = lowerbound[2];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
+                //Tosend[9] = upperbound[2];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 11, mode);  //ds u
+                temp = new List<double>(original);
+                temp[10] = 0;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[10] = 0;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 12, mode);  //rcs 0
+                temp[10] = 1;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 1;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 13, mode);  //rcs 1
+                temp[10] = 2;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 2;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 14, mode);  //rcs 2
+                temp[10] = 3;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 3;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 15, mode);  //rcs 3
+                temp[10] = 4;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 4;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 16, mode);  //rcs 4
+                temp[10] = 5;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 5;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 17, mode);  //rcs 5
+                temp[10] = 6;
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[10] = 6;
+                //await Scan_obj_update(await Transceive(Tosend), ind, 18, mode);  //rcs 6
+
+
+                temp = new List<double>(original);
+                temp[14] = lowerbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[14] = lowerbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 19, mode);  //pn l
+                temp[14] = upperbound[6];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[14] = upperbound[6];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 20, mode);  //pn u
+                temp = new List<double>(original);
+                temp[15] = lowerbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[15] = lowerbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 21, mode);  //ss l
+                temp[15] = upperbound[7];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend[15] = upperbound[7];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 22, mode);  //ss u
+                //Tosend = new List<double>(original);
+                //Tosend[11] = lowerbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 23, mode);  //sp l
+                temp = new List<double>(original);
+                temp[11] = lowerbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[11] = upperbound[3];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 24, mode);  //sp u
+                temp[11] = upperbound[3];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend = new List<double>(original);
+                //Tosend[12] = lowerbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 25, mode);  //ar l
+                temp = new List<double>(original);
+                temp[12] = lowerbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                temp[12] = upperbound[4];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+
+                //Tosend[12] = upperbound[4];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 26, mode);  //ar u
+                temp = new List<double>(original);
+                temp[13] = lowerbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, false));
+                //Tosend = new List<double>(original);
+                //Tosend[13] = lowerbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 27, mode);  //fb l
+                temp[13] = upperbound[5];
+                Tosend.AddRange(Scan_obj_packet_gen(temp, true));
+                //Tosend[13] = upperbound[5];
+                //await Scan_obj_update(await Transceive(Tosend), ind, 28, mode);  //fb u
+
+                List<List<double>> tempdl = await Scan_Transceive(Tosend, 29);
+                int scai = 0;
+                scai = 0;
+                while (scai < 29)
+                {
+                    Scan_obj_special_update(tempdl[scai], ind, scai, mode);
+                    scai++;
+                }
+                Scan_pb.Maximum += 1;
+                Scan_max_obj++;
+                Scan_cur_obj++;
+
+                if (Scan_cur_obj % 3 == 0)
+                {
+                    await Scan_obj_presentation_update(ind);
+                }
+            }
+            Obj_scan_latency_special_update(ind);
+            await Scan_obj_presentation_update(ind);
+            watch.Stop();
+            ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
+            //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
+        }
+        private async Task Old_Scan_obj_info_property(int ind)
+        {
             var watch = System.Diagnostics.Stopwatch.StartNew();
             bool ist = false;
             bool iso = false;
@@ -13487,6 +14715,55 @@ namespace DRBE
             }
 
         }
+        private List<byte> Scan_obj_packet_gen(List<double> x, bool endflag)
+        {
+            List<byte> tosend = new List<byte>();
+            int i = 0;
+            i = 0;
+            tosend.Add(0x02);
+            tosend.Add(0x00);
+            tosend.Add(0x8C);
+            if(endflag)
+            {
+                tosend.Add(0x01);
+            }
+            else
+            {
+                tosend.Add(0x00);
+            }
+
+            tosend.AddRange(BitConverter.GetBytes((double)777));
+            while (i < x.Count)
+            {
+                tosend.AddRange(BitConverter.GetBytes(x[i]));
+                i++;
+            }
+            return tosend;
+        }
+        private async Task<List<List<double>>> Scan_Transceive(List<byte> x, int no)
+        {
+            int i = 0;
+            List<List<double>> result = new List<List<double>>();
+            ParentPage.Data_buffer_2D_index = 0;
+            
+            ParentPage.UWbinarywriter.Write(x.ToArray(), 0, x.Count);
+            ParentPage.UWbinarywriter.Flush();
+            while(ParentPage.Data_buffer_2D_index<no)
+            {
+                
+                await Task.Delay(1);
+            }
+            ParentPage.Data_buffer_2D_index = 0;
+            i = 0;
+            while(i< ParentPage.Data_buffer_2D.Count)
+            {
+                result.Add(ParentPage.Data_buffer_2D[i]);
+                i++;
+            }
+            ParentPage.Data_buffer_2D.Clear();
+            return result;
+        }
+
         private async Task<List<double>> Transceive(List<double> x)
         {
             List<byte> tosend = new List<byte>();
@@ -13495,7 +14772,7 @@ namespace DRBE
             tosend.Add(0x02);
             tosend.Add(0x00);
             tosend.Add(0x8C);
-            tosend.Add(0x00);
+            tosend.Add(0x01);
             tosend.AddRange(BitConverter.GetBytes((double)777));
             while (i<x.Count)
             {
@@ -13512,6 +14789,7 @@ namespace DRBE
             }
             List<double> result = new List<double>(ParentPage.Packet_data_buffer);
             ParentPage.Packet_data_buffer.Clear();
+            ParentPage.Data_buffer_2D.Clear();
             //await ShowDialog("hi",ParentPage.Packet_data_buffer.Count.ToString());
             return result;
         }
