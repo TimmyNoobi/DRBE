@@ -45,6 +45,7 @@ using Windows.Data.Pdf;
 using Windows.ApplicationModel.Background;
 using Windows.Services.TargetedContent;
 using Windows.Networking.Sockets;
+using Windows.Security.Authentication.Identity.Core;
 
 namespace DRBE
 {
@@ -2047,6 +2048,8 @@ namespace DRBE
 
         }
         private List<List<double>> DRBE_obj_scan_latency_list = new List<List<double>>();
+        
+        private List<int> Scane_quene_list = new List<int>();
         private async void DRBEP_rescan_bt_Click(object sender, RoutedEventArgs e)
         {
             var watch = System.Diagnostics.Stopwatch.StartNew();
@@ -2054,13 +2057,16 @@ namespace DRBE
             int i = 0;
             int ii = 0;
             int iii = 0;
-            int count = 0;
+            int arcount = 0;
             i = 0;
 
             Global_scanned_flag = true;
             Scan_max = Get_total_scan_number(0);
             Scan_pb.Maximum = Scan_max;
-
+            List<byte> Tosend_buffer = new List<byte>();
+            List<List<double>> tempdl = new List<List<double>>();
+            List<int> mode_list = new List<int>();
+            int updatei = 0;
             while (i < Link_list.Count)
             {
                 ii = 0;
@@ -2071,19 +2077,45 @@ namespace DRBE
                     {
                         if (Link_list[i][ii][iii])
                         {
+                            Scane_quene_list.Add(i);
+                            Scane_quene_list.Add(ii);
+                            Scane_quene_list.Add(iii);
                             //Get_link_class_result_update(await Transceive(Fetch_link_info(i, ii, iii)), i, ii, iii);
-                            Get_link_class_tr_result_update(await Transceive(Fetch_link_info(iii, ii, i)), iii, ii, i);
-                            Get_link_class_tr_result_update(await Transceive(Fetch_link_info(i, ii, iii)), i, ii, iii);
-                            Get_link_class_o_result_update(await Transceive(Fetch_link_info(ii, iii, i)), iii, ii, i);
+                            Tosend_buffer.AddRange(Generate_link_info(i, 0,false));
+                            Tosend_buffer.AddRange(Generate_link_info(ii, 1, false));
+                            arcount++;
+                            if (arcount%10==0)
+                            {
+                                Tosend_buffer.AddRange(Generate_link_info(iii, 2, true));
+                                tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
+                                updatei = 0;
+                                while(updatei< Scane_quene_list.Count)
+                                {
+                                    Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                                    updatei++;
+                                    Get_link_class_o_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                                    updatei++;
+                                    Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                                    updatei++;
+                                }
+                                Tosend_buffer.Clear();
+                                Scane_quene_list.Clear();
+
+
+
+                                Get_class_result_show(arcount);
+                            }
+                            else
+                            {
+                                Tosend_buffer.AddRange(Generate_link_info(iii, 2, false));
+                            }
+                            //Get_link_class_tr_result_update(await Transceive(Fetch_link_info(i, 0)), i);
+                            //Get_link_class_o_result_update(await Transceive(Fetch_link_info(ii, 1)), ii);
+                            //Get_link_class_tr_result_update(await Transceive(Fetch_link_info(iii, 2)), iii);
 
                             Dic_t_i_obj[i].Is_transmitting = true;
                             Dic_o_i_obj[ii].Is_reflecting = true;
                             Dic_r_i_obj[iii].Is_receiving = true;
-                            count++;
-                            if (count % 10 == 0)
-                            {
-                                Get_class_result_show(count);
-                            }
                         }
                         iii++;
                     }
@@ -2093,39 +2125,70 @@ namespace DRBE
                 i++;
             }
 
+            Tosend_buffer[Tosend_buffer.Count - 137] = 1;
+            tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
+            updatei = 0;
+            while (updatei < Scane_quene_list.Count)
+            {
+                Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                updatei++;
+                Get_link_class_o_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                updatei++;
+                Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                updatei++;
+            }
+            Tosend_buffer = new List<byte>();
+            Scane_quene_list = new List<int>();
 
-            
+
+
+            Get_class_result_show(arcount);
+
+
 
             i = 0;
             while (i < DRBE_obj_list.Count)
             {
                 if (DRBE_obj_list[i].Is_transmitting)
                 {
-                    Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
+                    mode_list.Add(0);
+                    Scane_quene_list.Add(i);
+                    Tosend_buffer.AddRange(Generate_link_info(i, 0, false));
+                    //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
                 }
                 if (DRBE_obj_list[i].Is_reflecting)
                 {
-                    Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 1);
+                    mode_list.Add(1);
+                    Scane_quene_list.Add(i);
+                    Tosend_buffer.AddRange(Generate_link_info(i, 1, false));
+                    //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 1);
                 }
                 if (DRBE_obj_list[i].Is_receiving)
                 {
-                    Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 2);
+                    mode_list.Add(2);
+                    Scane_quene_list.Add(i);
+                    Tosend_buffer.AddRange(Generate_link_info(i, 2, false));
+                    //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 2);
                 }
-                count++;
-                if (count % 3 == 0)
+                arcount++;
+                if (arcount % 3 == 0)
                 {
-                    Get_class_result_show(count);
+                    //Get_class_result_show(arcount);
                 }
                 i++;
             }
-            i = 0;
-            while (i < DRBE_obj_list.Count)
+            Tosend_buffer[Tosend_buffer.Count - 137] = 1;
+            tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
+            updatei = 0;
+            while (updatei < Scane_quene_list.Count)
             {
-                //COR_Compute += DRBE_obj_list[i].COR_Compute;
-                //COR_Memory += DRBE_obj_list[i].COR_Memory;
-                i++;
+                Get_obj_class_result_update(tempdl[updatei], Scane_quene_list[updatei], mode_list[updatei]);
+                updatei++;
             }
-            Get_class_result_show(count);
+            Tosend_buffer = new List<byte>();
+            Scane_quene_list = new List<int>();
+
+            Get_class_result_show(arcount);
             Last_result_update_show();
             watch.Stop();
             ParentPage.MainPageTestTb.Text += "Overview Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
@@ -6458,7 +6521,7 @@ namespace DRBE
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 //Tosend = new List<double>(original);
                                 //Tosend[9] = lowerbound[2];
-                                temp[9] = lowerbound[2];
+                                temp[9] = upperbound[2];
                                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 //Tosend[9] = upperbound[2];
@@ -6625,7 +6688,7 @@ namespace DRBE
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 //Tosend = new List<double>(original);
                                 //Tosend[9] = lowerbound[2];
-                                temp[9] = lowerbound[2];
+                                temp[9] = upperbound[2];
                                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 //Tosend[9] = upperbound[2];
@@ -6791,7 +6854,7 @@ namespace DRBE
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                                 //Tosend = new List<double>(original);
                                 //Tosend[9] = lowerbound[2];
-                                temp[9] = lowerbound[2];
+                                temp[9] = upperbound[2];
                                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                                 //Tosend[9] = upperbound[2];
@@ -6967,7 +7030,7 @@ namespace DRBE
                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                 //Tosend = new List<double>(original);
                 //Tosend[9] = lowerbound[2];
-                temp[9] = lowerbound[2];
+                temp[9] = upperbound[2];
                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                 //Tosend[9] = upperbound[2];
@@ -7135,7 +7198,7 @@ namespace DRBE
                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                 //Tosend = new List<double>(original);
                 //Tosend[9] = lowerbound[2];
-                temp[9] = lowerbound[2];
+                temp[9] = upperbound[2];
                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                 //Tosend[9] = upperbound[2];
@@ -7302,7 +7365,7 @@ namespace DRBE
                 //await Scan_obj_update(await Transceive(Tosend), ind, 9, mode);  //ar u
                 //Tosend = new List<double>(original);
                 //Tosend[9] = lowerbound[2];
-                temp[9] = lowerbound[2];
+                temp[9] = upperbound[2];
                 Tosend.AddRange(Scan_obj_packet_gen(temp, false));
                 //await Scan_obj_update(await Transceive(Tosend), ind, 10, mode);  //ds l
                 //Tosend[9] = upperbound[2];
@@ -14024,7 +14087,7 @@ namespace DRBE
             Latency_max = RCS_Latency + ANT_Latency + COR_Latency + TU_Latency + ORI_Latency + PG_Latency + NRE_Latency;
 
         }
-        private void Get_link_class_tr_result_update(List<double> x, int i, int ii, int iii)
+        private void Get_link_class_tr_result_update(List<double> x, int i)
         {
 
 
@@ -14082,33 +14145,33 @@ namespace DRBE
             Latency_max = RCS_Latency + ANT_Latency + COR_Latency + TU_Latency + ORI_Latency + PG_Latency + NRE_Latency;
             Bandwidth_max = RCS_Bandwidth + ANT_Bandwidth + COR_Bandwidth + TU_Bandwidth + ORI_Bandwidth + PG_Bandwidth + NRE_Bandwidth;
         }
-        private void Get_link_class_o_result_update(List<double> x, int i, int ii, int iii)
+        private void Get_link_class_o_result_update(List<double> x, int i)
         {
 
 
-            Dic_o_i_obj[ii].RCS_Compute += x[23];
+            Dic_o_i_obj[i].RCS_Compute += x[23];
             //Dic_o_i_obj[ii].ANT_Compute += x[15];
-            Dic_o_i_obj[ii].TU_Compute += x[27];
-            Dic_o_i_obj[ii].NRE_Compute += x[7];
-            Dic_o_i_obj[ii].ORI_Compute += x[11];
-            Dic_o_i_obj[ii].PG_Compute += x[19];
+            Dic_o_i_obj[i].TU_Compute += x[27];
+            Dic_o_i_obj[i].NRE_Compute += x[7];
+            Dic_o_i_obj[i].ORI_Compute += x[11];
+            Dic_o_i_obj[i].PG_Compute += x[19];
 
-            Dic_o_i_obj[ii].RCS_Bandwidth += x[25];
+            Dic_o_i_obj[i].RCS_Bandwidth += x[25];
             //Dic_o_i_obj[ii].ANT_Bandwidth += x[17];
-            Dic_o_i_obj[ii].TU_Bandwidth += x[29];
-            Dic_o_i_obj[ii].NRE_Bandwidth += x[9];
-            Dic_o_i_obj[ii].ORI_Bandwidth += x[13];
-            Dic_o_i_obj[ii].PG_Bandwidth += x[21];
+            Dic_o_i_obj[i].TU_Bandwidth += x[29];
+            Dic_o_i_obj[i].NRE_Bandwidth += x[9];
+            Dic_o_i_obj[i].ORI_Bandwidth += x[13];
+            Dic_o_i_obj[i].PG_Bandwidth += x[21];
 
-            Dic_o_i_obj[ii].TU_Memory += x[8];
-            Dic_o_i_obj[ii].NRE_Memory += x[28];
-            Dic_o_i_obj[ii].ORI_Memory += x[12];
-            Dic_o_i_obj[ii].PG_Memory += x[20];
+            Dic_o_i_obj[i].TU_Memory += x[8];
+            Dic_o_i_obj[i].NRE_Memory += x[28];
+            Dic_o_i_obj[i].ORI_Memory += x[12];
+            Dic_o_i_obj[i].PG_Memory += x[20];
 
-            Dic_o_i_obj[ii].TU_Latency = Math.Max(Dic_o_i_obj[ii].TU_Latency, x[30]);
-            Dic_o_i_obj[ii].NRE_Latency = Math.Max(Dic_o_i_obj[ii].NRE_Latency, x[10]);
-            Dic_o_i_obj[ii].ORI_Latency = Math.Max(Dic_o_i_obj[ii].ORI_Latency, x[14]);
-            Dic_o_i_obj[ii].PG_Latency = Math.Max(Dic_o_i_obj[ii].PG_Latency, x[22]);
+            Dic_o_i_obj[i].TU_Latency = Math.Max(Dic_o_i_obj[i].TU_Latency, x[30]);
+            Dic_o_i_obj[i].NRE_Latency = Math.Max(Dic_o_i_obj[i].NRE_Latency, x[10]);
+            Dic_o_i_obj[i].ORI_Latency = Math.Max(Dic_o_i_obj[i].ORI_Latency, x[14]);
+            Dic_o_i_obj[i].PG_Latency = Math.Max(Dic_o_i_obj[i].PG_Latency, x[22]);
 
             RCS_Compute += x[23];
             //ANT_Compute += x[15];
@@ -14794,29 +14857,107 @@ namespace DRBE
             return result;
         }
 
-        private List<double> Fetch_link_info(int i, int ii, int iii)
+        private List<byte> Generate_link_info(int ind, int mode, bool endflag)
+        {
+            List<byte> result = new List<byte>();
+
+            result.Add(0x02);
+            result.Add(0x00);
+            result.Add(0x8C);
+            if (endflag)
+            {
+                result.Add(0x01);
+            }
+            else
+            {
+                result.Add(0x00);
+            }
+
+            
+            result.AddRange(BitConverter.GetBytes((double)777));
+
+            result.AddRange(BitConverter.GetBytes((double)5 / 1000000));
+            result.AddRange(BitConverter.GetBytes((double)1));
+            result.AddRange(BitConverter.GetBytes((double)1));
+            result.AddRange(BitConverter.GetBytes((double)1 / 1000));
+
+            if(mode==0)
+            {
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Interpolation_order));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Convergence));
+
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Antenna_order));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Number_Antenna_AZ * Dic_t_i_obj[ind].Number_Antenna_EL));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Resolution_AZ));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].Dictionary_dimension));
+
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_order));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_point));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_angle_resolution));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_frequency_point));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_number_of_polarization));
+                result.AddRange(BitConverter.GetBytes(Dic_t_i_obj[ind].RCS_output_time_sampe));
+            }else if(mode == 1)
+            {
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Interpolation_order));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Convergence));
+
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Antenna_order));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Number_Antenna_AZ * Dic_t_i_obj[ind].Number_Antenna_EL));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Resolution_AZ));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].Dictionary_dimension));
+
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_order));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_point));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_angle_resolution));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_frequency_point));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_number_of_polarization));
+                result.AddRange(BitConverter.GetBytes(Dic_o_i_obj[ind].RCS_output_time_sampe));
+            }else if(mode == 2)
+            {
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Interpolation_order));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Convergence));
+
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Antenna_order));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Number_Antenna_AZ * Dic_t_i_obj[ind].Number_Antenna_EL));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Resolution_AZ));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].Dictionary_dimension));
+
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_order));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_point));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_angle_resolution));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_frequency_point));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_number_of_polarization));
+                result.AddRange(BitConverter.GetBytes(Dic_r_i_obj[ind].RCS_output_time_sampe));
+            }
+
+            return result;
+        }
+        private List<double> Fetch_link_info(int i, int mode)
         {
             List<double> result = new List<double>();
+            
 
-            result.Add((double)5 / 1000000);
-            result.Add(1);
-            result.Add(1);
-            result.Add((double)1 / 1000);
+                result.Add((double)5 / 1000000);
+                result.Add(1);
+                result.Add(1);
+                result.Add((double)1 / 1000);
 
-            result.Add(Dic_t_i_obj[i].Interpolation_order);
-            result.Add(Dic_t_i_obj[i].Convergence);
+                result.Add(Dic_t_i_obj[i].Interpolation_order);
+                result.Add(Dic_t_i_obj[i].Convergence);
 
-            result.Add(Dic_t_i_obj[i].Antenna_order);
-            result.Add(Dic_t_i_obj[i].Number_Antenna_AZ * Dic_t_i_obj[i].Number_Antenna_EL);
-            result.Add(Dic_t_i_obj[i].Resolution_AZ);
-            result.Add(Dic_t_i_obj[i].Dictionary_dimension);
+                result.Add(Dic_t_i_obj[i].Antenna_order);
+                result.Add(Dic_t_i_obj[i].Number_Antenna_AZ * Dic_t_i_obj[i].Number_Antenna_EL);
+                result.Add(Dic_t_i_obj[i].Resolution_AZ);
+                result.Add(Dic_t_i_obj[i].Dictionary_dimension);
 
-            result.Add(Dic_o_i_obj[i].RCS_order);
-            result.Add(Dic_o_i_obj[i].RCS_point);
-            result.Add(Dic_o_i_obj[i].RCS_angle_resolution);
-            result.Add(Dic_o_i_obj[i].RCS_frequency_point);
-            result.Add(Dic_o_i_obj[i].RCS_number_of_polarization);
-            result.Add(Dic_o_i_obj[i].RCS_output_time_sampe);
+                result.Add(Dic_t_i_obj[i].RCS_order);
+                result.Add(Dic_t_i_obj[i].RCS_point);
+                result.Add(Dic_t_i_obj[i].RCS_angle_resolution);
+                result.Add(Dic_t_i_obj[i].RCS_frequency_point);
+                result.Add(Dic_t_i_obj[i].RCS_number_of_polarization);
+                result.Add(Dic_t_i_obj[i].RCS_output_time_sampe);
+
 
 
             return result;
@@ -14878,7 +15019,7 @@ namespace DRBE
                     {
                         if(Link_list[i][ii][iii])
                         {
-                            Get_link_class_result_update(await Transceive(Fetch_link_info(i,ii,iii)), i, ii, iii);
+                            //Get_link_class_result_update(await Transceive(Fetch_link_info(i,ii,iii)), i, ii, iii);
 
                             Dic_t_i_obj[i].Is_transmitting = true;
                             Dic_o_i_obj[ii].Is_reflecting = true;
