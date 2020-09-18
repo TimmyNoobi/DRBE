@@ -1502,7 +1502,7 @@ namespace DRBE
         private int DRBE_t_count = 0;
         private int DRBE_o_count = 0;
         private int DRBE_r_count = 0;
-        private async void Process_link_information_create()
+        private async Task Process_link_information_create()
         {
             string temp = "";
             Dic_LPI_ti = new Dictionary<DRBE_Objs, int>();
@@ -1561,21 +1561,21 @@ namespace DRBE
                 }
                 i++;
             }
-            int len = Group_trans_link_list.Count;
-
+            int lent = Group_trans_link_list.Count;
+            int lenr = Group_receive_link_list.Count;
             int oi = 0;
             int oii = 0;
             int oiii = 0;
             i = 0;
-            while(i<len)
+            while(i<lent)
             {
                 ii = 0;
-                while(ii<len)
+                while(ii<lent)
                 {
-                    if(Group_trans_link_list[i][ii]>0)
+                    if(Group_trans_link_list[i][ii]>0 && i!=ii)
                     {
                         iii = 0;
-                        while(iii<len)
+                        while(iii<lenr)
                         {
                             if(Group_receive_link_list[iii][ii]>0)
                             {
@@ -1591,7 +1591,7 @@ namespace DRBE
                                             if(Dic_LPI_ti.ContainsKey(Dic_grp_objs[DRBE_grp_list[i]][oi]) && Dic_LPI_oi.ContainsKey(Dic_grp_objs[DRBE_grp_list[ii]][oii]) && Dic_LPI_ri.ContainsKey(Dic_grp_objs[DRBE_grp_list[iii]][oiii]))
                                             {
                                                 Link_table[Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]]][Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]]][Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]]] = true;
-                                                temp += Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]].ToString() + " + " + Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]].ToString() + " + " + Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]].ToString() + "\r\n";
+                                                //temp += Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]].ToString() + " + " + Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]].ToString() + " + " + Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]].ToString() + "\r\n";
                                             }
                                            
                                             oiii++;
@@ -3791,6 +3791,7 @@ namespace DRBE
                     {
                         Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
                         hide();
+                        Process_link_information_create(); 
                         Link_Viewer.Setup_refresh(DRBE_obj_list, Dic_LPI_it, Dic_LPI_io, Dic_LPI_ir, Dic_LPI_ti, Dic_LPI_oi, Dic_LPI_ri, Link_table);
                         Link_Viewer.show();
                     }

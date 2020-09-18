@@ -720,7 +720,7 @@ namespace DRBE
                 Background = Default_back_black_color_brush
             
             };
-            MainGrid.Children.Add(MainPageTestSv);
+            //MainGrid.Children.Add(MainPageTestSv);
             MainPageTestSv.SetValue(Grid.ColumnProperty, 0);
             MainPageTestSv.SetValue(Grid.ColumnSpanProperty, 50);
             MainPageTestSv.SetValue(Grid.RowProperty, 0);

@@ -2052,7 +2052,7 @@ namespace DRBE
         private List<int> Scane_quene_list = new List<int>();
         private async void DRBEP_rescan_bt_Click(object sender, RoutedEventArgs e)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
             Get_class_result_refresh();
             int i = 0;
             int ii = 0;
@@ -2125,20 +2125,24 @@ namespace DRBE
                 i++;
             }
 
-            Tosend_buffer[Tosend_buffer.Count - 137] = 1;
-            tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
-            updatei = 0;
-            while (updatei < Scane_quene_list.Count)
+            if(Tosend_buffer.Count>0)
             {
-                Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
-                updatei++;
-                Get_link_class_o_result_update(tempdl[updatei], Scane_quene_list[updatei]);
-                updatei++;
-                Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
-                updatei++;
+                Tosend_buffer[Tosend_buffer.Count - 137] = 1;
+                tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
+                updatei = 0;
+                while (updatei < Scane_quene_list.Count)
+                {
+                    Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                    updatei++;
+                    Get_link_class_o_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                    updatei++;
+                    Get_link_class_tr_result_update(tempdl[updatei], Scane_quene_list[updatei]);
+                    updatei++;
+                }
+                Tosend_buffer = new List<byte>();
+                Scane_quene_list = new List<int>();
             }
-            Tosend_buffer = new List<byte>();
-            Scane_quene_list = new List<int>();
+
 
 
 
@@ -2190,8 +2194,8 @@ namespace DRBE
 
             Get_class_result_show(arcount);
             Last_result_update_show();
-            watch.Stop();
-            ParentPage.MainPageTestTb.Text += "Overview Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
+            //watch.Stop();
+            //ParentPage.MainPageTestTb.Text += "Overview Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
 
 
         }
@@ -6265,7 +6269,7 @@ namespace DRBE
                 Presentation_hide();
                 Presentation_fidelity_show();
             }
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
             bool ist = false;
             bool iso = false;
             bool isr = false;
@@ -7476,13 +7480,13 @@ namespace DRBE
             }
             Obj_scan_latency_special_update(ind);
             await Scan_obj_presentation_update(ind);
-            watch.Stop();
-            ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
+            //watch.Stop();
+            //ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
             //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
         }
         private async Task Old_Scan_obj_info_property(int ind)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            //var watch = System.Diagnostics.Stopwatch.StartNew();
             bool ist = false;
             bool iso = false;
             bool isr = false;
@@ -8156,8 +8160,8 @@ namespace DRBE
             }
             Obj_scan_latency_special_update(ind);
             await Scan_obj_presentation_update(ind);
-            watch.Stop();
-            ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
+            //watch.Stop();
+            //ParentPage.MainPageTestTb.Text += "Prop Scane: " + watch.ElapsedMilliseconds.ToString() + "\r\n";
             //Get_obj_class_result_update(await Transceive(Fetch_obj_info(DRBE_obj_list[i])), i, 0);
         }
 
@@ -13045,7 +13049,7 @@ namespace DRBE
                     BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5)
                 });
                 Dic_SObt_i[SingleO_bt[SingleO_bt.Count - 1]] = i;
-                SingleO_bt[SingleO_bt.Count - 1].Click += DRBE_LinkViewer_Click; ;
+                SingleO_bt[SingleO_bt.Count - 1].Click += SingleO_bt_Click;
 
                 SingleOP_sp.Children.Add(SingleO_bt[SingleO_bt.Count - 1]);
 
@@ -13903,12 +13907,13 @@ namespace DRBE
             Presentation_choice_hide();
 
         }
-        private void DRBE_LinkViewer_Click(object sender, RoutedEventArgs e)
+        private void SingleO_bt_Click(object sender, RoutedEventArgs e)
         {
             Button yoo = sender as Button;
             Temp_singleo_bt.BorderBrush = white_button_brush;
             yoo.BorderBrush = green_bright_button_brush;
             Temp_singleo_bt = yoo;
+            Last_result_update_show();
         }
 
         private int Get_total_scan_number(int mode)
