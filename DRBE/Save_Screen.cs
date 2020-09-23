@@ -149,6 +149,45 @@ namespace DRBE
 
         }
 
+        public async Task Quiet_Start(string title, List<string> folder, string file_type, string content)
+        {
+            Complete_flag = false;
+            SS_content = content;
+            storageFolder = ApplicationData.Current.LocalFolder;
+            Name_sub_ttb.Text = "." + file_type;
+            Title_ttb.Text = title;
+            int i = 0;
+            i = 0;
+            while (i < folder.Count)
+            {
+                try
+                {
+                    storageFolder = await storageFolder.GetFolderAsync(folder[i]);
+                }
+                catch
+                {
+                    await storageFolder.CreateFolderAsync(folder[i]);
+                    storageFolder = await storageFolder.GetFolderAsync(folder[i]);
+                }
+                i++;
+            }
+            string UNfilename = "DRBE_New.dsc";
+            StorageFile file;
+            int selection = 0;
+            try
+            {
+                file = await storageFolder.CreateFileAsync(UNfilename, CreationCollisionOption.OpenIfExists);
+                await FileIO.WriteTextAsync(file, SS_content);
+                Complete_flag = true;
+            }
+            catch (Exception ex)
+            {
+                file = await storageFolder.CreateFileAsync(UNfilename, CreationCollisionOption.OpenIfExists);
+                await FileIO.WriteTextAsync(file, SS_content);
+                Complete_flag = true;
+            }
+        }
+
         public void Setup()
         {
 
@@ -312,6 +351,7 @@ namespace DRBE
         {
 
             string filename = Enter_name_tb.Text + Name_sub_ttb.Text;
+            string UNfilename = "DRBE_New.dsc";
             Saved_file_name = Enter_name_tb.Text;
             StorageFile file;
             int selection = 0;
@@ -325,18 +365,31 @@ namespace DRBE
                 }
                 else
                 {
-                    file = await storageFolder.CreateFileAsync(filename,CreationCollisionOption.OpenIfExists);
+                    file = await storageFolder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
                     await FileIO.WriteTextAsync(file, SS_content);
+
+                    if(Name_sub_ttb.Text == ".dsc")
+                    {
+                        file = await storageFolder.CreateFileAsync(UNfilename, CreationCollisionOption.OpenIfExists);
+                        await FileIO.WriteTextAsync(file, SS_content);
+                    }
+
                     await ShowDialog("Over-write succeed",file.Path.ToLower());
                     hide();
                     Complete_flag = true;
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 file = await storageFolder.CreateFileAsync(filename, CreationCollisionOption.OpenIfExists);
                 await FileIO.WriteTextAsync(file, SS_content);
-                await ShowDialog("Write succeed", file.Path.ToLower());
+
+                if (Name_sub_ttb.Text == ".dsc")
+                {
+                    file = await storageFolder.CreateFileAsync(UNfilename, CreationCollisionOption.OpenIfExists);
+                    await FileIO.WriteTextAsync(file, SS_content);
+                }
+                await ShowDialog("New File Created", file.Path.ToLower());
                 hide();
                 Complete_flag = true;
             }

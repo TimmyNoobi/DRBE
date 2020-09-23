@@ -699,7 +699,7 @@ namespace DRBE
         private DRBE_SUT DRBE_SUT_Page;
         private Communication_Protocol_Page Communication_Protocol_Page;
         private DRBE_AP DRBE_ap;
-        private DRBE_MainPage1 DRBE_mainpage1;
+        public DRBE_MainPage1 DRBE_mainpage1;
         //private DRBE_Link_Viewer_s DRBE_lv;
         private Template_Make TM_Test;
 
@@ -712,6 +712,8 @@ namespace DRBE
 
         private byte[] Communication_test_byte = new byte[] { 0x22 };
         private List<byte> C_T_B_N = new List<byte>();
+
+        public DRBE_LinkViewer Link_Viewer;
         private async void MainPage_loaded(object sender, RoutedEventArgs e)
         {
             MainPageTestSv = new ScrollViewer() { 
@@ -792,7 +794,7 @@ namespace DRBE
             //DRBE_lv = new DRBE_Link_Viewer_s(MainGrid, this);
             //DRBE_SG = new DRBE_Scenario_Generator(MainGrid);
 
-            //DRBE_mainpage1.Show();
+            DRBE_mainpage1.Show();
 
             //TM_Test = new Template_Make(MainGrid, this);
 
@@ -881,8 +883,8 @@ namespace DRBE
             //executeCommand();
 
             DRBE_SG = new DRBE_Scenario_Generator(MainGrid, this);
-            DRBE_SG.show();
-
+            //DRBE_SG.show();
+            Link_Viewer = new DRBE_LinkViewer(MainGrid, this);
 
         }
 

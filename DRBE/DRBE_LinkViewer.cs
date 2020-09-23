@@ -6383,23 +6383,22 @@ namespace DRBE
             lowerbound.Add(original[13] * 0.8);
             upperbound.Add(original[13] * 1.2);
 
-            if (original[14] > 1)
+            if (original[14] == 1)
             {
-                lowerbound.Add(original[14] - 1);
+                lowerbound.Add(1);
+                upperbound.Add(2);
             }
-            else
+            else if(original[14] == 2)
             {
-                lowerbound.Add(original[14]);
+                lowerbound.Add(1);
+                upperbound.Add(4);
+            }
+            else if (original[14] == 4)
+            {
+                lowerbound.Add(2);
+                upperbound.Add(4);
             }
 
-            if (original[14] < 4)
-            {
-                upperbound.Add(original[14] + 1);
-            }
-            else
-            {
-                upperbound.Add(original[14]);
-            }
 
             lowerbound.Add(original[15] * 0.8);
             upperbound.Add(original[15] * 1.2);

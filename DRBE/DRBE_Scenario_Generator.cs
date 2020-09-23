@@ -89,8 +89,8 @@ namespace DRBE
         public Grid ParentGrid;
         public MainPage ParentPage;
         private Save_Screen DRBE_SS;
-        public DRBE_Link_Viewer_s SC_Dlv;
-        public DRBE_LinkViewer Link_Viewer;
+        //public DRBE_Link_Viewer_s SC_Dlv;
+        //public DRBE_LinkViewer Link_Viewer;
 
 
         public DRBE_Scenario_Generator(Grid parent, MainPage parentpage)
@@ -99,7 +99,7 @@ namespace DRBE
             ParentPage = parentpage;
             //hide();
             DRBE_SS = new Save_Screen(parent);
-            Link_Viewer = new DRBE_LinkViewer(parent, ParentPage);
+            //Link_Viewer = new DRBE_LinkViewer(parent, ParentPage);
             Setup();
             hide();
         }
@@ -273,7 +273,7 @@ namespace DRBE
             Home_bt.SetValue(Grid.ColumnSpanProperty, 15);
             Home_bt.SetValue(Grid.RowProperty, 5);
             Home_bt.SetValue(Grid.RowSpanProperty, 10);
-            Home_bt.Click += Home_bt_Click; ;
+            Home_bt.Click += Home_bt_Click; 
             #endregion
 
             #region Mode obj
@@ -347,7 +347,7 @@ namespace DRBE
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalContentAlignment = VerticalAlignment.Stretch,
                 HorizontalContentAlignment = HorizontalAlignment.Stretch,
-                Background = Default_back_black_color_brush,
+                Background = green_button_brush,
                 Content = List_view_bti,
                 Foreground = white_button_brush,
                 FontSize = 18
@@ -665,7 +665,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Center,
-                Text = "Generate",
+                Text = "Add Object",
                 Foreground = green_bright_button_brush,
                 FontSize = 14,
                 FontWeight = FontWeights.Bold
@@ -1434,8 +1434,10 @@ namespace DRBE
             #endregion
         }
 
-        private void Unity_view_bt_Click(object sender, RoutedEventArgs e)
+        private async void Unity_view_bt_Click(object sender, RoutedEventArgs e)
         {
+            await DRBE_SS.Quiet_Start("Save Scenario", new List<string>() { "Simulator File", "Scenario File" }, "dsc", Generate_scenario_file_s());
+            await Task.Delay(50);
             Button foo = sender as Button;
 
             if(foo.Background == Default_back_black_color_brush)
@@ -1451,17 +1453,19 @@ namespace DRBE
 
                 ParentPage.UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
                 ParentPage.UWbinarywriter.Flush();
+                foo.Background = green_button_brush;
+                List_view_bt.Background = Default_back_black_color_brush;
             }
             else
             {
-                foo.Background = green_button_brush;
-                List_view_bt.Background = Default_back_black_color_brush;
+
             }
         }
 
         private void Home_bt_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            hide();
+            ParentPage.DRBE_mainpage1.Show();
         }
         
         private void List_view_bt_Click(object sender, RoutedEventArgs e)
@@ -1481,11 +1485,11 @@ namespace DRBE
 
                 ParentPage.UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
                 ParentPage.UWbinarywriter.Flush();
+                foo.Background = green_button_brush;
+                Unity_view_bt.Background = Default_back_black_color_brush;
             }
             else
             {
-                foo.Background = green_button_brush;
-                Unity_view_bt.Background = Default_back_black_color_brush;
             }
         }
 
@@ -1572,7 +1576,7 @@ namespace DRBE
                 ii = 0;
                 while(ii<lent)
                 {
-                    if(Group_trans_link_list[i][ii]>0 && i!=ii)
+                    if(Group_trans_link_list[i][ii]>0)
                     {
                         iii = 0;
                         while(iii<lenr)
@@ -1590,7 +1594,10 @@ namespace DRBE
                                         {
                                             if(Dic_LPI_ti.ContainsKey(Dic_grp_objs[DRBE_grp_list[i]][oi]) && Dic_LPI_oi.ContainsKey(Dic_grp_objs[DRBE_grp_list[ii]][oii]) && Dic_LPI_ri.ContainsKey(Dic_grp_objs[DRBE_grp_list[iii]][oiii]))
                                             {
-                                                Link_table[Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]]][Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]]][Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]]] = true;
+                                                if((Dic_grp_objs[DRBE_grp_list[i]][oi]!= Dic_grp_objs[DRBE_grp_list[ii]][oii]) &&(Dic_grp_objs[DRBE_grp_list[iii]][oiii]!= Dic_grp_objs[DRBE_grp_list[ii]][oii]))
+                                                {
+                                                    Link_table[Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]]][Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]]][Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]]] = true;
+                                                }
                                                 //temp += Dic_LPI_ti[Dic_grp_objs[DRBE_grp_list[i]][oi]].ToString() + " + " + Dic_LPI_oi[Dic_grp_objs[DRBE_grp_list[ii]][oii]].ToString() + " + " + Dic_LPI_ri[Dic_grp_objs[DRBE_grp_list[iii]][oiii]].ToString() + "\r\n";
                                             }
                                            
@@ -1658,8 +1665,14 @@ namespace DRBE
         }
 
 
-        private void Mode_grp_bt_Click(object sender, RoutedEventArgs e)
+        private async void Mode_grp_bt_Click(object sender, RoutedEventArgs e)
         {
+            if(DRBE_grp_list.Count<1)
+            {
+                await ShowDialog("Error", "No Group Defined, Please Add Group");
+                return;
+            }
+
             Mode_grp_bt.Background = green_button_brush;
             Mode_obj_bt.Background = Default_back_black_color_brush;
             Mode_flag = 1;
@@ -1675,7 +1688,7 @@ namespace DRBE
             Group_button_decolor();
 
             Temp_grp_bt.Background = green_ready_brush;
-            Grp_obj_show();
+            await Grp_obj_show();
             DRBE_group_config_show();
         }
 
@@ -1859,6 +1872,24 @@ namespace DRBE
             {
                 DRBE_grp_list[DRBE_grp_list.Count - 1].Name = Create_grp_name_tb.Text;
             }
+
+            int i = 0;
+            int ii = 0;
+            Group_trans_link_list.Add(new List<int>());
+            Group_receive_link_list.Add(new List<int>());
+            while(i<Group_trans_link_list.Count-1)
+            {
+                Group_trans_link_list[i].Add(0);
+                Group_trans_link_list[Group_trans_link_list.Count - 1].Add(0);
+
+                Group_receive_link_list[i].Add(0);
+                Group_receive_link_list[Group_trans_link_list.Count - 1].Add(0);
+                i++;
+            }
+            Group_receive_link_list[Group_trans_link_list.Count - 1].Add(0);
+            Group_trans_link_list[Group_trans_link_list.Count - 1].Add(0);
+
+            Group_panel_refresh();
             Create_grp_button();
             Create_group_panel_hide();
         }
@@ -1986,12 +2017,17 @@ namespace DRBE
             }
 
         }
-        private void Grp_obj_show()
+        private async Task Grp_obj_show()
         {
             int i = 0;
             i = 0;
             int gindex = Group_bt_list.IndexOf(Temp_grp_bt);
             int oindex = 0;
+            if(DRBE_grp_list.Count<1)
+            {
+                await ShowDialog("Error", "No Group Defined, Please Add Group");
+                return;
+            }
             if(Dic_grp_objs.ContainsKey(DRBE_grp_list[gindex]))
             {
                 i = 0;
@@ -2065,7 +2101,7 @@ namespace DRBE
                 
             }
         }
-        private void DRBE_grp_button_Click(object sender, RoutedEventArgs e)
+        private async void DRBE_grp_button_Click(object sender, RoutedEventArgs e)
         {
             int i = 0;
             int index = 0;
@@ -2089,7 +2125,7 @@ namespace DRBE
                 Temp_grp_bt = foo;
                 DRBE_group_config_show();
                 Temp_grp_bt.Background = green_ready_brush;
-                Grp_obj_show();
+                await Grp_obj_show();
             }
             else
             {
@@ -2736,6 +2772,7 @@ namespace DRBE
                 Obj_bt_list[0].Background = green_ready_brush;
                 Update_DRBE_objs(0);
                 Temp_obj_bt = Obj_bt_list[0];
+
             }
         }
         private void DRBE_obj_bt_decolor()
@@ -3010,9 +3047,30 @@ namespace DRBE
 
                 Generate_object_bt();
 
+
+            }
+            catch
+            {
+                await ShowDialog("Load Error", "Unable to Load Object Files");
+            }
+
+            try
+            {
+
                 content = await Read_file(lpath);
                 //await Read_sc_file_ui(content);
                 await Parse_link_file(content);
+
+            }
+            catch
+            {
+                Link_table = new List<List<List<bool>>>();
+                await ShowDialog("Load Error", "Unable to Load Link Files");
+            }
+
+            try
+            {
+
 
                 content = await Read_file(gpath);
                 //await Read_sc_file_ui(content);
@@ -3020,7 +3078,7 @@ namespace DRBE
 
                 Create_grp_button();
                 Temp_grp_bt = Group_bt_list[0];
-
+                
                 Grp_obj_bt_fetch(DRBE_obj_list[Dic_bt_obj_int[Temp_obj_bt]]);
                 Group_panel_refresh();
 
@@ -3031,7 +3089,17 @@ namespace DRBE
             }
             catch
             {
-                await ShowDialog("Unavailable", "Unavailable Object");
+                DRBE_grp_list = new List<DRBE_Group>();
+                Group_trans_link_list = new List<List<int>>();
+                Group_receive_link_list = new List<List<int>>();
+                Dic_grp_objs = new Dictionary<DRBE_Group, List<DRBE_Objs>>();
+                Dic_objs_grp = new Dictionary<DRBE_Objs, List<DRBE_Group>>();
+
+                Create_grp_button();
+                Group_panel_refresh();
+
+
+                await ShowDialog("Load Error", "Unable to Load Group Files");
             }
         }
         private string Generate_scenario_file()
@@ -3571,6 +3639,17 @@ namespace DRBE
             temp += DRBE_grp_list.Count.ToString();
             temp += ",}";
 
+
+            temp += "{";
+            i = 0;
+            while (i < DRBE_grp_list.Count)
+            {
+                temp += DRBE_grp_list[i].Name + ",";
+                i++;
+            }
+            temp += "}";
+
+
             temp += "{";
             i = 0;
             while(i<Group_trans_link_list.Count)
@@ -3587,6 +3666,7 @@ namespace DRBE
                 i++;
             }
             temp += "}";
+
 
             temp += "{";
             i = 0;
@@ -3642,6 +3722,8 @@ namespace DRBE
             int gind1 = 0;
             int gind2 = 0;
             int gind3 = 0;
+
+            int grpid = 0;
             DRBE_grp_list = new List<DRBE_Group>();
             Group_trans_link_list = new List<List<int>>();
             Group_receive_link_list = new List<List<int>>();
@@ -3679,7 +3761,13 @@ namespace DRBE
                                     }
                                     ginxi++;
                                 }
-                            }else if(mode == 1)
+                            }
+                            else if(mode == 1)
+                            {
+                                DRBE_grp_list[grpid].Name = temp;
+                                grpid++;
+                            }
+                            else if(mode == 2)
                             {
                                 if(glisti==0)
                                 {
@@ -3697,7 +3785,7 @@ namespace DRBE
                                     glisti = 0;
                                 }
                             }
-                            else if (mode == 2)
+                            else if (mode == 3)
                             {
                                 if (glisti == 0)
                                 {
@@ -3715,7 +3803,7 @@ namespace DRBE
                                     Group_receive_link_list[gind1][gind2] = gind3;
                                     glisti = 0;
                                 }
-                            }else if(mode == 3)
+                            }else if(mode == 4)
                             {
                                 //await ShowDialog(dici.ToString(), temp);
                                 if(temp.Length>0)
@@ -3749,9 +3837,9 @@ namespace DRBE
                         i++;
                     }
                     mode++;
-                    if(mode==4)
+                    if(mode==5)
                     {
-                        mode = 3;
+                        mode = 4;
                         dici++;
                     }
                 }
@@ -3769,7 +3857,7 @@ namespace DRBE
         }
         private async Task Save_All_Files()
         {
-            Process_link_information_create();
+            await Process_link_information_create();
             await DRBE_SS.Start("Save Scenario", new List<string>() { "Simulator File", "Scenario File" }, "dsc", Generate_scenario_file_s());
             await Task.Delay(500);
             await DRBE_SS.Start("Save Links", new List<string>() { "Simulator File", "Link File" }, "dlv", Generate_link_file_s());
@@ -3782,8 +3870,8 @@ namespace DRBE
         }
         private async void Lv_view_bt_Click(object sender, RoutedEventArgs e)
         {
-            
-            if(Link_table.Count>0)
+            await Process_link_information_create();
+            if (Link_table.Count>0)
             {
                 if(Link_table[0].Count > 0)
                 {
@@ -3791,9 +3879,8 @@ namespace DRBE
                     {
                         Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
                         hide();
-                        Process_link_information_create(); 
-                        Link_Viewer.Setup_refresh(DRBE_obj_list, Dic_LPI_it, Dic_LPI_io, Dic_LPI_ir, Dic_LPI_ti, Dic_LPI_oi, Dic_LPI_ri, Link_table);
-                        Link_Viewer.show();
+                        ParentPage.Link_Viewer.Setup_refresh(DRBE_obj_list, Dic_LPI_it, Dic_LPI_io, Dic_LPI_ir, Dic_LPI_ti, Dic_LPI_oi, Dic_LPI_ri, Link_table);
+                        ParentPage.Link_Viewer.show();
                     }
                     else
                     {
@@ -4460,39 +4547,79 @@ namespace DRBE
 
             //await Generate_all_obj();
 
-            Process_link_information_create();
+            DRBE_obj_list.Add(new DRBE_Objs((ushort)(DRBE_obj_list.Count)));
+            #region grp bt
+            Obj_gd_list.Add(new Grid()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush
+            });
 
-            return;
+            Obj_gd_list[Obj_gd_list.Count - 1].ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(2, GridUnitType.Star) });
+            Obj_gd_list[Obj_gd_list.Count - 1].ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(6, GridUnitType.Star) });
 
-            List<byte> testpacket = new List<byte>();
-            testpacket.Add(0x02);
-            testpacket.Add(0x00);
-            testpacket.Add(0x8C);
-            testpacket.Add(0x00);
-            testpacket.AddRange(BitConverter.GetBytes((double)777));
-            testpacket.AddRange(BitConverter.GetBytes((double)1900000000));
-            testpacket.AddRange(BitConverter.GetBytes((double)60));
-            testpacket.AddRange(BitConverter.GetBytes((double)500000));
-            testpacket.AddRange(BitConverter.GetBytes((double)0.001));
-            testpacket.AddRange(BitConverter.GetBytes((double)6));
-            testpacket.AddRange(BitConverter.GetBytes((double)2));
-            testpacket.AddRange(BitConverter.GetBytes((double)5));
-            testpacket.AddRange(BitConverter.GetBytes((double)16));
-            testpacket.AddRange(BitConverter.GetBytes((double)1));
-            testpacket.AddRange(BitConverter.GetBytes((double)800));
-            testpacket.AddRange(BitConverter.GetBytes((double)6));
-            testpacket.AddRange(BitConverter.GetBytes((double)20));
-            testpacket.AddRange(BitConverter.GetBytes((double)2));
-            testpacket.AddRange(BitConverter.GetBytes((double)1));
-            testpacket.AddRange(BitConverter.GetBytes((double)14));
-            testpacket.AddRange(BitConverter.GetBytes((double)10));
+            Obj_img_list.Add(new Image()
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Object_icon.png", UriKind.RelativeOrAbsolute)),
+                Height = 20
+            });
+            Obj_img_list[Obj_img_list.Count - 1].SetValue(Grid.ColumnProperty, 0);
+            Obj_img_list[Obj_img_list.Count - 1].SetValue(Grid.ColumnSpanProperty, 1);
+
+            Obj_tb_list.Add(new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Center,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                FontSize = 12,
+                Text = "ID:" + DRBE_obj_list[DRBE_obj_list.Count - 1].ID.ToString(),
+                Foreground = white_button_brush
+            });
+
+            Obj_tb_list[Obj_tb_list.Count - 1].SetValue(Grid.ColumnProperty, 1);
+            Obj_tb_list[Obj_tb_list.Count - 1].SetValue(Grid.ColumnSpanProperty, 1);
+            //Add_grp_tb.SetValue(Grid.RowSpanProperty, 1);
+
+            Obj_sp_list.Add(new StackPanel()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                Height = 40,
+                Background = Default_back_black_color_brush
+            });
+            Obj_sp_list[Obj_sp_list.Count - 1].Children.Add(Obj_gd_list[Obj_gd_list.Count - 1]);
+            Obj_gd_list[Obj_gd_list.Count - 1].Children.Add(Obj_img_list[Obj_img_list.Count - 1]);
+            Obj_gd_list[Obj_gd_list.Count - 1].Children.Add(Obj_tb_list[Obj_tb_list.Count - 1]);
+
+            Obj_bt_list.Add(new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Height = 40,
+                Content = Obj_sp_list[Obj_sp_list.Count - 1],
+                BorderBrush = white_button_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5)
+            });
+            Dic_bt_obj_int[Obj_bt_list[Obj_bt_list.Count - 1]] = DRBE_obj_list.Count - 1;
+            Obj_bt_list[Obj_bt_list.Count - 1].Click += DRBE_obj_bt_Click;
+
+            DRBE_Obj_SPL[(DRBE_obj_list.Count - 1) % 10].Children.Add(Obj_bt_list[Obj_bt_list.Count - 1]);
+
+            if(Obj_bt_list.Count==1)
+            {
+                Temp_obj_bt = Obj_bt_list[0];
+                Temp_obj_bt.Background = green_ready_brush;
+                Update_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+            }
+
+            #endregion
 
 
-            await Process_link_information();
-            ParentPage.UWbinarywriter.Write(testpacket.ToArray(), 0, testpacket.Count);
-            ParentPage.UWbinarywriter.Flush();
-
-            await ShowDialog(testpacket.Count.ToString(), BitConverter.ToString(testpacket.ToArray()));
         }
 
         private void Hide_all_Property()

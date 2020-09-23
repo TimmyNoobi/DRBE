@@ -355,7 +355,7 @@ namespace DRBE
 
             Initial_Position_X = r.Next(-400, 400);
             Initial_Position_Y = r.Next(-400, 400);
-            Initial_Position_Z = r.Next(-400, 400);
+            Initial_Position_Z = r.Next(0, 200);
 
             Initial_Ref_Position_X = 10;
             Initial_Ref_Position_Y = 20;
@@ -364,9 +364,9 @@ namespace DRBE
             Initial_Latitude = 30.5;
             Initial_Longtitude = 29.5;
 
-            Initial_Orientation_X = r.Next(0, 360);
-            Initial_Orientation_Y = r.Next(0, 360);
-            Initial_Orientation_Z = r.Next(0, 360);
+            Initial_Orientation_X = r.Next(-45, 45);
+            Initial_Orientation_Y = r.Next(-45, 45);
+            Initial_Orientation_Z = r.Next(-45, 45);
 
             if (r.Next(0,1)==1)
             {
