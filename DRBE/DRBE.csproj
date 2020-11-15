@@ -144,6 +144,7 @@
     <Compile Include="DRBE_Reflector.cs" />
     <Compile Include="DRBE_Scenario_Generator.cs" />
     <Compile Include="DRBE_SUT.cs" />
+    <Compile Include="DRBE_swpacket.cs" />
     <Compile Include="DRBE_Transmitter.cs" />
     <Compile Include="FrontPage.cs" />
     <Compile Include="IT_Button.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Receiver.cs" />
     <Compile Include="Save_Screen.cs" />
     <Compile Include="Simple_DRBE_Plotter.cs" />
+    <Compile Include="Simulator_V1.cs" />
     <Compile Include="Sim_sweep.cs" />
     <Compile Include="SoftwarePanel.cs" />
     <Compile Include="TCP_Listener.cs" />
@@ -220,6 +222,7 @@
     <Content Include="Assets\Path_de_icon.png" />
     <Content Include="Assets\Path_en_icon.png" />
     <Content Include="Assets\Path_uns_icon.png" />
+    <Content Include="Assets\Pause_icon.png" />
     <Content Include="Assets\PCie_icon.png" />
     <Content Include="Assets\Phase_Array_icon.png" />
     <Content Include="Assets\Phase_Array_icon_t.png" />
@@ -267,6 +270,7 @@
     <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Step_forward_icon.png" />
     <Content Include="Assets\structure_icon.png" />
     <Content Include="Assets\surfaceplot_CUTS.png" />
     <Content Include="Assets\template_icon.png" />
@@ -306,6 +310,9 @@
   <ItemGroup>
     <None Include="Assets\DRBE_Server_CNF.exe.config" />
     <None Include="DRBE_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\NewFolder1\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

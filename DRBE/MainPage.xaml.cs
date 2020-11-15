@@ -653,6 +653,7 @@ namespace DRBE
             {
                 //await ShowDialog(Packet_receiver_result[Packet_receiver_index - 1].ToString(), Packet_receiver_result.Count.ToString());
                 Packet_len = Packet_len * 255 + x;
+                //DRBE_frontPage.Statues_tb.Text += "received Sent: " + Packet_len.ToString() + "\r\n";
                 //MainPageTestTb.Text += "\r\n Packet Length: " + Packet_len.ToString() + "\r\n";
             } //length LS
             else if (Packet_receiver_index == 4)
@@ -684,6 +685,13 @@ namespace DRBE
 
             }
 
+            if(Packet_receiver_index==3 && Packet_device == 0x22)
+            {
+                DRBE_SG.DRBE_bt_maincontrol(Packet_len);
+                //await ShowDialog("here", Packet_len.ToString());
+                Packet_receiver_result.Clear();
+                Packet_receiver_index = 0;
+            }
         }
 
         private TextBlock DRBE_Debug_tb = new TextBlock();
@@ -693,13 +701,15 @@ namespace DRBE
 
         private Button DRBE_Sync = new Button();
 
-        private FrontPage DRBE_frontPage;
+        public FrontPage DRBE_frontPage;
         private SoftwarePanel DRBE_softwarePage;
         private DRBEScenario DRBE_Scenario;
         private DRBE_SUT DRBE_SUT_Page;
         private Communication_Protocol_Page Communication_Protocol_Page;
         private DRBE_AP DRBE_ap;
         public DRBE_MainPage1 DRBE_mainpage1;
+        public Simulator_V1 DRBE_sv1;
+
         //private DRBE_Link_Viewer_s DRBE_lv;
         private Template_Make TM_Test;
 
@@ -762,12 +772,14 @@ namespace DRBE
             await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             await Task.Delay(1000);
 
-            DRBE_frontPage = new FrontPage(MainGrid);
+            DRBE_frontPage = new FrontPage(MainGrid, this);
+            DRBE_frontPage.Show();
+            
             DRBE_softwarePage = new SoftwarePanel(MainGrid, UWbinarywriter);
             Communication_Protocol_Page = new Communication_Protocol_Page(MainGrid);
             DRBE_ap = new DRBE_AP(MainGrid, UWbinarywriter);
             DRBE_mainpage1 = new DRBE_MainPage1(MainGrid, this);
-            
+            DRBE_sv1 = new Simulator_V1(MainGrid, this);
 
             //DRBE_SUT_Page = new DRBE_SUT(MainGrid);
             //DRBE_Debug_tb = new TextBlock() { 
@@ -794,21 +806,24 @@ namespace DRBE
             //DRBE_lv = new DRBE_Link_Viewer_s(MainGrid, this);
             //DRBE_SG = new DRBE_Scenario_Generator(MainGrid);
 
-            DRBE_mainpage1.Show();
+            //DRBE_mainpage1.Show();
+            //DRBE_sv1.show();
+
 
             //TM_Test = new Template_Make(MainGrid, this);
 
 
             //DRBE_ap.Show();
             //DRBE_lv.Setup(DRBE_Scenario.D_Trans, DRBE_Scenario.D_Rec, DRBE_Scenario.D_Ref);
+
             StartClient();
-            
+
             //DRBE_softwarePage.Show();
-            //DRBE_frontPage.Show();
             //DRBE_ap.Show();
             //DRBE_lv.hide();
-            //ConnectToSerialPort();
-            //AdvReadByte(ReadCancellationTokenSource.Token);
+
+            ConnectToSerialPort();
+            AdvReadByte(ReadCancellationTokenSource.Token);
 
             DRBE_frontPage.Send_Seq_1.Click += Send_Seq_1_Click;
 
@@ -955,6 +970,7 @@ namespace DRBE
         private int Com_Print_LineC = 0;
         private async void Send_Seq_1_Click(object sender, RoutedEventArgs e)
         {
+            List<byte> doubleby = new List<byte>();
             try
             {
                 C_T_B_N = new List<byte>(D_Fixed(32.776, 7, 10));
@@ -965,11 +981,29 @@ namespace DRBE
                 C_T_B_N.Insert(0, 0x00);
                 C_T_B_N.Insert(0, 0x04);
                 C_T_B_N.Add(0x09);
-                d_writer.WriteBytes((C_T_B_N.ToArray()));
+
+
+
+                doubleby = new List<byte>(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+                doubleby.AddRange(BitConverter.GetBytes(S_D(DRBE_frontPage.Send_info_box.Text)));
+
+                UInt16 thelen = 75;
+                doubleby.Insert(0, BitConverter.GetBytes(thelen)[0]);
+                doubleby.Insert(0, BitConverter.GetBytes(thelen)[1]);
+                doubleby.Insert(0,0x51);
+
+                d_writer.WriteBytes((doubleby.ToArray()));
                 await d_writer.StoreAsync();
                 await Task.Delay(60);
                 //await d_writer.FlushAsync();
-                DRBE_frontPage.Statues_tb.Text += "         Sent: " + BitConverter.ToString(C_T_B_N.ToArray());
+                DRBE_frontPage.Statues_tb.Text += "         Sent: " + BitConverter.ToString(doubleby.ToArray());
                 Com_Print_LineC++;
                 if (Com_Print_LineC>30)
                 {
@@ -998,11 +1032,11 @@ namespace DRBE
         }
 
         #region communication
-        SerialDevice serialDevice = null;
-        DataReader d_reader = null;
-        DataWriter d_writer = null;
-        CancellationTokenSource ReadCancellationTokenSource = new CancellationTokenSource();
-        bool USB_Connected_flag = false;
+        public SerialDevice serialDevice = null;
+        public DataReader d_reader = null;
+        public DataWriter d_writer = null;
+        public CancellationTokenSource ReadCancellationTokenSource = new CancellationTokenSource();
+        public bool USB_Connected_flag = false;
         private async void ConnectToSerialPort()
         {
             while (true)
@@ -1055,6 +1089,40 @@ namespace DRBE
             }
         }
         private List<byte> All_Received_byte_list = new List<byte>();
+        public List<byte> ByteList_Serial_Received = new List<byte>();
+        public bool FPGA_Data_ready_flag = false;
+        public int FPGA_ByteList_index = 0;
+        public int FPGA_ByteList_len = 0;
+        private void ByteList_packet(byte x)
+        {
+            if(!FPGA_Data_ready_flag)
+            {
+                ByteList_Serial_Received.Add(x);
+                if (FPGA_ByteList_index == 0)
+                {
+                    FPGA_ByteList_index++;
+                }
+                else if (FPGA_ByteList_index == 1)
+                {
+                    FPGA_ByteList_len = x;
+                    FPGA_ByteList_index++;
+                }
+                else if (FPGA_ByteList_index == 2)
+                {
+                    FPGA_ByteList_len = FPGA_ByteList_len * 255 + x;
+                    FPGA_ByteList_index++;
+                }
+                else if (FPGA_ByteList_index >= (FPGA_ByteList_len-1))
+                {
+                    FPGA_Data_ready_flag = true;
+                    FPGA_ByteList_index = 0;
+                }
+                else
+                {
+                    FPGA_ByteList_index++;
+                }
+            }
+        }
         private async void AdvReadByte(CancellationToken cancellationToken)
         {
             Task<UInt32> loadAsyncTask;
@@ -1082,8 +1150,9 @@ namespace DRBE
                     {
 
                         resultb[i] = d_reader.ReadByte();
-
-                        DRBE_frontPage.Statues_tb.Text += "received" + BitConverter.ToString(resultb) + " - " + ((char)resultb[i]).ToString();
+                        ByteList_packet(resultb[i]);
+                        //DRBE_frontPage.Statues_tb.Text += "received" + BitConverter.ToString(resultb) + " - " + ((char)resultb[i]).ToString() + "      ";
+                        DRBE_frontPage.Statues_tb.Text += ((char)resultb[i]).ToString();
                         i++;
                     }
                 }

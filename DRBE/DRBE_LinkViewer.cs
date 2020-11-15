@@ -1066,7 +1066,7 @@ namespace DRBE
             DRBEP_Global_memory_bt.SetValue(Grid.ColumnSpanProperty, 17);
             DRBEP_Global_memory_bt.SetValue(Grid.RowProperty, 31);
             DRBEP_Global_memory_bt.SetValue(Grid.RowSpanProperty, 5);
-            DRBEP_Global_memory_bt.Click += DRBEP_Global_memory_bt_Click; ;
+            DRBEP_Global_memory_bt.Click += DRBEP_Global_memory_bt_Click;
             #endregion
             #region Bandwidth
             DRBEP_Global_bandwidth_gd = new Grid()
@@ -2063,6 +2063,12 @@ namespace DRBE
             Global_scanned_flag = true;
             Scan_max = Get_total_scan_number(0);
             Scan_pb.Maximum = Scan_max;
+
+            int Scan_Packet_size = (int)Scan_max/50;
+            if(Scan_Packet_size<10)
+            {
+                Scan_Packet_size = 10;
+            }
             List<byte> Tosend_buffer = new List<byte>();
             List<List<double>> tempdl = new List<List<double>>();
             List<int> mode_list = new List<int>();
@@ -2084,7 +2090,7 @@ namespace DRBE
                             Tosend_buffer.AddRange(Generate_link_info(i, 0,false));
                             Tosend_buffer.AddRange(Generate_link_info(ii, 1, false));
                             arcount++;
-                            if (arcount%10==0)
+                            if (arcount% Scan_Packet_size == 0)
                             {
                                 Tosend_buffer.AddRange(Generate_link_info(iii, 2, true));
                                 tempdl = await Scan_Transceive(Tosend_buffer, Scane_quene_list.Count);
@@ -13957,6 +13963,10 @@ namespace DRBE
             i = 0;
             while(i<DRBE_obj_list.Count)
             {
+                DRBE_obj_list[i].Is_transmitting = false;
+                DRBE_obj_list[i].Is_receiving = false;
+                DRBE_obj_list[i].Is_reflecting = false;
+
                 DRBE_obj_list[i].RCS_Compute = 0;
                 DRBE_obj_list[i].ANT_Compute = 0;
                 DRBE_obj_list[i].TU_Compute = 0;
@@ -14581,25 +14591,25 @@ namespace DRBE
 
 
                 L_RCS_pb.Value = RCS_Latency;
-                L_RCS_i_tb.Text = RCS_Latency.ToString("E5") + " FP-64b";
+                L_RCS_i_tb.Text = RCS_Latency.ToString("E5") + "Cycle 64b";
 
                 L_ANT_pb.Value = ANT_Latency;
-                L_ANT_i_tb.Text = ANT_Latency.ToString("E5") + " FP-64b";
+                L_ANT_i_tb.Text = ANT_Latency.ToString("E5") + "Cycle 64b";
 
                 L_COR_pb.Value = COR_Latency;
-                L_COR_i_tb.Text = COR_Latency.ToString("E5") + " FP-64b";
+                L_COR_i_tb.Text = COR_Latency.ToString("E5") + "Cycle 64b";
 
                 L_TU_pb.Value = TU_Latency;
-                L_TU_i_tb.Text = TU_Latency.ToString("E5") + " FP-64b";
+                L_TU_i_tb.Text = TU_Latency.ToString("E5") + " Cycle 64b";
 
                 L_PG_pb.Value = PG_Latency;
-                L_PG_i_tb.Text = PG_Latency.ToString("E5") + " FP-64b";
+                L_PG_i_tb.Text = PG_Latency.ToString("E5") + " Cycle 64b";
 
                 L_ORI_pb.Value = ORI_Latency;
-                L_ORI_i_tb.Text = ORI_Latency.ToString("E5") + " FP-64b";
+                L_ORI_i_tb.Text = ORI_Latency.ToString("E5") + " Cycle 64b";
 
                 L_NRE_pb.Value = NRE_Latency;
-                L_NRE_i_tb.Text = NRE_Latency.ToString("E5") + " FP-64b";
+                L_NRE_i_tb.Text = NRE_Latency.ToString("E5") + " Cycle 64b";
 
 
 

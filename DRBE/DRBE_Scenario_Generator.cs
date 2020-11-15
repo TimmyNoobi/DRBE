@@ -164,6 +164,8 @@ namespace DRBE
         private Button Obj_load_bt = new Button();
         private Image Obj_load_i = new Image();
 
+        private Button Obj_refresh_bt = new Button();
+        private Image Obj_refresh_i = new Image();
 
         private Button Gen_Lv_view = new Button();
 
@@ -196,7 +198,9 @@ namespace DRBE
         private Button Generate_obj_bt = new Button();
         private Image Generate_obj_i = new Image();
 
-
+        private TextBlock Refresh_all_tb = new TextBlock();
+        private Button Refresh_all_bt = new Button();
+        private Image Refresh_all_i = new Image();
 
         private TextBlock Lv_view_tb = new TextBlock();
         private Button Lv_view_bt = new Button();
@@ -232,6 +236,9 @@ namespace DRBE
         private Button Home_bt = new Button();
         private Image Home_bti = new Image();
 
+        private Button Debugger_bt = new Button();
+        private Image Debugger_bti = new Image();
+
         private TextBlock Mode_obj_tb = new TextBlock();
         private Button Mode_obj_bt = new Button();
         private Image Mode_obj_bti = new Image();
@@ -247,6 +254,9 @@ namespace DRBE
         private TextBlock Unity_view_tb = new TextBlock();
         private Button Unity_view_bt = new Button();
         private Image Unity_view_bti = new Image();
+
+        private Button PlayFrame_bt = new Button();
+        private Image PlayFrame_bti = new Image();
 
         private int Mode_flag = 0;
         public void Setup()
@@ -273,8 +283,32 @@ namespace DRBE
             Home_bt.SetValue(Grid.ColumnSpanProperty, 15);
             Home_bt.SetValue(Grid.RowProperty, 5);
             Home_bt.SetValue(Grid.RowSpanProperty, 10);
-            Home_bt.Click += Home_bt_Click; 
+            Home_bt.Click += Home_bt_Click;
             #endregion
+
+            #region Debugger
+
+
+            Debugger_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Com_Icon.jpg", UriKind.RelativeOrAbsolute));
+            Debugger_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Content = Debugger_bti,
+                Foreground = white_button_brush,
+                FontSize = 18
+            };
+            ParentGrid.Children.Add(Debugger_bt);
+            Debugger_bt.SetValue(Grid.ColumnProperty, 60);
+            Debugger_bt.SetValue(Grid.ColumnSpanProperty, 10);
+            Debugger_bt.SetValue(Grid.RowProperty, 5);
+            Debugger_bt.SetValue(Grid.RowSpanProperty, 10);
+            Debugger_bt.Click += Debugger_bt_Click;
+            #endregion
+
 
             #region Mode obj
 
@@ -359,7 +393,7 @@ namespace DRBE
             List_view_bt.SetValue(Grid.RowSpanProperty, 10);
             List_view_bt.Click += List_view_bt_Click;
             #endregion
-            #region List view page
+            #region Unity view page
             Unity_view_tb = new TextBlock()
             {
                 VerticalAlignment = VerticalAlignment.Center,
@@ -696,6 +730,70 @@ namespace DRBE
             Generate_obj_bt.SetValue(Grid.RowProperty, 10);
             Generate_obj_bt.SetValue(Grid.RowSpanProperty, 10);
             Generate_obj_bt.Click += Generate_obj_bt_Click;
+
+            #endregion
+
+            #region Refresh All
+            Refresh_all_tb = new TextBlock()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                HorizontalTextAlignment = TextAlignment.Center,
+                Text = "Clear",
+                Foreground = green_bright_button_brush,
+                FontSize = 14,
+                FontWeight = FontWeights.Bold
+            };
+            ParentGrid.Children.Add(Refresh_all_tb);
+            Refresh_all_tb.SetValue(Grid.ColumnProperty, 30);
+            Refresh_all_tb.SetValue(Grid.ColumnSpanProperty, 10);
+            Refresh_all_tb.SetValue(Grid.RowProperty, 5);
+            Refresh_all_tb.SetValue(Grid.RowSpanProperty, 5);
+
+            Refresh_all_i.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Refresh.png", UriKind.RelativeOrAbsolute));
+            Refresh_all_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Content = Refresh_all_i,
+                Foreground = white_button_brush,
+                BorderBrush = green_bright_button_brush,
+                BorderThickness = new Thickness(2, 2, 2, 2),
+                FontSize = 18
+            };
+            ParentGrid.Children.Add(Refresh_all_bt);
+            Refresh_all_bt.SetValue(Grid.ColumnProperty, 30);
+            Refresh_all_bt.SetValue(Grid.ColumnSpanProperty, 10);
+            Refresh_all_bt.SetValue(Grid.RowProperty, 10);
+            Refresh_all_bt.SetValue(Grid.RowSpanProperty, 10);
+            Refresh_all_bt.Click += Refresh_all_bt_Click;
+            #endregion
+
+            #region Play Frame
+
+            PlayFrame_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Step_forward_icon.png", UriKind.RelativeOrAbsolute));
+            PlayFrame_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Content = PlayFrame_bti,
+                Foreground = white_button_brush,
+                BorderBrush = green_bright_button_brush,
+                BorderThickness = new Thickness(2, 2, 2, 2),
+                FontSize = 18
+            };
+            ParentGrid.Children.Add(PlayFrame_bt);
+            PlayFrame_bt.SetValue(Grid.ColumnProperty, 40);
+            PlayFrame_bt.SetValue(Grid.ColumnSpanProperty, 10);
+            PlayFrame_bt.SetValue(Grid.RowProperty, 10);
+            PlayFrame_bt.SetValue(Grid.RowSpanProperty, 10);
+            PlayFrame_bt.Click += PlayFrame_bt_Click;
             #endregion
 
             #region Save scenario
@@ -919,6 +1017,28 @@ namespace DRBE
             Obj_load_bt.Click += Obj_load_bt_Click;
             #endregion
 
+            #region Obj refresh
+            Obj_refresh_i.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Refresh.png", UriKind.RelativeOrAbsolute));
+            Obj_refresh_bt = new Button()
+            {
+                VerticalAlignment = VerticalAlignment.Stretch,
+                HorizontalAlignment = HorizontalAlignment.Stretch,
+                VerticalContentAlignment = VerticalAlignment.Stretch,
+                HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Background = Default_back_black_color_brush,
+                Content = Obj_refresh_i,
+                Foreground = white_button_brush,
+                BorderBrush = dark_grey_brush,
+                BorderThickness = new Thickness(0.5, 0.5, 0.5, 0.5),
+                FontSize = 18
+            };
+            ParentGrid.Children.Add(Obj_refresh_bt);
+            Obj_refresh_bt.SetValue(Grid.ColumnProperty, 165);
+            Obj_refresh_bt.SetValue(Grid.ColumnSpanProperty, 4);
+            Obj_refresh_bt.SetValue(Grid.RowProperty, 31);
+            Obj_refresh_bt.SetValue(Grid.RowSpanProperty, 4);
+            Obj_refresh_bt.Click += Obj_refresh_bt_Click;
+            #endregion
 
             #region unmarked
             Object_ID_tb = new TextBlock()
@@ -945,7 +1065,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = "Number of Receiver",
+                Text = "Number of Receivers",
                 Foreground = white_button_brush,
                 FontSize = 10,
                 FontWeight = FontWeights.Bold
@@ -961,7 +1081,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = Number_of_Receiver.ToString(),
+                Text = "0",
                 FontSize = 15,
                 FontWeight = FontWeights.Bold
             };
@@ -976,7 +1096,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = "Number of Reflector",
+                Text = "Number of Reflectors",
                 Foreground = white_button_brush,
                 FontSize = 10,
                 FontWeight = FontWeights.Bold
@@ -992,7 +1112,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = Number_of_Reflector.ToString(),
+                Text = "0",
                 FontSize = 14,
                 FontWeight = FontWeights.Bold
             };
@@ -1007,7 +1127,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = "Number of Transmitter",
+                Text = "Number of Transmitters",
                 Foreground = white_button_brush,
                 FontSize = 10,
                 FontWeight = FontWeights.Bold
@@ -1023,7 +1143,7 @@ namespace DRBE
                 VerticalAlignment = VerticalAlignment.Stretch,
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 HorizontalTextAlignment = TextAlignment.Left,
-                Text = Number_of_Transmitter.ToString(),
+                Text = "0",
                 FontSize = 14,
                 FontWeight = FontWeights.Bold
             };
@@ -1215,7 +1335,7 @@ namespace DRBE
                 FontWeight = FontWeights.ExtraBold,
                 FontSize = 10
             };
-            ParentGrid.Children.Add(Add_Transmitter_bt);
+            //ParentGrid.Children.Add(Add_Transmitter_bt);
             Add_Transmitter_bt.SetValue(Grid.ColumnProperty, 30);
             Add_Transmitter_bt.SetValue(Grid.ColumnSpanProperty, 17);
             Add_Transmitter_bt.SetValue(Grid.RowProperty, 5);
@@ -1237,7 +1357,7 @@ namespace DRBE
                 FontWeight = FontWeights.ExtraBold,
                 FontSize = 10
             };
-            ParentGrid.Children.Add(Add_Reflector_bt);
+            //ParentGrid.Children.Add(Add_Reflector_bt);
             Add_Reflector_bt.SetValue(Grid.ColumnProperty, 30);
             Add_Reflector_bt.SetValue(Grid.ColumnSpanProperty, 17);
             Add_Reflector_bt.SetValue(Grid.RowProperty, 10);
@@ -1258,7 +1378,7 @@ namespace DRBE
                 FontWeight = FontWeights.ExtraBold,
                 FontSize = 10
             };
-            ParentGrid.Children.Add(Add_Receiver_bt);
+            //ParentGrid.Children.Add(Add_Receiver_bt);
             Add_Receiver_bt.SetValue(Grid.ColumnProperty, 30);
             Add_Receiver_bt.SetValue(Grid.ColumnSpanProperty, 17);
             Add_Receiver_bt.SetValue(Grid.RowProperty, 15);
@@ -1434,8 +1554,315 @@ namespace DRBE
             #endregion
         }
 
+        private bool Debugger_flag = false;
+        private void Debugger_bt_Click(object sender, RoutedEventArgs e)
+        {
+            if(Debugger_flag)
+            {
+                ParentPage.DRBE_frontPage.Debugger_hide();
+                Debugger_flag = false;
+            }
+            else
+            {
+                ParentPage.DRBE_frontPage.Debugger_show();
+                Debugger_flag = true;
+            }
+        }
+
+        private void Obj_refresh_bt_Click(object sender, RoutedEventArgs e)
+        {
+            List<byte> tosend = new List<byte>();
+            int i = 0;
+            UInt16 totallen = 0;
+            if (DRBE_obj_list.Count > 0)
+            {
+                Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+                i = 0;
+                while (i < DRBE_obj_list.Count)
+                {
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_X));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Y));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Z));
+                    totallen += 24;
+                    i++;
+                }
+                totallen += 3;
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[0]);
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[1]);
+                tosend.Insert(0, 0x07);
+                ParentPage.UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
+                ParentPage.UWbinarywriter.Flush();
+            }
+        }
+
+
+        private bool PlayFrame_flag = false;
+        private async void PauseFrame_func()
+        {
+            List<byte> tosend = new List<byte>();
+            UInt16 totallen = 5;
+            tosend.Insert(0, 0x00);
+            tosend.Insert(0, 0x03);
+            tosend.Insert(0, BitConverter.GetBytes(totallen)[0]);
+            tosend.Insert(0, BitConverter.GetBytes(totallen)[1]);
+            tosend.Insert(0, 0x08);
+            ParentPage.UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
+            ParentPage.UWbinarywriter.Flush();
+        }
+        private UInt16 FPGA_Sc_update_speed = 50; 
+        private async void PlayFrame_func()
+        {
+            List<byte> tosend = new List<byte>();
+            List<byte> Setspeed = new List<byte>();
+
+            UInt16 totallen = 0;
+            int i = 0;
+            int buffi = 0;
+            Setspeed.Add(0x08);
+            Setspeed.Add(0x00);
+            Setspeed.Add(0x06);
+            Setspeed.Add(0x04);
+
+            Setspeed.Add(BitConverter.GetBytes(FPGA_Sc_update_speed)[1]);
+            Setspeed.Add(BitConverter.GetBytes(FPGA_Sc_update_speed)[0]);
+
+            ParentPage.UWbinarywriter.Write(Setspeed.ToArray(), 0, Setspeed.Count);
+            ParentPage.UWbinarywriter.Flush();
+            if (DRBE_obj_list.Count > 0)
+            {
+                Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+                i = 0;
+                while (i < DRBE_obj_list.Count)
+                {
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_X));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Y));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Z));
+                    totallen += 24;
+                    i++;
+                }
+                totallen += 4;
+
+                tosend.Insert(0, 0x02);
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[0]);
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[1]);
+                tosend.Insert(0, 0x08);
+
+                ParentPage.UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
+                ParentPage.UWbinarywriter.Flush();
+
+                
+            }
+            else
+            {
+                await ShowDialog("Error", "No Scenario Found");
+                PlayFrame_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Step_forward_icon.png", UriKind.RelativeOrAbsolute));
+                PlayFrame_flag = false;
+            }
+        }
+        private async void PlayFrame_func_old()
+        {
+            List<byte> tosend = new List<byte>();
+
+            UInt16 totallen = 0;
+            int i = 0;
+            int buffi = 0;
+            if (DRBE_obj_list.Count > 0)
+            {
+                Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+                i = 0;
+                while (i < DRBE_obj_list.Count)
+                {
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_X));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Y));
+                    tosend.AddRange(BitConverter.GetBytes(DRBE_obj_list[i].Initial_Position_Z));
+                    totallen += 24;
+                    i++;
+                }
+                totallen += 3;
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[0]);
+                tosend.Insert(0, BitConverter.GetBytes(totallen)[1]);
+                tosend.Insert(0, 0x51);
+
+
+                buffi = 0;
+                ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, 3).ToArray()));
+                await ParentPage.d_writer.StoreAsync();
+                buffi = 3;
+                await Task.Delay(10);
+
+                while (buffi < tosend.Count)
+                {
+                    if ((tosend.Count - buffi) >= 40)
+                    {
+                        ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, 40).ToArray()));
+                        await ParentPage.d_writer.StoreAsync();
+                        buffi += 40;
+                    }
+                    else
+                    {
+                        ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, tosend.Count - buffi).ToArray()));
+                        await ParentPage.d_writer.StoreAsync();
+                        break;
+                    }
+                    //await ShowDialog(ParentPage.FPGA_ByteList_index.ToString(), ParentPage.FPGA_ByteList_len.ToString());
+                    await Task.Delay(50);
+                }
+
+
+
+                while (!ParentPage.FPGA_Data_ready_flag)
+                {
+                    await Task.Delay(1);
+                    //await ShowDialog(ParentPage.FPGA_ByteList_index.ToString(), ParentPage.FPGA_ByteList_len.ToString());
+                }
+
+                //await ShowDialog(ParentPage.ByteList_Serial_Received.Count.ToString(), BitConverter.ToString(ParentPage.ByteList_Serial_Received.ToArray()));
+                tosend = new List<byte>(ParentPage.ByteList_Serial_Received);
+                ParentPage.ByteList_Serial_Received[0] = 0x07;
+                ParentPage.UWbinarywriter.Write(ParentPage.ByteList_Serial_Received.ToArray(), 0, ParentPage.ByteList_Serial_Received.Count);
+                ParentPage.UWbinarywriter.Flush();
+
+
+                ParentPage.ByteList_Serial_Received.Clear();
+                ParentPage.FPGA_Data_ready_flag = false;
+
+                while (PlayFrame_flag)
+                {
+                    buffi = 0;
+                    ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, 3).ToArray()));
+                    await ParentPage.d_writer.StoreAsync();
+                    buffi = 3;
+                    await Task.Delay(10);
+                    while (buffi < tosend.Count)
+                    {
+                        if ((tosend.Count - buffi) >= 40)
+                        {
+                            ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, 40).ToArray()));
+                            await ParentPage.d_writer.StoreAsync();
+                            buffi += 40;
+                        }
+                        else
+                        {
+                            ParentPage.d_writer.WriteBytes((tosend.GetRange(buffi, tosend.Count - buffi).ToArray()));
+                            await ParentPage.d_writer.StoreAsync();
+                            break;
+                        }
+                        //await ShowDialog(ParentPage.FPGA_ByteList_index.ToString(), ParentPage.FPGA_ByteList_len.ToString());
+                        await Task.Delay(50);
+                    }
+
+
+
+                    while (!ParentPage.FPGA_Data_ready_flag)
+                    {
+                        await Task.Delay(1);
+                        //await ShowDialog(ParentPage.FPGA_ByteList_index.ToString(), ParentPage.FPGA_ByteList_len.ToString());
+                    }
+
+                    //await ShowDialog(ParentPage.ByteList_Serial_Received.Count.ToString(), BitConverter.ToString(ParentPage.ByteList_Serial_Received.ToArray()));
+                    tosend = new List<byte>(ParentPage.ByteList_Serial_Received);
+                    ParentPage.ByteList_Serial_Received[0] = 0x07;
+                    ParentPage.UWbinarywriter.Write(ParentPage.ByteList_Serial_Received.ToArray(), 0, ParentPage.ByteList_Serial_Received.Count);
+                    ParentPage.UWbinarywriter.Flush();
+
+
+                    ParentPage.ByteList_Serial_Received.Clear();
+                    ParentPage.FPGA_Data_ready_flag = false;
+                    await Task.Delay(200);
+                }
+            }
+            else
+            {
+                await ShowDialog("Error", "No Scenario Found");
+                PlayFrame_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Step_forward_icon.png", UriKind.RelativeOrAbsolute));
+                PlayFrame_flag = false;
+            }
+        }
+
+        private void PlayFrame_bt_Click(object sender, RoutedEventArgs e)
+        {
+            if(PlayFrame_flag)
+            {
+                PlayFrame_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Step_forward_icon.png", UriKind.RelativeOrAbsolute));
+                PlayFrame_flag = false;
+                PauseFrame_func();
+            }
+            else
+            {
+                PlayFrame_bti.Source = new BitmapImage(new Uri("ms-appx://DRBE/Assets/Pause_icon.png", UriKind.RelativeOrAbsolute));
+                PlayFrame_flag = true;
+                PlayFrame_func();
+            }
+
+        }
+
+        private void Refresh_all_bt_Click(object sender, RoutedEventArgs e)
+        {
+            Number_of_transmitter_tb.Text = "0";
+            Number_of_reflector_tb.Text = "0";
+            Number_of_receiver_tb.Text = "0";
+            DRBE_obj_list = new List<DRBE_Objs>();
+
+            int i = 0;
+            i = 0;
+            while(i< DRBE_Obj_SPL.Count)
+            {
+                DRBE_Obj_SPL[i].Children.Clear();
+                i++;
+            }
+
+            i = 0;
+            while(i<Obj_bt_list.Count)
+            {
+                Obj_bt_list[i].Click -= DRBE_obj_bt_Click;
+                i++;
+            }
+
+            Obj_bt_list = new List<Button>();
+            Obj_sp_list = new List<StackPanel>();
+            Obj_img_list = new List<Image>();
+            Obj_tb_list = new List<TextBlock>();
+            Obj_gd_list = new List<Grid>();
+
+            Dic_bt_obj_int = new Dictionary<Button, int>();
+            Dic_objs_grp = new Dictionary<DRBE_Objs, List<DRBE_Group>>();
+            
+
+            DRBE_grp_list = new List<DRBE_Group>();
+            Group_trans_link_list = new List<List<int>>();
+            Group_receive_link_list = new List<List<int>>();
+            Dic_grp_objs = new Dictionary<DRBE_Group, List<DRBE_Objs>>();
+            Dic_LPI_ti = new Dictionary<DRBE_Objs, int>();
+            Dic_LPI_it = new Dictionary<int, DRBE_Objs>();
+            Dic_LPI_oi = new Dictionary<DRBE_Objs, int>();
+            Dic_LPI_io = new Dictionary<int, DRBE_Objs>();
+            Dic_LPI_ri = new Dictionary<DRBE_Objs, int>();
+            Dic_LPI_ir = new Dictionary<int, DRBE_Objs>();
+            Link_table = new List<List<List<bool>>>();
+            Group_gd_list = new List<Grid>();
+            Group_img_list = new List<Image>();
+            Group_tb_list = new List<TextBlock>();
+            Group_sp_list = new List<StackPanel>();
+            Group_bt_list = new List<Button>();
+            i = 0;
+            while (i < DRBE_grp_SP.Count)
+            {
+                DRBE_grp_SP[i].Children.Clear();
+                i++;
+            }
+            DRBE_grp_SP[0].Children.Add(Add_grp_bt);
+
+            Dic_group_bt_int = new Dictionary<Button, int>();
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+        }
+
         private async void Unity_view_bt_Click(object sender, RoutedEventArgs e)
         {
+            Grp_obj_write_dic();
+            Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
             await DRBE_SS.Quiet_Start("Save Scenario", new List<string>() { "Simulator File", "Scenario File" }, "dsc", Generate_scenario_file_s());
             await Task.Delay(50);
             Button foo = sender as Button;
@@ -1901,6 +2328,7 @@ namespace DRBE
             Group_tb_list = new List<TextBlock>();
             Group_sp_list = new List<StackPanel>();
             Group_bt_list = new List<Button>();
+            Dic_group_bt_int = new Dictionary<Button, int>();
             int i = 0;
             i = 0;
             while(i< DRBE_grp_SP.Count)
@@ -2636,6 +3064,7 @@ namespace DRBE
 
             Obj_load_bt.Visibility = Visibility.Collapsed;
             #endregion
+            Obj_refresh_bt.Visibility = Visibility.Collapsed;
             #region Obj Save
             Obj_save_tb.Visibility = Visibility.Collapsed;
 
@@ -2675,6 +3104,7 @@ namespace DRBE
 
             Obj_load_bt.Visibility = Visibility.Visible;
             #endregion
+            Obj_refresh_bt.Visibility = Visibility.Visible;
             #region Obj Save
             Obj_save_tb.Visibility = Visibility.Visible;
 
@@ -2786,6 +3216,17 @@ namespace DRBE
             }    
         }
         private Button Temp_obj_bt = new Button();
+        public void DRBE_bt_maincontrol(int x)
+        {
+            Button foo = Obj_bt_list[x];
+            Grp_obj_write_dic();
+            Temp_obj_bt.Background = Default_back_black_color_brush;
+            foo.Background = green_ready_brush;
+            Load_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+            Temp_obj_bt = foo;
+            Grp_obj_bt_fetch(DRBE_obj_list[Dic_bt_obj_int[Temp_obj_bt]]);
+            Update_DRBE_objs(Dic_bt_obj_int[foo]);
+        }
         private void DRBE_obj_bt_Click(object sender, RoutedEventArgs e)
         {
             Button foo = sender as Button;
@@ -3075,14 +3516,17 @@ namespace DRBE
                 content = await Read_file(gpath);
                 //await Read_sc_file_ui(content);
                 await Parse_group_file(content);
+                if(DRBE_grp_list.Count>0)
+                {
+                    Create_grp_button();
+                    Temp_grp_bt = Group_bt_list[0];
 
-                Create_grp_button();
-                Temp_grp_bt = Group_bt_list[0];
-                
-                Grp_obj_bt_fetch(DRBE_obj_list[Dic_bt_obj_int[Temp_obj_bt]]);
-                Group_panel_refresh();
+                    Grp_obj_bt_fetch(DRBE_obj_list[Dic_bt_obj_int[Temp_obj_bt]]);
+                    Group_panel_refresh();
 
-                Update_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+                    Update_DRBE_objs(Dic_bt_obj_int[Temp_obj_bt]);
+                }
+
 
                 //Process_link_information_create();
 
@@ -3283,6 +3727,9 @@ namespace DRBE
                         DRBE_t_count = tcount;
                         DRBE_o_count = ocount;
                         DRBE_r_count = rcount;
+                        Number_of_transmitter_tb.Text = tcount.ToString();
+                        Number_of_reflector_tb.Text = ocount.ToString();
+                        Number_of_receiver_tb.Text = rcount.ToString();
                         Link_table = new List<List<List<bool>>>();
                         inx1 = 0;
                         while(inx1<tcount)
@@ -3908,6 +4355,7 @@ namespace DRBE
             List_view_tb.Visibility = Visibility.Collapsed;
             DRBE_Obj_SV.Visibility = Visibility.Collapsed;
             DRBE_grp_SV.Visibility = Visibility.Collapsed;
+            Debugger_bt.Visibility = Visibility.Collapsed;
             Home_bt.Visibility = Visibility.Collapsed;
             Mode_grp_bt.Visibility = Visibility.Collapsed;
             Mode_obj_bt.Visibility = Visibility.Collapsed;
@@ -3917,8 +4365,12 @@ namespace DRBE
             #region generate
             Generate_obj_tb.Visibility = Visibility.Collapsed;
             Generate_obj_bt.Visibility = Visibility.Collapsed;
-            #endregion
 
+
+            #endregion
+            Refresh_all_tb.Visibility = Visibility.Collapsed;
+            Refresh_all_bt.Visibility = Visibility.Collapsed;
+            PlayFrame_bt.Visibility = Visibility.Collapsed;
             #region Save scenario
             Lv_view_tb.Visibility = Visibility.Collapsed;
             Lv_view_bt.Visibility = Visibility.Collapsed;
@@ -3953,6 +4405,7 @@ namespace DRBE
             Obj_load_bt.Visibility = Visibility.Collapsed;
             #endregion
 
+            Obj_refresh_bt.Visibility = Visibility.Collapsed;
 
             DRBE_SV.Visibility = Visibility.Collapsed;
             
@@ -4024,6 +4477,7 @@ namespace DRBE
             //Group_panel_show();
             List_view_bt.Visibility = Visibility.Visible;
             List_view_tb.Visibility = Visibility.Visible;
+            Debugger_bt.Visibility = Visibility.Visible;
             Home_bt.Visibility = Visibility.Visible;
             Mode_grp_bt.Visibility = Visibility.Visible;
             Mode_obj_bt.Visibility = Visibility.Visible;
@@ -4035,7 +4489,9 @@ namespace DRBE
             Generate_obj_tb.Visibility = Visibility.Visible;
             Generate_obj_bt.Visibility = Visibility.Visible;
             #endregion
-
+            Refresh_all_tb.Visibility = Visibility.Visible;
+            Refresh_all_bt.Visibility = Visibility.Visible;
+            PlayFrame_bt.Visibility = Visibility.Visible;
             #region Save scenario
             Lv_view_tb.Visibility = Visibility.Visible;
             Lv_view_bt.Visibility = Visibility.Visible;
@@ -4071,7 +4527,7 @@ namespace DRBE
             Obj_load_cb.Visibility = Visibility.Visible;
             Obj_load_bt.Visibility = Visibility.Visible;
             #endregion
-
+            Obj_refresh_bt.Visibility = Visibility.Visible;
 
 
             Object_ID_tb.Visibility = Visibility.Visible;
@@ -4547,7 +5003,12 @@ namespace DRBE
 
             //await Generate_all_obj();
 
+
             DRBE_obj_list.Add(new DRBE_Objs((ushort)(DRBE_obj_list.Count)));
+
+            Number_of_transmitter_tb.Text = DRBE_obj_list.Count.ToString();
+            Number_of_receiver_tb.Text = DRBE_obj_list.Count.ToString();
+            Number_of_reflector_tb.Text = DRBE_obj_list.Count.ToString();
             #region grp bt
             Obj_gd_list.Add(new Grid()
             {

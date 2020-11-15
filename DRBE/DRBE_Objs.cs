@@ -144,7 +144,7 @@ namespace DRBE
         public double RCS_point = 20;
         public double RCS_angle_resolution = 2;
         public double RCS_frequency_point = 1;
-        public double RCS_number_of_polarization = 3;
+        public double RCS_number_of_polarization = 4;
         public double RCS_output_time_sampe = 10;
 
         public double RCS_Compute = 0;
@@ -353,9 +353,9 @@ namespace DRBE
 
             Reference_Obj_ID = 0;
 
-            Initial_Position_X = r.Next(-400, 400);
-            Initial_Position_Y = r.Next(-400, 400);
-            Initial_Position_Z = r.Next(0, 200);
+            Initial_Position_X = r.Next(-500, 500);
+            Initial_Position_Y = r.Next(-500, 500);
+            Initial_Position_Z = r.Next(0, 300);
 
             Initial_Ref_Position_X = 10;
             Initial_Ref_Position_Y = 20;
