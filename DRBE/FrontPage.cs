@@ -133,7 +133,7 @@ namespace DRBE
                 HorizontalAlignment = HorizontalAlignment.Stretch,
                 VerticalAlignment = VerticalAlignment.Stretch,
                 FontSize = 12,
-                Text = "0"
+                Text = "1,2,3,4,5,6,7,8,9"
 
             };
             Send_info_box.SetValue(Grid.ColumnProperty, 136);
@@ -474,6 +474,7 @@ namespace DRBE
         public void Show()
         {
             Send_Seq_1.Visibility = Visibility.Visible;
+            Send_Seq_2.Visibility = Visibility.Visible;
 
             Text_Clear_bt.Visibility = Visibility.Visible;
 
@@ -499,7 +500,7 @@ namespace DRBE
         public void Hide()
         {
             Send_Seq_1.Visibility = Visibility.Collapsed;
-
+            Send_Seq_2.Visibility = Visibility.Collapsed;
 
             Text_Clear_bt.Visibility = Visibility.Collapsed;
             Tab_workspace_tb.Visibility = Visibility.Collapsed;

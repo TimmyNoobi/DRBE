@@ -773,7 +773,7 @@ namespace DRBE
             await Task.Delay(1000);
 
             DRBE_frontPage = new FrontPage(MainGrid, this);
-            DRBE_frontPage.Show();
+            //DRBE_frontPage.Show();
             
             DRBE_softwarePage = new SoftwarePanel(MainGrid, UWbinarywriter);
             Communication_Protocol_Page = new Communication_Protocol_Page(MainGrid);
@@ -806,7 +806,7 @@ namespace DRBE
             //DRBE_lv = new DRBE_Link_Viewer_s(MainGrid, this);
             //DRBE_SG = new DRBE_Scenario_Generator(MainGrid);
 
-            //DRBE_mainpage1.Show();
+            DRBE_mainpage1.Show();
             //DRBE_sv1.show();
 
 
