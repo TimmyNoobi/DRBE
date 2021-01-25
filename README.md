@@ -4,7 +4,7 @@ Installation Guide:
 
     - Load project solution into Microsoft Visual Studio
     - Run the Visual Studio debugger
-    - Now a folder is created for the application. (usually C:\Users\[User Name]\AppData\Local\Packages\[App ID]\)
+    - Now a folder is created for the application. (usually in C:\Users\[User Name]\AppData\Local\Packages\[App ID]\)
     - DRBE Application is created and can be found by typing DRBE in search window
     
 Follow steps below to enable UNITY 3D Visualization tool:
