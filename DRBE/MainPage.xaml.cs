@@ -92,9 +92,35 @@ namespace DRBE
         public MainPage()
         {
             this.InitializeComponent();
+            CheckToolInstallation();
+
         }
 
+        private async void CheckToolInstallation()
+        {
+            StorageFolder cstorageFolder = ApplicationData.Current.LocalFolder;
+            
+            if((await cstorageFolder.TryGetItemAsync("DRBE_CPP1.exe")) == null)
+            {
+                await ShowDialog("Missing AMT Tool","Please add AMT tool to path: " + cstorageFolder.Path + ". Please follow installation guide on git hub");
+            }
 
+            if ((await cstorageFolder.TryGetItemAsync("TimT1.exe")) == null)
+            {
+                await ShowDialog("Missing UNITY 3D", "Please add UNITY 3D to path: " + cstorageFolder.Path + ". Please follow installation guide on git hub");
+            }
+
+            if ((await cstorageFolder.TryGetItemAsync("TimT1_Data")) == null)
+            {
+                await ShowDialog("Missing UNITY 3D Data File", "Please add UNITY 3D Data File to path: " + cstorageFolder.Path + ". Please follow installation guide on git hub");
+            }
+
+            if ((await cstorageFolder.TryGetItemAsync("Simulator File")) == null)
+            {
+                await ShowDialog("Missing Demo Scenario File", "Please add Demo Scenario File (Simulator File) to path: " + cstorageFolder.Path + ". Please follow installation guide on git hub");
+            }
+
+        }
         #region communication
         private string UWPportnumber = "8200";
         private Windows.Networking.Sockets.StreamSocket UWstreamsocket = new Windows.Networking.Sockets.StreamSocket();
@@ -193,8 +219,17 @@ namespace DRBE
                         await Task.Delay(500);
                         //UWbinarywriter.Write(testpacket.ToArray(), 0, 255);
                         //UWbinarywriter.Flush();
-
-                        
+                        StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                        string path = storageFolder.Path;
+                        List<byte> tosend = new List<byte>();
+                        byte[] tbytes = Encoding.ASCII.GetBytes(path);
+                        tosend = new List<byte>(tbytes);
+                        UInt16 totallen = Convert.ToUInt16(tosend.Count() + 3);
+                        tosend.Insert(0, BitConverter.GetBytes(totallen)[0]);
+                        tosend.Insert(0, BitConverter.GetBytes(totallen)[1]);
+                        tosend.Insert(0, 0x90);
+                        UWbinarywriter.Write(tosend.ToArray(), 0, tosend.Count);
+                        UWbinarywriter.Flush();
 
                         ClientReading();
                         break;
@@ -767,7 +802,8 @@ namespace DRBE
             MainPageTestBd.SetValue(Grid.RowProperty, 0);
             MainPageTestBd.SetValue(Grid.RowSpanProperty, 100);
             Canvas.SetZIndex(MainPageTestBd, 19);
-
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            string path = storageFolder.Path;
 
             await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             await Task.Delay(1000);
@@ -798,7 +834,7 @@ namespace DRBE
 
 
 
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+
             DRBE_frontPage.Statues_tb.Text += storageFolder.Path;
 
             DRBE_Scenario = new DRBEScenario(MainGrid);
